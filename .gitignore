@@ -1,0 +1,11 @@
+# IDE / editor
+.idea/
+.claude/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (if tooling gets added later, e.g. for SCSS build)
+node_modules/

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Server-pro.uz</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/icon/icon-02-primary.png" rel="icon" type="image/png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark text-white-50 py-2 px-0 d-none d-lg-block">
+        <div class="row gx-0 align-items-center">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <a href="tel:+998901234567" class="d-flex align-items-center text-white-50 text-decoration-none">
+                        <small class="fa fa-phone-alt me-2"></small>
+                        <small>+998 90 123 45 67</small>
+                    </a>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <small class="far fa-envelope-open me-2"></small>
+                    <small>example@mail.ru</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <ol class="breadcrumb justify-content-end mb-0">
+                    <li class="breadcrumb-item"><a class="text-white-50 small" href="#">Главная страница</a></li>
+                    <li class="breadcrumb-item"><a class="text-white-50 small" href="#">Условия</a></li>
+                    <li class="breadcrumb-item"><a class="text-white-50 small" href="#">Конфиденциальность</a></li>
+                    <li class="breadcrumb-item"><a class="text-white-50 small" href="#">Поддерживать</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <h1 class="m-0"><img class="img-fluid me-3" src="img/icon/icon-02-primary.png" alt="">ServerPro</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto bg-light pe-4 py-3 py-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Главная страница</a>
+                <a href="about.html" class="nav-item nav-link">О компании</a>
+                <a href="service.html" class="nav-item nav-link">Наши услуги</a>
+                <a href="project.html" class="nav-item nav-link">Проекты</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Страницы</a>
+                    <div class="dropdown-menu bg-light border-0 m-0">
+                        <a href="feature.html" class="dropdown-item">Функции</a>
+                        <a href="quote.html" class="dropdown-item">Бесплатная цитата</a>
+                        <a href="team.html" class="dropdown-item">Наша команда</a>
+                        <a href="testimonial.html" class="dropdown-item">Отзыв</a>
+<!--                        <a href="404.html" class="dropdown-item">404 страница</a>-->
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Связаться с нами</a>
+            </div>
+            <div class="h-100 d-lg-inline-flex align-items-center d-none">
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-0" href="http://www.instagram.com/uzgidrouz/" target="_blank"><i class="fab fa-instagram"></i></a>
+
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">СИСТЕМА МОНИТОРИНГА И УПРАВЛЕНИЯ ИНЖЕНЕРНЫМИ СИСТЕМАМИ (СМИС)</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">Широкий спектр решений</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">СИСТЕМА МОНИТОРИНГА НЕСУЩИХ КОНСТРУКЦИЙ ЗДАНИЙ И СООРУЖЕНИЙ (СМИК И СМДС)</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">Полный цикл инжиниринга</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">МНОГОФУНКЦИОНАЛЬНАЯ СИСТЕМА БЕЗОПАСНОСТИ (МФСБ) ДЛЯ УГОЛЬНОЙ ПРОМЫШЛЕННОСТИ</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">Любые проекты по сложности</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">СИСТЕМА КОНТРОЛЯ ПОЖАРНОЙ БЕЗОПАСНОСТИ (СКПБ)</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">Эффективные методы</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">МОНИТОРИНГ ОБОРУДОВАНИЯ КАК СЕРВИС (EMAAS)</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">Инициативы для развития</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">СЛАБОТОЧНЫЕ РАБОТЫ</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">Ethernet (ЛВС), телефонные линии, ВОЛС (волоконно-оптические линии связи). Безопасности. Это видеонаблюдение, контроль доступа, пожарная сигнализация, оповещение о ЧС. Аудиовизуальные – звук, конференцсвязь, презентации</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">СОЗДАНИЕ КОЛЛ-ЦЕНТРОВ</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">API телефонии, установка умных замков и видеонаблюдений</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/compleks_oao.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">РАЗРАБОТКА ТЕХНИЧЕСКОЙ ДОКУМЕНТАЦИИ</h1>
+                                    <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown">Техническое задание (ТЗ), рабочая документация (РД), технокиэкономическое образование (ТЭО).</p>
+                                    <a href="https://t.me/ttimoww" class="btn btn-primary py-3 px-5 animated slideInDown">Задать вопрос</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100">
+                        <h1 class="display-6 mb-5">ООО «ServerPro» - член технических комитетов по стандартизации</h1>
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <img class="flex-shrink-0 me-3" src="img/icon/icon-07-primary.png" alt="">
+                                        <h5 class="mb-0">Эксперт-техник</h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <img class="flex-shrink-0 me-3" src="img/icon/icon-09-primary.png" alt="">
+                                    <h5 class="mb-0">Услуги высшего качества</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-4">Технический комитет по стандартизации 071 «Гражданская оборона, предупреждение и ликвидация чрезвычайных ситуаций»</p>
+                        <p class="mb-4">Технический комитет по стандартизации ТК 269 «Горное дело» «Cистемообразующий комитет по стандартизации угольной, горнорудной, машиностроительной отраслей»</p>
+                        <div class="border-top mt-4 pt-4">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="tel:+998901234567" class="d-flex align-items-center text-decoration-none">
+                                            <div class="btn-lg-square bg-primary rounded-circle me-3">
+                                                <i class="fa fa-phone-alt text-white"></i>
+                                            </div>
+                                            <h5 class="mb-0" style="color: #696E77;">+998 90 123 45 67 </h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="btn-lg-square bg-primary rounded-circle me-3">
+                                            <i class="fa fa-envelope text-white"></i>
+                                        </div>
+                                        <h5 class="mb-0">example@mail.ru</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-6 text-end">
+                            <img class="img-fluid w-75 wow zoomIn" data-wow-delay="0.1s" src="img/1.jpg" style="margin-top: 25%;">
+                        </div>
+                        <div class="col-6 text-start">
+                            <img class="img-fluid w-100 wow zoomIn" data-wow-delay="0.3s" src="img/depositphotos_139307496-stock-photo-pipes-of-hot-water-and.jpg">
+                        </div>
+                        <div class="col-6 text-end">
+                            <img class="img-fluid w-50 wow zoomIn" data-wow-delay="0.5s" src="img/images.jpg">
+                        </div>
+                        <div class="col-6 text-start">
+                            <img class="img-fluid w-75 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Facts Start -->
+    <div class="container-fluid facts my-5 py-5" data-parallax="scroll" data-image-src="img/carousel-1.jpg">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="display-4 text-white" data-toggle="counter-up">500</h1>
+                    <span class="text-primary">Счастливые клиенты</span>
+                </div>
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <h1 class="display-4 text-white" data-toggle="counter-up">48</h1>
+                    <span class="text-primary">Проекты успешны</span>
+                </div>
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-4 text-white" data-toggle="counter-up">13</h1>
+                    <span class="text-primary">Полученные награды</span>
+                </div>
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <h1 class="display-4 text-white" data-toggle="counter-up">78</h1>
+                    <span class="text-primary">Члены команды</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facts End -->
+
+
+    <!-- Features Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-6 mb-5">Наши ключевые преимущества</h1>
+                    <ul class="mb-5" style="list-style: none; padding-left: 0;">
+<!--                        <li class="mb-2">- <strong>Широкий спектр решений:</strong> от точечных цифровых инструментов до готовых программных продуктов, комплексных систем и адаптированных отраслевых решений.</li>-->
+<!--                        <li class="mb-2">- <strong>Полный цикл инжиниринга:</strong> компетенции разработчиков ПО, проектировщиков и интеграторов, включение на любом этапе проекта и реализация под ключ.</li>-->
+<!--                        <li class="mb-2">- <strong>Любые проекты по сложности:</strong> проекты мониторинга КВО и ПОО, контроль ответственных конструкций и системы мониторинга территориально распределённых объектов.</li>-->
+<!--                        <li class="mb-2">- <strong>Инициативы для развития:</strong> работа в составе ТК 071 и ТК 269 по мониторингу техногенных угроз и тесное сотрудничество с ведущими НИИ.</li>-->
+<!--                        <li>- <strong>Эффективные методы:</strong> предлагаемые нами программные решения позволяют получить значительный экономический эффект.</li>-->
+                    </ul>
+                    <div class="d-flex mb-5">
+                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle" style="width: 90px; height: 90px;">
+                            <img class="img-fluid" src="img/icon/icon-08-light.png" alt="">
+                        </div>
+                        <div class="ms-4">
+                            <h5 class="mb-3">Широкий спектр решений</h5>
+                            <span>от точечных цифровых инструментов до готовых программных продуктов, комплексных систем и адаптированных отраслевых решений.</span>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-5">
+                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle" style="width: 90px; height: 90px;">
+                            <img class="img-fluid" src="img/icon/icon-10-light.png" alt="">
+                        </div>
+                        <div class="ms-4">
+                            <h5 class="mb-3">Любые проекты по сложности</h5>
+                            <span>проекты мониторинга КВО и ПОО, контроль ответственных конструкций и системы мониторинга территориально распределённых объектов.</span>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-0">
+                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle" style="width: 90px; height: 90px;">
+                            <img class="img-fluid" src="img/icon/icon-06-light.png" alt="">
+                        </div>
+                        <div class="ms-4">
+                            <h5 class="mb-3">Эффективные методы</h5>
+                            <span>предлагаемые нами программные решения позволяют получить значительный экономический эффект.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="position-relative rounded overflow-hidden h-100" style="min-height: 400px;">
+                        <img class="position-absolute w-100 h-100" src="img/compleks_oao.jpg" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6 mb-5">Проекты компании</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="img/result_krim_most.jpg" alt="">
+                        <div class="d-flex align-items-center bg-light">
+                            <div class="service-icon flex-shrink-0 bg-primary">
+                                <img class="img-fluid" src="img/icon/free-icon-bridge-8251544.png" alt="">
+                            </div>
+                            <div class="mx-4">
+                                <a class="h4 mb-0" href="#">Крымский мост</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="img/result_compleks_oao.jpg" alt="">
+                        <div class="d-flex align-items-center bg-light">
+                            <div class="service-icon flex-shrink-0 bg-primary">
+                                <img class="img-fluid" src="img/icon/free-icon-factory-699404.png" alt="">
+                            </div>
+                            <div class="mx-4">
+                                <a class="h4 mb-0" href="#">Комплекс ОАО «Куйбышев Азот»</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="img/result_yujniy_zavod.jpg" alt="">
+                        <div class="d-flex align-items-center bg-light">
+                            <div class="service-icon flex-shrink-0 bg-primary">
+                                <img class="img-fluid" src="img/icon/free-icon-mine-8703117.png" alt="">
+                            </div>
+                            <div class="mx-4">
+                                <a class="h4 mb-0" href="#">Южно-балыкский ГПЗ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="img/result_lujniki.jpg" alt="">
+                        <div class="d-flex align-items-center bg-light">
+                            <div class="service-icon flex-shrink-0 bg-primary">
+                                <img class="img-fluid" src="img/icon/free-icon-stadium-17804704.png" alt="">
+                            </div>
+                            <div class="mx-4">
+                                <a class="h4 mb-0" href="#">Олимпийский комплекс «Лужники»</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="img/result_aeroport-1.jpg" alt="">
+                        <div class="d-flex align-items-center bg-light">
+                            <div class="service-icon flex-shrink-0 bg-primary">
+                                <img class="img-fluid" src="img/icon/free-icon-airport-4327360.png" alt="">
+                            </div>
+                            <div class="mx-4">
+                                <a class="h4 mb-0" href="#">Аэропорт Домодедово (терминал 1)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item">
+                        <img class="img-fluid" src="img/result_aeroport-2.jpg" alt="">
+                        <div class="d-flex align-items-center bg-light">
+                            <div class="service-icon flex-shrink-0 bg-primary">
+                                <img class="img-fluid" src="img/icon/free-icon-airport-995302.png" alt="">
+                            </div>
+                            <div class="mx-4">
+                                <a class="h4 mb-0" href="#">Аэропорт Домодедово (терминал 2)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.1s">
+                <a href="project.html" class="btn-primary py-3 px-5">Показать больше</a>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+
+    <!-- Quote Start -->
+    <div class="container-fluid overflow-hidden my-5 px-lg-0">
+        <div class="container quote px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 quote-text" data-parallax="scroll" data-image-src="img/1.jpg">
+                    <div class="h-100 px-4 px-sm-5 ps-lg-0 wow fadeIn" data-wow-delay="0.1s">
+                        <h1 class="text-white mb-4">Хотите получить бесплатную консультацию?</h1>
+                        <p class="text-light mb-5">Заполните форму и наш специалист свяжется с вами в ближайшее время</p>
+                        <a href="https://t.me/ttimoww" class="align-self-start btn btn-primary py-3 px-5">Больше информации</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 quote-form" data-parallax="scroll" data-image-src="img/carousel-2.jpg">
+                    <div class="h-100 px-4 px-sm-5 pe-lg-0 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="bg-white p-4 p-sm-5">
+                            <!-- TODO(dev): This form does not actually submit anywhere. The "submit" button
+                                 is wrapped in a link to a Telegram profile, so the entered name/phone/
+                                 service-type/message are discarded and the user is just sent to an empty
+                                 Telegram chat. Needs a real backend (mailer, Telegram Bot API, CRM webhook, etc.)
+                                 before this can be relied on for leads. -->
+                            <form>
+                                <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя" required>
+                                        <label for="name">Ваше имя</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ваш мобильный телефон" required>
+                                        <label for="phone">Ваш мобильный телефон</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="service-type" name="service-type" placeholder="Тип услуги" required>
+                                        <label for="service-type">Тип услуги</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Оставьте сообщение здесь" id="message" name="message" style="height: 100px"></textarea>
+                                        <label for="message">Сообщение</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <a href="https://t.me/ttimoww"><button class="btn btn-primary py-3 px-5" type="submit">Получите бесплатную консультацию</button></a>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quote End -->
+
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6 mb-5">Познакомьтесь с нашими профессиональными членами команды</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5>Full Name</h5>
+                            <span class="text-primary">Designation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/team-2.jpg" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5>Full Name</h5>
+                            <span class="text-primary">Designation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/team-3.jpg" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5>Full Name</h5>
+                            <span class="text-primary">Designation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h5>Full Name</h5>
+                            <span class="text-primary">Designation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6 mb-5">Что клиенты говорят о наших услугах</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="testimonial-left h-100">
+                        <img class="img-fluid animated pulse infinite" src="img/testimonial-1.jpg" alt="">
+                        <img class="img-fluid animated pulse infinite" src="img/testimonial-2.jpg" alt="">
+                        <img class="img-fluid animated pulse infinite" src="img/testimonial-3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="testimonial-item text-center">
+                            <img class="img-fluid mx-auto mb-4" src="img/testimonial-1.jpg" alt="">
+                            <p class="fs-5">«СМИС Эксперт» помог нам вывести контроль и мониторинг объектов на новый уровень качества.</p>
+                            <h5>Konofiyaeva Jamila</h5>
+                            <span>Газпром</span>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <img class="img-fluid mx-auto mb-4" src="img/testimonial-2.jpg" alt="">
+                            <p class="fs-5">Их решения реально упрощают управление и повышают безопасность без лишней бюрократии.</p>
+                            <h5>Tairov Temur-Malik</h5>
+                            <span>Авиакомпания</span>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <img class="img-fluid mx-auto mb-4" src="img/testimonial-3.jpg" alt="">
+                            <p class="fs-5">Надёжный партнёр, который доводит проект до результата — быстро, аккуратно и профессионально.</p>
+                            <h5>Jack Pathson</h5>
+                            <span>Военная Организация</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="testimonial-right h-100">
+                        <img class="img-fluid animated pulse infinite" src="img/testimonial-1.jpg" alt="">
+                        <img class="img-fluid animated pulse infinite" src="img/testimonial-2.jpg" alt="">
+                        <img class="img-fluid animated pulse infinite" src="img/testimonial-3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- Sertification Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6 mb-5">Сертификаты</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Certificate 1 -->
+                <div class="col-lg col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="text-center">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#sert1Modal">
+                            <img class="img-fluid img-thumbnail" src="img/ser-1.png" alt="Сертификат 1" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <p class="mt-2 mb-0">SERVERPRO</p>
+                    </div>
+                </div>
+                <!-- Certificate 2 -->
+                <div class="col-lg col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="text-center">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#sert2Modal">
+                            <img class="img-fluid img-thumbnail" src="img/свидетельство.png" alt="Сертификат 2" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <p class="mt-2 mb-0">СВИДЕТЕЛЬСТВО</p>
+                    </div>
+                </div>
+                <!-- Certificate 3 -->
+                <div class="col-lg col-md-4 col-sm- wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="text-center">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#sert3Modal">
+                            <img class="img-fluid img-thumbnail" src="img/спектрон%20подтверждение.png" alt="Сертификат 3" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <p class="mt-2 mb-0">SPEKTRON UPOS АВТОМАТИКА</p>
+                    </div>
+                </div>
+                <!-- Certificate 4 -->
+                <div class="col-lg col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="text-center">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#sert4Modal">
+                            <img class="img-fluid img-thumbnail" src="img/пожарная%20без-1.png" alt="Сертификат 4" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <p class="mt-2 mb-0">SPEKTRON UPOS ПОЖАРНАЯ БЕЗОПАСТНОСТЬ</p>
+                    </div>
+                </div>
+                <!-- Certificate 5 -->
+                <div class="col-lg col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="text-center">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#sert5Modal">
+                            <img class="img-fluid img-thumbnail" src="img/polymedia.png" alt="Сертификат 5" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <p class="mt-2 mb-0">ПАРТНЕРЫ POLYMEDIA</p>
+                    </div>
+                </div>
+                <!-- Certificate 6 -->
+                <div class="col-lg col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="text-center">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#sert6Modal">
+                            <img class="img-fluid img-thumbnail" src="img/META.png" alt="Сертификат 6" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <p class="mt-2 mb-0">ПАРТНЕРЫ META</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sertification End -->
+
+    <!-- Certificate Modals Start -->
+    <!-- Modal 1 -->
+    <div class="modal fade" id="sert1Modal" tabindex="-1" aria-labelledby="sert1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/ser-1.png" style="height: 938px; weigth: 2000px;" class="img-fluid"></div></div></div>
+    </div>
+    <!-- Modal 2 -->
+    <div class="modal fade" id="sert2Modal" tabindex="-1" aria-labelledby="sert2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/свидетельство.png" class="img-fluid"></div></div></div>
+    </div>
+    <!-- Modal 3 -->
+    <div class="modal fade" id="sert3Modal" tabindex="-1" aria-labelledby="sert3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/спектрон%20подтверждение.png" class="img-fluid"></div></div></div>
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/спектрон-вид-деятельности.png" class="img-fluid"></div></div></div>
+    </div>
+    <!-- Modal 4 -->
+    <div class="modal fade" id="sert4Modal" tabindex="-1" aria-labelledby="sert4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/пожарная%20без-1.png" class="img-fluid"></div></div></div>
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/пожарная%20без-2.png" class="img-fluid"></div></div></div>
+    </div>
+    <!-- Modal 5 -->
+    <div class="modal fade" id="sert5Modal" tabindex="-1" aria-labelledby="sert5ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/employee-polymedia.jpg" class="img-fluid"></div></div></div>
+    </div>
+    <!-- Modal 6 -->
+    <div class="modal fade" id="sert6Modal" tabindex="-1" aria-labelledby="sert6ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-body"><img src="img/META.png" class="img-fluid"></div></div></div>
+    </div>
+    <!-- Certificate Modals End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <h1 class="text-white mb-4"><img class="img-fluid me-3" src="img/icon/result_hosting.png" alt="">ServerPro</h1>
+                    <span>ServerPro — это тот партнёр, к которому обращаются, когда нужна безупречная ИТ-инфраструктура.
+Мы обеспечиваем стабильность, скорость и техническую точность на уровне, который виден сразу: всё работает чётко, надёжно и без сбоев.
+
+С нами ваш бизнес получает не просто сервис — а уверенность, что любая задача будет решена своевременно и профессионально. Если вам нужна команда, которая держит слово и результаты, — вы уже нашли её.</span>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-light mb-4">Информационный бюллетень</h5>
+                    <p>Подпишитесь, чтобы получать важные обновления ServerPro и всегда быть в курсе ключевых событий.</p>
+                    <!-- TODO(dev): Newsletter signup is decorative - the email input value is never read/sent anywhere; clicking "Зарегистрироваться" just opens a Telegram profile. Wire up to a real mailing list or remove. -->
+                    <div class="position-relative">
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Email">
+                        <a href="https://t.me/ttimoww"><button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Зарегистрироваться</button></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Свяжитесь с нами</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Узбекистан/Ташкент, Юнусабад, 13-й квартал, 3-й дом</p>
+                    <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+998901234567" class="text-white-50 text-decoration-none">+998 90 123 45 67</a></p>
+                    <p><i class="fa fa-envelope me-3"></i>example@mail.ru</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Наши услуги</h5>
+                    <a class="btn btn-link" href="#">СИСТЕМА МОНИТОРИНГА И УПРАВЛЕНИЯ ИНЖЕНЕРНЫМИ СИСТЕМАМИ</a>
+                    <a class="btn btn-link" href="#">СИСТЕМА МОНИТОРИНГА НЕСУЩИХ КОНСТРУКЦИЙ ЗДАНИЙ И СООРУЖЕНИЙ</a>
+                    <a class="btn btn-link" href="#">МНОГОФУНКЦИОНАЛЬНАЯ СИСТЕМА БЕЗОПАСНОСТИ</a>
+                    <a class="btn btn-link" href="#">СИСТЕМА КОНТРОЛЯ ПОЖАРНОЙ БЕЗОПАСНОСТИ</a>
+                    <a class="btn btn-link" href="#">МОНИТОРИНГ ОБОРУДОВАНИЯ КАК СЕРВИС (EMAAS)</a>
+                    <a class="btn btn-link" href="#">СЛАБОТОЧНЫЕ РАБОТЫ</a>
+                    <a class="btn btn-link" href="#">СОЗДАНИЕ КОЛЛ-ЦЕНТРОВ</a>
+                    <a class="btn btn-link" href="#">РАЗРАБОТКА ТЕХНИЧЕСКОЙ ДОКУМЕНТАЦИИ</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Быстрые ссылки</h5>
+                    <a class="btn btn-link" href="about.html">О компании</a>
+                    <a class="btn btn-link" href="contact.html">Связаться с нами</a>
+                    <a class="btn btn-link" href="service.html">Наши услуги</a>
+                    <a class="btn btn-link" href="#">Условия и положения</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Подписывайтесь на нас</h5>
+                    <div class="d-flex">
+                        <a class="btn btn-square rounded-circle me-1" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square rounded-circle me-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square rounded-circle me-1" href="#"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square rounded-circle me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a href="#">ServerPro</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>  Distributed by <a href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/parallax/parallax.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
