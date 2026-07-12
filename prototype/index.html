@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ServerPro — прототип главной</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E1B2C; --navy-1:#16283d; --navy-2:#1e3350; --navy-3:#27415f;
+    --gold:#D4A24C; --gold-1:#e0b76e; --gold-2:#f0d49b;
+    --cream:#FAF7F2; --cream-1:#f2ece2;
+    --ink:#0E1B2C; --muted-dark:#5a6b7d; --muted-light:#9fb0c3;
+    --line:rgba(159,176,195,.18);
+    --radius:16px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Manrope",system-ui,sans-serif; letter-spacing:-.025em; line-height:1.1; margin:0}
+  .mono{font-family:"JetBrains Mono",monospace}
+  a{color:inherit; text-decoration:none}
+  .container{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  section{padding:88px 0}
+  .eyebrow{font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); display:inline-flex; align-items:center; gap:8px}
+  .eyebrow.dark{color:#b98a34}
+  .lead{font-size:19px; color:var(--muted-dark); max-width:62ch}
+  .grid-bg{background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:48px 48px}
+  .btn{display:inline-flex; align-items:center; gap:9px; font-family:"Manrope",sans-serif; font-weight:700; font-size:15.5px; padding:13px 22px; border-radius:12px; border:1.5px solid transparent; cursor:pointer; transition:.18s}
+  .btn-primary{background:var(--gold); color:var(--navy)}
+  .btn-primary:hover{background:var(--gold-1)}
+  .btn-ghost{background:transparent; border-color:rgba(255,255,255,.28); color:#fff}
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-1)}
+  .btn-dark{background:var(--navy); color:#fff}
+  .btn-dark:hover{background:var(--navy-2)}
+  .pill{display:inline-flex; align-items:center; gap:7px; font-size:14px; font-weight:600; padding:7px 14px; border-radius:999px; background:var(--cream-1); color:var(--navy-2); border:1px solid rgba(14,27,44,.08)}
+  svg.ic{width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round}
+  /* ---- proto banner ---- */
+  .proto{background:#111; color:#fff; text-align:center; font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.1em; padding:7px; text-transform:uppercase}
+  /* ---- header ---- */
+  header.nav{position:sticky; top:0; z-index:50; background:rgba(14,27,44,.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,.07)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:66px}
+  .logo{font-family:"Manrope",sans-serif; font-weight:800; font-size:22px; letter-spacing:-.03em; color:#fff}
+  .logo b{color:var(--gold)}
+  .nav-links{display:flex; gap:26px; align-items:center}
+  .nav-links a{color:var(--muted-light); font-size:15px; font-weight:500; transition:.15s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:var(--gold); color:var(--navy); padding:9px 16px; border-radius:10px; font-family:"Manrope",sans-serif; font-weight:700; font-size:14.5px}
+  .nav-right{display:flex; align-items:center; gap:12px}
+  /* ---- v0.15: мобильное меню ---- */
+  .mnav{display:none; position:relative}
+  .mnav summary{list-style:none; cursor:pointer; display:grid; place-items:center; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.18); color:#fff}
+  .mnav summary::-webkit-details-marker{display:none}
+  .mnav[open] summary{border-color:var(--gold); color:var(--gold-1)}
+  .mnav-panel{position:fixed; left:0; right:0; top:66px; background:var(--navy); border-bottom:1px solid rgba(255,255,255,.1); padding:10px 24px 18px; display:flex; flex-direction:column; z-index:60}
+  .mnav-panel a{color:#dfe7f0; font-size:16px; font-weight:600; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.07)}
+  .mnav-panel a:last-child{border-bottom:none}
+  .mnav-panel .mnav-cta{color:var(--gold-1); font-family:"Manrope",sans-serif; font-weight:700}
+  @media(max-width:960px){ .mnav{display:block} }
+  @media(max-width:480px){ .nav-right .nav-cta{display:none} }
+  /* ---- hero ---- */
+  .hero{background:var(--navy); color:#fff; position:relative; overflow:hidden; padding:104px 0 96px}
+  .hero .halo{position:absolute; width:620px; height:620px; border-radius:50%; background:radial-gradient(circle,rgba(212,162,76,.16),transparent 62%); top:-180px; right:-120px; pointer-events:none}
+  .hero .halo2{position:absolute; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle,rgba(39,65,95,.55),transparent 65%); bottom:-220px; left:-140px; pointer-events:none}
+  .hero .container{position:relative}
+  .hero h1{font-size:clamp(34px,5vw,58px); font-weight:800; max-width:16ch; margin:20px 0 0}
+  .hero .desc{font-family:"JetBrains Mono",monospace; font-size:14px; letter-spacing:.04em; color:var(--gold-2); margin-top:22px}
+  .hero p.sub{font-size:19px; color:#c7d3e0; max-width:60ch; margin:22px 0 0}
+  .hero .cta{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap}
+  .trust{display:flex; gap:26px; margin-top:46px; flex-wrap:wrap; padding-top:26px; border-top:1px solid rgba(255,255,255,.09)}
+  .trust div{display:flex; flex-direction:column}
+  .trust .n{font-family:"Manrope",sans-serif; font-weight:800; font-size:26px; color:#fff}
+  .trust .l{font-size:13.5px; color:var(--muted-light)}
+  /* ---- section heads ---- */
+  .head{max-width:64ch; margin-bottom:44px}
+  .head h2{font-size:clamp(27px,3.4vw,40px); font-weight:800; margin-top:14px}
+  .head.center{margin:0 auto 48px; text-align:center}
+  /* ---- direction cards ---- */
+  .dirs{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .dir{background:#fff; border:1px solid rgba(14,27,44,.09); border-radius:var(--radius); padding:30px; display:flex; flex-direction:column; transition:.2s; position:relative; overflow:hidden}
+  .dir:hover{transform:translateY(-4px); box-shadow:0 20px 40px -24px rgba(14,27,44,.35); border-color:rgba(212,162,76,.5)}
+  .dir .ico{width:50px; height:50px; border-radius:13px; background:var(--navy); color:var(--gold); display:grid; place-items:center; margin-bottom:20px}
+  .dir.flag{background:var(--navy); color:#fff; border-color:transparent}
+  .dir.flag .ico{background:var(--gold); color:var(--navy)}
+  .dir.flag p{color:#c1cdda}
+  .dir.flag .more{color:var(--gold-1)}
+  .dir .tag{position:absolute; top:18px; right:18px; font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.1em; color:var(--gold); text-transform:uppercase}
+  .dir h3{font-size:22px; font-weight:700; margin-bottom:10px}
+  .dir p{color:var(--muted-dark); font-size:16px}
+  .dir .more{margin-top:auto; padding-top:20px; font-family:"Manrope",sans-serif; font-weight:700; font-size:15px; color:#b98a34; display:inline-flex; align-items:center; gap:6px}
+  .dir-list{list-style:none; margin:18px 0 0; padding:16px 0 2px; border-top:1px solid rgba(14,27,44,.08); display:flex; flex-direction:column; gap:12px}
+  .dir.flag .dir-list{border-top-color:rgba(255,255,255,.12)}
+  .dir-list li{font-size:14.5px; font-weight:600; color:var(--navy-2); padding-left:18px; position:relative; line-height:1.35}
+  .dir.flag .dir-list li{color:#e6edf4}
+  .dir-list li::before{content:''; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:50%; background:var(--gold)}
+  .dir-list li .src{display:block; font-size:12.5px; font-weight:400; color:var(--muted-dark); margin-top:2px}
+  .dir.flag .dir-list li .src{color:#9fb0c3}
+  /* ---- why (features) ---- */
+  .why{background:var(--cream-1)}
+  .feats{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
+  .feat .ico{width:44px; height:44px; border-radius:11px; background:#fff; color:var(--navy); display:grid; place-items:center; margin-bottom:16px; border:1px solid rgba(14,27,44,.08)}
+  .feat h3{font-size:18px; font-weight:700; margin-bottom:8px}
+  .feat p{color:var(--muted-dark); font-size:15px}
+  /* ---- stack ---- */
+  .stack-sec{background:var(--navy); color:#fff}
+  .stack-sec .head h2{color:#fff}
+  .stack{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:12px}
+  .lvl{background:var(--navy-1); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:22px; position:relative}
+  .lvl .lx{font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.1em; color:var(--gold)}
+  .lvl h3{font-size:20px; font-weight:700; margin:10px 0 4px}
+  .lvl .role{font-size:13px; color:var(--muted-light); margin-bottom:12px}
+  .lvl p{font-size:14.5px; color:#c1cdda; margin:0}
+  .stack-note{margin-top:26px; font-size:15px; color:var(--muted-light)}
+  .stack-note b{color:var(--gold-1); font-weight:600}
+  /* ---- competencies ---- */
+  .chips{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px}
+  .chip{display:inline-flex; align-items:center; gap:9px; background:#fff; border:1px solid rgba(14,27,44,.1); border-radius:12px; padding:13px 18px; font-weight:600; font-size:15.5px; color:var(--navy-2)}
+  .chip svg{width:19px; height:19px; color:var(--gold); stroke:#b98a34}
+  /* ---- industries ---- */
+  .inds{background:var(--cream-1)}
+  .ind-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .ind{display:flex; align-items:center; gap:15px; background:#fff; border:1px solid rgba(14,27,44,.08); border-radius:14px; padding:20px 22px}
+  .ind .ico{color:var(--navy); flex-shrink:0}
+  .ind h3{font-size:17px; font-weight:700}
+  .ind span{font-size:13.5px; color:var(--muted-dark)}
+  /* ---- partners ---- */
+  .partners{background:var(--navy); color:#fff}
+  .partners .head h2{color:#fff}
+  .p-main{background:var(--navy-1); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:32px; margin-bottom:20px}
+  .p-main .row{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px}
+  .p-main .brand{font-family:"Manrope",sans-serif; font-weight:800; font-size:26px; color:#fff}
+  .p-main .brand span{color:var(--gold)}
+  .p-main .kind{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.08em; color:var(--gold-1); text-transform:uppercase}
+  .p-main .products{display:flex; gap:10px; flex-wrap:wrap; margin:16px 0}
+  .p-main .products .pp{font-size:14px; font-weight:600; padding:6px 13px; border-radius:999px; background:rgba(212,162,76,.14); color:var(--gold-2); border:1px solid rgba(212,162,76,.25)}
+  .science{font-size:14.5px; color:var(--muted-light); border-top:1px solid rgba(255,255,255,.09); padding-top:16px; margin-top:4px}
+  .science b{color:#dfe7f0; font-weight:600}
+  .p-others{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .p-o{background:var(--navy-1); border:1px solid rgba(255,255,255,.08); border-radius:13px; padding:20px}
+  .p-o h3{font-size:16.5px; font-weight:700}
+  .p-o p{font-size:13.5px; color:var(--muted-light); margin:6px 0 0}
+  .p-o .po-tag{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold-1); margin-bottom:10px}
+  /* ---- funnel ---- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; counter-reset:s}
+  .step{background:#fff; border:1px solid rgba(14,27,44,.09); border-radius:13px; padding:22px 18px; position:relative}
+  .step .num{width:34px; height:34px; border-radius:9px; background:var(--navy); color:var(--gold); display:grid; place-items:center; font-family:"Manrope",sans-serif; font-weight:800; margin-bottom:14px}
+  .step h3{font-size:16px; font-weight:700; margin-bottom:6px}
+  .step p{font-size:13.5px; color:var(--muted-dark); margin:0}
+  /* ---- CTA + form ---- */
+  .cta-sec{background:var(--navy); color:#fff; position:relative; overflow:hidden}
+  .cta-sec .halo{position:absolute; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle,rgba(212,162,76,.16),transparent 62%); top:-160px; left:50%; transform:translateX(-50%)}
+  .cta-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:44px; align-items:center; position:relative}
+  .cta-grid h2{font-size:clamp(26px,3.2vw,38px); font-weight:800; color:#fff}
+  .cta-grid p{color:#c1cdda; margin-top:14px}
+  .form{background:var(--navy-1); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:28px}
+  .form label{display:block; font-size:13px; color:var(--muted-light); margin:0 0 6px; font-weight:500}
+  .form input,.form textarea{width:100%; background:var(--navy); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:12px 14px; color:#fff; font-family:inherit; font-size:15px; margin-bottom:16px}
+  .form input:focus,.form textarea:focus{outline:none; border-color:var(--gold)}
+  .form .btn-primary{width:100%; justify-content:center}
+  .form .note{font-size:12px; color:var(--muted-light); margin:12px 0 0; text-align:center}
+  /* ---- footer ---- */
+  footer{background:#0a1420; color:var(--muted-light); padding:56px 0 30px; font-size:14.5px}
+  .f-top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:32px; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,.08)}
+  footer .logo{margin-bottom:12px}
+  footer h4{font-family:"Manrope",sans-serif; color:#fff; font-size:14px; margin:0 0 14px; letter-spacing:.02em}
+  footer a{display:block; color:var(--muted-light); margin-bottom:9px; transition:.15s}
+  footer a:hover{color:var(--gold-1)}
+  .f-bot{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:22px; font-size:13px; color:#5f7186}
+  @media(max-width:960px){
+    .dirs,.feats,.stack,.ind-grid,.steps,.p-others,.cta-grid,.f-top{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+  }
+  @media(max-width:620px){
+    section{padding:60px 0}
+    .dirs,.feats,.stack,.ind-grid,.steps,.p-others,.cta-grid,.f-top{grid-template-columns:1fr}
+    .trust{gap:18px}
+  }
+  /* ---- v0.2: под-темы на карточках направлений ---- */
+  .dir-tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px}
+  .dir-tag{font-size:12.5px; font-weight:600; padding:5px 10px; border-radius:8px; background:rgba(14,27,44,.05); color:var(--navy-2); border:1px solid rgba(14,27,44,.08)}
+  .dir.flag .dir-tag{background:rgba(255,255,255,.08); color:#cdd8e4; border-color:rgba(255,255,255,.12)}
+  /* ---- v0.2: единственная статус-метка «Готовим к региону» (янтарь, без эмодзи) ---- */
+  .badge-soon{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; padding:3px 10px; border-radius:999px; background:rgba(212,162,76,.15); color:#b98a34; border:1px solid rgba(212,162,76,.4); white-space:nowrap; vertical-align:middle}
+  .badge-soon .dot{width:6px; height:6px; border-radius:50%; background:var(--gold)}
+  .neptun-note{margin:14px 0 2px; font-size:14px; color:#c1cdda; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  /* ---- v0.3: «Что входит в направления» — детальные списки ---- */
+  .scope{background:var(--cream-1)}
+  .scope-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:12px}
+  .scope-col{background:#fff; border:1px solid rgba(14,27,44,.09); border-radius:16px; padding:28px 26px}
+  .scope-col.flag{background:var(--navy); border-color:transparent}
+  .scope-col .cx{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:12px}
+  .scope-col h3{font-size:19px; font-weight:700; margin-bottom:18px; color:var(--navy)}
+  .scope-col.flag h3{color:#fff}
+  .scope-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px}
+  .scope-col li{font-size:15px; font-weight:600; color:var(--navy-2); padding-left:20px; position:relative; line-height:1.4}
+  .scope-col.flag li{color:#e6edf4}
+  .scope-col li::before{content:''; position:absolute; left:0; top:7px; width:7px; height:7px; border-radius:50%; background:var(--gold)}
+  .scope-col li .src{display:block; font-size:13px; font-weight:400; color:var(--muted-dark); margin-top:2px}
+  .scope-col.flag li .src{color:#9fb0c3}
+  @media(max-width:960px){ .scope-grid{grid-template-columns:1fr 1fr} }
+  @media(max-width:620px){ .scope-grid{grid-template-columns:1fr} }
+  /* ---- v0.7: офис + производственная площадка (две колонки) ---- */
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:8px}
+  .duo-col{background:#fff; border:1px solid rgba(14,27,44,.09); border-radius:16px; padding:30px 28px}
+  .duo-col .ch{display:flex; align-items:center; gap:14px; margin-bottom:22px}
+  .duo-col .ch .ico{width:46px; height:46px; border-radius:12px; background:var(--navy); color:var(--gold); display:grid; place-items:center; flex-shrink:0}
+  .duo-col .ch .ico svg{width:23px; height:23px}
+  .duo-col .ch h3{font-size:20px; font-weight:700; color:var(--navy)}
+  .duo-col .ch .sub{font-size:12.5px; color:var(--muted-dark); margin-top:2px}
+  .duo-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px}
+  .duo-list li{font-size:15.5px; font-weight:600; color:var(--navy-2); padding-left:20px; position:relative; line-height:1.4}
+  .duo-list li::before{content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:50%; background:var(--gold)}
+  .duo-list li .src{display:block; font-size:12.5px; font-weight:400; color:var(--muted-dark); margin-top:2px}
+  @media(max-width:620px){ .duo{grid-template-columns:1fr} }
+  /* ---- v0.13: собственный бренд Юлдуз / Yulduz ---- */
+  .yz-band{background:var(--navy); border-radius:22px; padding:48px 46px; color:#fff; position:relative; overflow:hidden}
+  .yz-band .halo{position:absolute; width:540px; height:540px; border-radius:50%; background:radial-gradient(circle,rgba(212,162,76,.18),transparent 62%); top:-200px; right:-140px; pointer-events:none}
+  .yz-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; position:relative; align-items:center}
+  .yz-mark{display:flex; align-items:baseline; gap:11px; margin:16px 0 8px}
+  .yz-mark svg{width:26px; height:26px; color:var(--gold); align-self:center}
+  .yz-mark .lat{font-family:"Manrope",sans-serif; font-weight:800; font-size:30px; letter-spacing:-.02em; color:#fff}
+  .yz-mark .uz{font-family:"Manrope",sans-serif; font-weight:600; font-size:19px; color:var(--muted-light)}
+  .yz-band h2{font-size:clamp(23px,2.8vw,32px); font-weight:800; margin:4px 0 14px; color:#fff}
+  .yz-sub{color:#c1cdda; font-size:16.5px; margin:0; max-width:52ch}
+  .yz-cta{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap}
+  .yz-tiles{display:flex; flex-direction:column; gap:14px}
+  .yz-tile{display:flex; gap:15px; align-items:flex-start; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:18px 20px; transition:.18s}
+  .yz-tile:hover{border-color:rgba(212,162,76,.5); background:rgba(255,255,255,.08)}
+  .yz-tile .ico{width:40px; height:40px; border-radius:10px; background:rgba(212,162,76,.15); color:var(--gold); display:grid; place-items:center; flex-shrink:0}
+  .yz-tile .ico svg{width:21px; height:21px}
+  .yz-tile h3{font-size:16px; font-weight:700; color:#fff; margin-bottom:4px}
+  .yz-tile p{font-size:13.5px; color:#c1cdda; margin:0; line-height:1.5}
+  .yz-note{margin-top:26px; padding-top:18px; border-top:1px solid rgba(255,255,255,.09); font-size:14px; color:var(--muted-light); position:relative}
+  @media(max-width:960px){ .yz-grid{grid-template-columns:1fr} .yz-band{padding:36px 28px} }
+  /* ---- v0.11: боли → решения («Узнаёте себя?») ---- */
+  .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .pain{background:#fff; border:1px solid rgba(14,27,44,.09); border-radius:14px; padding:24px 22px; display:flex; flex-direction:column; transition:.2s}
+  .pain:hover{transform:translateY(-3px); box-shadow:0 16px 32px -22px rgba(14,27,44,.3); border-color:rgba(212,162,76,.45)}
+  .pain .grp{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#b98a34; display:inline-flex; align-items:center; gap:7px; margin-bottom:12px}
+  .pain .grp .dot{width:6px; height:6px; border-radius:50%; background:var(--gold)}
+  .pain h3{font-size:17px; font-weight:700; line-height:1.35; color:var(--navy); margin-bottom:10px}
+  .pain p{font-size:14px; color:var(--muted-dark); margin:0; line-height:1.55}
+  .pain p b{color:var(--navy-2); font-weight:600}
+  .pains-note{margin-top:28px; font-size:15px; color:var(--muted-dark); text-align:center}
+  @media(max-width:960px){ .pain-grid{grid-template-columns:1fr 1fr} }
+  @media(max-width:620px){ .pain-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="proto">Прототип главной · не для публикации · v0.15 — 2026-07-12</div>
+
+<!-- HEADER -->
+<header class="nav">
+  <div class="container nav-in">
+    <div class="logo">Server<b>Pro</b></div>
+    <nav class="nav-links">
+      <a href="#dirs">Направления</a>
+      <a href="#stack">Продукты</a>
+      <a href="#yulduz">Юлдуз</a>
+      <a href="#inds">Отрасли</a>
+      <a href="#partners">Технологии</a>
+      <a href="#about">О компании</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="nav-cta">Обсудить задачу</a>
+      <details class="mnav">
+        <summary aria-label="Меню"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <div class="mnav-panel">
+          <a href="#dirs">Направления</a>
+          <a href="#pains">Знакомые ситуации</a>
+          <a href="#stack">Продукты</a>
+          <a href="#yulduz">Юлдуз — собственный бренд</a>
+          <a href="#inds">Отрасли</a>
+          <a href="#partners">Технологии и партнёры</a>
+          <a href="#about">О компании</a>
+          <a href="#how">Как мы работаем</a>
+          <a href="#cta" class="mnav-cta">Обсудить задачу</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero grid-bg">
+  <div class="halo"></div><div class="halo2"></div>
+  <div class="container">
+    <span class="eyebrow">Инженерная компания · Ташкент</span>
+    <h1>Современные решения для вашего производства</h1>
+    <div class="desc">Цифровизация промышленности, города и бизнеса</div>
+    <p class="sub">ServerPro приносит на предприятия Узбекистана современные цифровые решения и внедряет их своими силами — от датчика до диспетчерской. Технологии мирового уровня, инженерия и сервис — местные.</p>
+    <div class="cta">
+      <a href="#cta" class="btn btn-primary">Обсудить задачу <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#dirs" class="btn btn-ghost">Наши направления</a>
+    </div>
+    <div class="trust">
+      <div><span class="n">3</span><span class="l">направления под ключ</span></div>
+      <div><span class="n">L0–L3</span><span class="l">полный стек диагностики</span></div>
+      <div><span class="n">92 кГц</span><span class="l">сырой сигнал вибрации</span></div>
+      <div><span class="n">Ташкент</span><span class="l">местный склад и сервис</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIONS -->
+<section id="dirs">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow dark">Направления</span>
+      <h2>Три направления — одна инженерная команда</h2>
+      <p class="lead">Мы закрываем задачу целиком: проектируем, поставляем оборудование ведущих производителей, собираем, монтируем и сопровождаем.</p>
+    </div>
+    <div class="dirs">
+      <div class="dir flag">
+        <span class="tag">Флагман</span>
+        <div class="ico"><svg class="ic" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Цифровизация промышленности</h3>
+        <p>Предиктивная вибро- и токовая диагностика, мониторинг состояния оборудования и оптимизация АСУ ТП. Меньше аварийных простоев — выше отдача от того же оборудования.</p>
+        <ul class="dir-list">
+          <li>Вибро- и токовая диагностика<span class="src">Пассер · Ларус · Стрикс.Платформа</span></li>
+          <li>Мониторинг состояния и надёжность<span class="src">OEE, ТОиР по состоянию, снижение простоев</span></li>
+          <li>Оптимизация АСУ ТП / APC</li>
+          <li>Промышленная связь и безопасность персонала<span class="src">X-Connect — рации, поиск, датчик падения, РЭБ-устойчивость</span></li>
+          <li>Тренажёры операторов<span class="src">ЛКМ — обучение на цифровых двойниках</span></li>
+        </ul>
+        <span class="more">Смотреть стек <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="dir">
+        <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/><path d="M10 6h4M10 10h4M10 14h4"/></svg></div>
+        <h3>Цифровой город</h3>
+        <p>Управление дорожным движением (АСУДД), системы оповещения ГО и ЧС, мониторинг инженерных систем зданий и сооружений, пожарная безопасность.</p>
+        <ul class="dir-list">
+          <li>АСУДД — управление дорожным движением<span class="src">Светофорное регулирование, детекция транспорта</span></li>
+          <li>Оповещение ГО и ЧС / СОУЭ<span class="src">Собственный бренд Юлдуз + НПП «МЕТА» — оповещатели, пульты, эвакуация</span></li>
+          <li>Пожарная безопасность — СПБ «Нептун» <span class="badge-soon"><span class="dot"></span>Готовим к региону</span><span class="src">Адресная СПС: датчики + ППКУ, взрывозащищённые исполнения</span></li>
+          <li>Мониторинг зданий и сооружений<span class="src">СМИС · СМИК/СМДС · МФСБ</span></li>
+        </ul>
+        <span class="more">Подробнее <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="dir">
+        <div class="ico"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div>
+        <h3>Управление и ИИ</h3>
+        <p>Цифровизация бизнес-процессов, встраивание ИИ-агентов в операционку с человеком в контуре решений, обучение моделей и локальное развёртывание — данные остаются на территории страны.</p>
+        <ul class="dir-list">
+          <li>Цифровизация бизнес-процессов</li>
+          <li>ИИ-агенты в операционке<span class="src">Человек в контуре решений (human-in-loop)</span></li>
+          <li>Локальное развёртывание LLM<span class="src">Данные остаются на территории страны</span></li>
+          <li>Разработка ТЭО инвестпроектов<span class="src">Техрешения, CAPEX/OPEX, финмодель, оценка рисков</span></li>
+        </ul>
+        <span class="more">Подробнее <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAINS (v0.11) -->
+<section id="pains" class="grid-bg">
+  <div class="container">
+    <div class="head center">
+      <span class="eyebrow dark">Знакомые ситуации</span>
+      <h2>Узнаёте себя?</h2>
+      <p class="lead" style="margin:14px auto 0">Девять из десяти разговоров с руководителями начинаются с одной из этих ситуаций. Если что-то из этого — про вас, нам есть что показать.</p>
+    </div>
+    <div class="pain-grid">
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Контроль</span>
+        <h3>«Об отказе узнаю по факту — из ночного звонка»</h3>
+        <p>Онлайн-мониторинг состояния показывает дефект <b>за недели и месяцы до отказа</b> — по каждому узлу виден остаточный ресурс. Авария превращается в плановую замену.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Контроль</span>
+        <h3>«Чтобы узнать, сколько зарабатывает завод, я запрашиваю отчёт — и жду»</h3>
+        <p>Онлайн-экономика актива: сколько производит и зарабатывает <b>прямо сейчас</b>, простой — сразу в деньгах, а не в часах. На экране телефона, без запросов и ожидания.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Контроль</span>
+        <h3>«Каждый отчёт — чья-то интерпретация»</h3>
+        <p>Собственник, финансовый директор и главный инженер смотрят на <b>одни и те же данные с датчиков</b> — просто разными экранами. Одна система, одна правда, никаких пересказов.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Контроль</span>
+        <h3>«Площадок несколько, а где теряем больше всего — вопрос»</h3>
+        <p>Портфельный экран: все площадки ранжированы <b>по потерям в деньгах</b>, а не по алфавиту. От карты активов до конкретного узла и его прогноза — в два клика.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Деньги</span>
+        <h3>«Склад запчастей замораживает деньги — а нужной детали всё равно нет»</h3>
+        <p>Прогноз остаточного ресурса по узлам превращает закупку ЗИП из «на всякий случай» в <b>«к сроку замены»</b>. Склад держит то, что реально понадобится, и тогда, когда понадобится.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Деньги</span>
+        <h3>«Ремонтируем по графику: меняем живое, пропускаем умирающее»</h3>
+        <p>Обслуживание по состоянию вместо регламента: работы назначаются по фактическому износу. На практике внедрений — <b>до 40–60 % меньше внеплановых ремонтов</b>.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Деньги</span>
+        <h3>«Счёт за электроэнергию растёт, и непонятно, куда уходит энергия»</h3>
+        <p>Изношенный привод потребляет сверх нормы задолго до отказа. Токовая диагностика показывает, какие двигатели жгут лишнее, — <b>экономия подтверждается по счётчику</b>.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Деньги</span>
+        <h3>«Эффект понятен, но капзатрат в бюджете нет»</h3>
+        <p>Мониторинг как сервис (EMaaS): ежемесячная плата <b>из операционных расходов</b>, без выкупа оборудования. Старт с пилота на одном участке — эффект измеряется до масштабирования.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Люди и парк</span>
+        <h3>«У нас нет вибродиагностов — кто будет с этим работать?»</h3>
+        <p>Система выдаёт не спектры, а <b>диагноз и приоритет работ</b> — понятный наряд для механика. Сервисная поддержка и обучение ваших специалистов — инженерами в Ташкенте.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Люди и парк</span>
+        <h3>«Наше оборудование старое — цифровизация не про нас»</h3>
+        <p>Ретрофит без вмешательства в машину: накладные датчики и токовые клещи дают статус, нагрузку и износ <b>даже для станков 1980-х</b>. Мониторинг не требует замены парка.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Рост</span>
+        <h3>«Выход и качество скачут от смены к смене»</h3>
+        <p>Стабилизация и оптимизация техпроцесса: система-советчик поверх вашей действующей АСУ ТП ведёт процесс ближе к оптимуму. <b>Больше продукции с того же железа</b>; оператор остаётся в контуре.</p>
+      </div>
+
+      <div class="pain">
+        <span class="grp"><span class="dot"></span>Рост</span>
+        <h3>«Про ИИ говорят все — но отдавать данные в чужое облако нельзя»</h3>
+        <p>ИИ-агенты в бизнес-процессах и локально развёрнутые модели: всё работает на вашей площадке, <b>данные не покидают страну</b>, решения подтверждает человек.</p>
+      </div>
+
+    </div>
+    <p class="pains-note">Не нашли свою ситуацию? Опишите её нам — <a href="#cta" style="color:#b98a34;font-weight:600">обсудим задачу</a> и честно скажем, чем можем помочь, а чем нет.</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow dark">Почему ServerPro</span>
+      <h2>Мировые технологии. Местная инженерия.</h2>
+    </div>
+    <div class="feats">
+      <div class="feat">
+        <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Инженерия полного цикла</h3>
+        <p>Проектируем, собираем шкафы, монтируем, ведём слаботочку и пожарку, запускаем и обслуживаем. Не перепродажа — внедрение своими руками.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Технологии мирового уровня</h3>
+        <p>Предиктивная диагностика класса Bently Nevada и SKF — но с локальным складом, сервисом и ценой.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-6.36 2.64L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 6.36-2.64L21 16"/><path d="M21 21v-5h-5"/></svg></div>
+        <h3>Пилот, сервис, обучение</h3>
+        <p>От аудита и пилота до сервисного сопровождения и обучения ваших специалистов работе с системой.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Локальное присутствие</h3>
+        <p>Местное юрлицо, склад, сервисный центр и поддержка на русском — узбекская версия на подходе.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="stack-sec grid-bg">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow">Цифровизация промышленности · стек</span>
+      <h2>От датчика до дашборда собственника</h2>
+      <p class="lead" style="color:#9fb0c3">Четыре уровня одной системы — сырой сигнал превращается в решения: где чинить, когда чинить и сколько это стоит.</p>
+    </div>
+    <div class="stack">
+      <div class="lvl">
+        <div class="lx">L0 · Измерение</div>
+        <h3>Пассер</h3>
+        <div class="role">Сбор сырых сигналов</div>
+        <p>Контроллеры сбора: вибрация до 92 кГц, ток, температура. Данные без потерь.</p>
+      </div>
+      <div class="lvl">
+        <div class="lx">L1 · Передача</div>
+        <h3>Ларус</h3>
+        <div class="role">IIoT-шлюз · железо</div>
+        <p>Предобработка на месте, буферизация, мост OT↔IT. Старшая модель — с NPU.</p>
+      </div>
+      <div class="lvl">
+        <div class="lx">L2 · Шлюз данных</div>
+        <h3>Стрикс.Шлюз</h3>
+        <div class="role">Strix Gateway · ПО</div>
+        <p>Сбор и нормализация данных, мост OT↔IT, edge-интеграция (MQTT · Modbus · OPC UA).</p>
+      </div>
+      <div class="lvl">
+        <div class="lx">L3 · Платформа</div>
+        <h3>Стрикс.Платформа</h3>
+        <div class="role">Аналитика · дашборды</div>
+        <p>SCADA, дашборды, ML, цифровые двойники, диагностика, прогноз ресурса, APC — в браузере.</p>
+      </div>
+    </div>
+    <p class="stack-note">Технологический партнёр по линейке — <b>производитель Лиман-Тех</b>. ServerPro поставляет, интегрирует и обслуживает решение на объектах в Узбекистане и регионе.</p>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="about">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow dark">Своими силами · Ташкент</span>
+      <h2>Офис и производственная площадка</h2>
+      <p class="lead">Проектируем, собираем шкафы, монтируем и сопровождаем сами — в Ташкенте. Это фундамент «местные и настоящие», а не витрина чужих брендов.</p>
+    </div>
+    <div class="duo">
+      <div class="duo-col">
+        <div class="ch">
+          <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M9 2h6a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg></div>
+          <div><h3>Инженерный офис</h3><div class="sub">проект и сопровождение</div></div>
+        </div>
+        <ul class="duo-list">
+          <li>Проектирование<span class="src">АСУ ТП, слаботочка, электрика — рабочая документация</span></li>
+          <li>Техническая документация<span class="src">Исполнительная, эксплуатационная, для тендеров</span></li>
+          <li>Обучение персонала<span class="src">Работа с системой на стороне заказчика</span></li>
+        </ul>
+      </div>
+      <div class="duo-col">
+        <div class="ch">
+          <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div><h3>Производственная площадка</h3><div class="sub">сборка и монтаж на объекте</div></div>
+        </div>
+        <ul class="duo-list">
+          <li>Сборка шкафов автоматизации<span class="src">Комплектация, монтаж, тестирование</span></li>
+          <li>Монтаж и пусконаладка (ПНР)<span class="src">На объекте, под ключ</span></li>
+          <li>Слаботочные системы</li>
+          <li>Пожарная безопасность<span class="src">СКПБ · МФСБ · СМИС</span></li>
+          <li>Сервисное обслуживание<span class="src">Гарантия, ЗИП, поддержка на русском</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YULDUZ — собственный бренд (v0.13) -->
+<section id="yulduz" style="padding-top:0">
+  <div class="container">
+    <div class="yz-band">
+      <div class="halo"></div>
+      <div class="yz-grid">
+        <div>
+          <span class="eyebrow">Собственный бренд · сделано в Узбекистане</span>
+          <div class="yz-mark">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></svg>
+            <span class="lat">Yulduz</span><span class="uz">· Юлдуз</span>
+          </div>
+          <h2>Производим сами — отвечаем сами</h2>
+          <p class="yz-sub">Юлдуз — собственная продуктовая линейка ServerPro: извещатели и системы оповещения ГО и ЧС, а также «Планшет руководителя». Производство и склад в Ташкенте, сертификация под нормы Республики Узбекистан, сервис — той же командой, что производит.</p>
+          <div class="yz-cta">
+            <a href="yulduz.html" class="btn btn-primary">Страница бренда Юлдуз <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#cta" class="btn btn-ghost">Обсудить поставку</a>
+          </div>
+        </div>
+        <div class="yz-tiles">
+          <a class="yz-tile" href="yulduz.html">
+            <span class="ico"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5M4.9 19.1C1 15.2 1 8.8 4.9 4.9M19.1 4.9c3.9 3.9 3.9 10.3 0 14.2"/></svg></span>
+            <div><h3>Извещатели ГО и ЧС</h3><p>Оповещатели для систем гражданской обороны и предупреждения о ЧС. Локальное производство: всегда на складе, сертификация по нормам РУз, гарантия производителя — наша.</p></div>
+          </a>
+          <a class="yz-tile" href="yulduz.html">
+            <span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+            <div><h3>Системы оповещения и эвакуации</h3><p>От оповещателя до пульта: проектируем, монтируем и обслуживаем комплекс оповещения целиком — без ожидания импортных поставок.</p></div>
+          </a>
+          <a class="yz-tile" href="yulduz.html">
+            <span class="ico"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg></span>
+            <div><h3>Планшет руководителя</h3><p>Готовое устройство для собственника и директора: включаете — и видите предприятие. Производство, деньги, риски — онлайн, одним экраном.</p></div>
+          </a>
+        </div>
+      </div>
+      <p class="yz-note">Юлдуз дополняет промышленный стек: оповещение ГО и ЧС и «Планшет руководителя» работают в той же системе мониторинга, что и диагностика оборудования, — объект виден целиком.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="inds" class="inds">
+  <div class="container">
+    <div class="head center">
+      <span class="eyebrow dark">Отрасли</span>
+      <h2>Где мы работаем</h2>
+    </div>
+    <div class="ind-grid">
+      <div class="ind"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></span><div><h3>Горно-металлургия</h3><span>НГМК, АГМК: мельницы, конвейеры, насосы</span></div></div>
+      <div class="ind"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M7 20a5 5 0 0 1-2-9.5C5 6 8 3 12 3s7 3 7 7.5a5 5 0 0 1-2 9.5z"/><path d="m10 13-2 3h3l-1 3"/></svg></span><div><h3>Гидроэнергетика</h3><span>Узбекгидроэнерго: гидроагрегаты, каскады ГЭС</span></div></div>
+      <div class="ind"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span><div><h3>Энергетика</h3><span>ТЭС, теплогенерация, сети</span></div></div>
+      <div class="ind"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2c1 4-2 5-2 8a2 2 0 0 0 4 0c0 3 3 4 2 8a6 6 0 0 1-6-4 6 6 0 0 1 2-12z"/></svg></span><div><h3>Нефтегаз</h3><span>Компрессоры, насосные, ГПЗ</span></div></div>
+      <div class="ind"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18M9 21v-6h6v6"/></svg></span><div><h3>Цемент и стекло</h3><span>Печи, дробилки, вентиляторы</span></div></div>
+      <div class="ind"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/></svg></span><div><h3>Город и инфраструктура</h3><span>Трафик, оповещение, здания</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS / TECH -->
+<section id="partners" class="partners">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow">Технологии и партнёры</span>
+      <h2>За решениями — проверенные производители</h2>
+    </div>
+    <div class="p-main">
+      <div class="row">
+        <div class="brand">Лиман<span>-Тех</span></div>
+        <div class="kind">Технологический партнёр · диагностика и APC</div>
+      </div>
+      <div class="products">
+        <span class="pp">Пассер</span><span class="pp">Ларус</span><span class="pp">Стрикс.Шлюз</span><span class="pp">Стрикс.Платформа</span>
+      </div>
+      <p style="color:#c1cdda; font-size:15.5px; margin:0 0 4px">Производитель линейки промышленной вибро- и токовой диагностики, платформы мониторинга и оптимизации АСУ ТП. ServerPro — официальный дилер и интегратор этих продуктов в регионе.</p>
+      <p class="science"><b>Инженерная и научная база производителя:</b> собственная R&D-разработка — партнёрство с университетом ИТМО (AI-ядро), учебно-исследовательская лаборатория в Политехе Петра Великого, разработка поддержана грантом Минпромторга.</p>
+    </div>
+    <div class="p-others">
+      <div class="p-o">
+        <div class="po-tag">Промышленность · связь</div>
+        <h3>X-Connect</h3>
+        <p>Промышленная цифровая радиосвязь и безопасность персонала: аварийное оповещение, поиск людей, датчик падения, РЭБ-устойчивость. Внедрения на крупных предприятиях РФ.</p>
+      </div>
+      <div class="p-o">
+        <div class="po-tag">Цифровой город · оповещение</div>
+        <h3>НПП «МЕТА»</h3>
+        <p>Системы оповещения и управления эвакуацией (СОУЭ), оповещение ГО и ЧС, антитеррор, громкоговорители — для зданий, транспорта и городской инфраструктуры.</p>
+      </div>
+      <div class="p-o">
+        <div class="po-tag">Промышленность · обучение</div>
+        <h3>ЛКМ · тренажёры</h3>
+        <p>Имитационные тренажёры операторов (карьерные экскаваторы, нефтегаз, промыслы) — обучение персонала на цифровых двойниках в реальном времени.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNNEL -->
+<section id="how">
+  <div class="container">
+    <div class="head center">
+      <span class="eyebrow dark">Как мы работаем</span>
+      <h2>От «а что вообще возможно?» — до цели, достигнутой в цифрах</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Увидеть возможности</h3><p>Показываем на живых примерах, что сегодня реально сделать на вашем производстве, — и помогаем понять, чего хочется именно вам. Демо, кейсы, разговор без обязательств.</p></div>
+      <div class="step"><div class="num">2</div><h3>Определить задачу</h3><p>Из «хочется меньше потерь» рождается конкретная задача: какой участок, какие процессы, какие данные уже есть. Опросные листы заполняем за вас — достаточно ответить голосом на встрече.</p></div>
+      <div class="step"><div class="num">3</div><h3>Сформулировать цель в цифрах</h3><p>Цель должна проверяться: не «повысить эффективность», а «снизить издержки на 30 %» или «поднять выработку на 20 %». Как измеряем эффект — договариваемся до старта, а не после.</p></div>
+      <div class="step"><div class="num">4</div><h3>Достичь — и закрепить</h3><p>Пилот подтверждает эффект на одном участке, договор фиксирует объём работ, дальше — масштабирование и сопровождение. Цель из шага 3 становится критерием приёмки.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + FORM -->
+<section id="cta" class="cta-sec grid-bg">
+  <div class="halo"></div>
+  <div class="container">
+    <div class="cta-grid">
+      <div>
+        <span class="eyebrow">Начнём с малого</span>
+        <h2 style="margin-top:14px">Расскажите о задаче — обсудим на созвоне</h2>
+        <p>Оставьте заявку — созвонимся, разберём задачу и подготовим опросные листы (заполним за вас на ВКС). Дальше сформулируем достижимые цели и предложим пилот или договор. Без обязательств.</p>
+        <div style="display:flex; gap:22px; margin-top:26px; flex-wrap:wrap">
+          <div><div style="font-family:Manrope;font-weight:800;font-size:22px;color:#fff">Ташкент</div><div style="font-size:13.5px;color:#9fb0c3">офис, склад, сервис</div></div>
+          <div><div style="font-family:Manrope;font-weight:800;font-size:22px;color:#fff">UZ · KZ · KG</div><div style="font-size:13.5px;color:#9fb0c3">регион поставки</div></div>
+        </div>
+      </div>
+      <form class="form" onsubmit="return false">
+        <label>Имя</label><input type="text" placeholder="Как к вам обращаться">
+        <label>Компания</label><input type="text" placeholder="Название предприятия">
+        <label>Телефон или e-mail</label><input type="text" placeholder="+998 ...">
+        <label>Задача</label><textarea rows="3" placeholder="Коротко о вашем оборудовании и задаче"></textarea>
+        <button class="btn btn-primary">Отправить заявку</button>
+        <p class="note">Заявка уходит менеджеру ServerPro. Прототип — форма демонстрационная.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="f-top">
+      <div>
+        <div class="logo">Server<b>Pro</b></div>
+        <p style="max-width:38ch">Инженерная компания в Ташкенте. Цифровизация промышленности, города и бизнеса — от проекта до сервиса.</p>
+      </div>
+      <div>
+        <h4>Решения</h4>
+        <a href="#dirs">Цифровизация промышленности</a>
+        <a href="#dirs">Цифровой город</a>
+        <a href="#dirs">Управление и ИИ</a>
+        <a href="#stack">Стек мониторинга L0–L3</a>
+        <a href="#yulduz">Юлдуз — собственный бренд</a>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <a href="#about">Офис и производственная площадка</a>
+        <a href="#inds">Отрасли</a>
+        <a href="#partners">Технологии и партнёры</a>
+        <a href="#how">Как мы работаем</a>
+        <a href="#cta">Контакты</a>
+        <a href="#">Политика обработки данных</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>ООО «SERVERPRO», Ташкент · Инженерная компания: промышленность, город, управление и ИИ</span>
+      <span>© 2026 ServerPro · прототип</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
