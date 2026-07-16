@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.production
+.DS_Store
+*.log
+
+# тяжёлые локальные Blender-рендеры (в проде используется public/images/industry-map.webp)
+docs/render-map*.png
+.playwright-mcp/

@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   ServerPro Design System — CSS variables (mirror of tailwind.config.mjs)
+   Warm navy + satin gold + warm cream.
+   ============================================================ */
+:root {
+  /* Brand palette */
+  --navy: #0E1B2C;
+  --navy-700: #162338;
+  --navy-900: #070D17;
+  --gold: #D4A24C;
+  --gold-300: #DEB868;
+  --gold-600: #8E6627;
+  --cream: #FAF7F2;
+
+  /* Ink hierarchy */
+  --ink: #0F172A;
+  --ink-muted: #5B6478;
+  --ink-subtle: #94A0B5;
+
+  /* Borders */
+  --border-soft: rgba(14, 27, 44, 0.10);
+  --border-medium: rgba(14, 27, 44, 0.15);
+  --border-on-dark: rgba(250, 247, 242, 0.10);
+
+  /* Shadows */
+  --shadow-soft: 0 1px 2px rgba(14, 27, 44, 0.04), 0 4px 12px rgba(14, 27, 44, 0.05);
+  --shadow-lift: 0 4px 12px rgba(14, 27, 44, 0.07), 0 16px 40px rgba(14, 27, 44, 0.10);
+  --shadow-glow: 0 0 0 1px rgba(212, 162, 76, 0.40), 0 8px 24px rgba(212, 162, 76, 0.20);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Manrope', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Tracking */
+  --tracking-display: -0.025em;
+  --tracking-eyebrow: 0.18em;
+
+  /* Easing */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Radii */
+  --r-md: 6px;
+  --r-lg: 8px;
+  --r-xl: 12px;
+  --r-2xl: 16px;
+  --r-3xl: 24px;
+  --r-full: 9999px;
+
+  /* Layout */
+  --container-max: 1240px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* offset sticky h-16 header on anchor jumps */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-cream text-ink;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection {
+    @apply bg-gold/30 text-navy;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-semibold tracking-tight text-navy;
+  }
+  a { @apply transition-colors duration-200; }
+}
+
+@layer components {
+  .container-x { @apply max-w-container mx-auto px-6 md:px-8; }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 font-medium text-cream shadow-soft transition-all duration-300 ease-out-soft hover:bg-navy-700 hover:shadow-lift active:scale-[0.98];
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-navy shadow-soft transition-all duration-300 ease-out-soft hover:bg-gold-300 hover:shadow-glow active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-navy/15 bg-white/60 px-6 py-3 font-medium text-navy backdrop-blur transition-all duration-300 ease-out-soft hover:border-navy/30 hover:bg-white;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-navy/10 bg-white/70 px-3 py-1 text-xs font-medium text-navy backdrop-blur;
+  }
+  .pill-accent {
+    @apply inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-xs font-medium text-gold-600;
+  }
+
+  .card {
+    @apply rounded-2xl border border-navy/10 bg-white p-6 shadow-soft transition-all duration-300 ease-out-soft;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-navy/15 hover:shadow-lift;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold-600;
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(rgba(14, 27, 44, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 27, 44, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+/* Prose images get a subtle frame so screenshots look intentional */
+.prose img {
+  @apply rounded-xl border border-navy/10 shadow-soft;
+}
+
+/* Prose tables: horizontal scroll wrapper on narrow viewports */
+.prose table {
+  @apply block w-full overflow-x-auto whitespace-nowrap md:table md:whitespace-normal;
+}
+.prose th, .prose td {
+  @apply px-3 py-2;
+}
+
+/* Sonic wave animation for hero / logo */
+@keyframes sonar {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  80%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.sonar-pulse > span {
+  animation: sonar 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.sonar-pulse > span:nth-child(2) { animation-delay: 0.6s; }
+.sonar-pulse > span:nth-child(3) { animation-delay: 1.2s; }

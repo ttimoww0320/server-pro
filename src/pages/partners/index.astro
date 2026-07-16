@@ -1,0 +1,228 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const tiers = [
+  {
+    name: 'Уполномоченный',
+    commit: 'Без годовых обязательств',
+    discount: '20%',
+    renewal: '10% Y2+',
+    perks: [
+      'Стандартная скидка на продукцию линейки Пассер/Ларус/Стрикс',
+      'Распределение входящих лидов по вашей территории',
+      'Доступ к партнёрскому порталу и продающим материалам',
+      'Поддержка по почте',
+    ],
+    accent: false,
+  },
+  {
+    name: 'Серебро',
+    commit: '$50 000 / год',
+    discount: '25%',
+    renewal: '15% Y2+',
+    perks: [
+      'Приоритет на региональные входящие',
+      'Размещение на /partners',
+      'Ежеквартальная встреча с командой ServerPro',
+      'Совместно разработанные пилотные предложения',
+    ],
+    accent: false,
+  },
+  {
+    name: 'Золото',
+    commit: '$200 000 / год',
+    discount: '30%',
+    renewal: '20% Y2+',
+    perks: [
+      'Приоритетные коммерческие условия по сделкам до $1 000 000',
+      'Совместный маркетинг — кейсы, вебинары, мероприятия',
+      'Логотип и описание на /partners',
+      'Выделенный технический инженер пресейла',
+    ],
+    accent: true,
+  },
+  {
+    name: 'Платина',
+    commit: '$750 000 / год',
+    discount: '35%',
+    renewal: '25% Y2+',
+    perks: [
+      'Приоритетные коммерческие условия по сделкам до $5 000 000',
+      'Логотип в первом ряду на /partners и в материалах для заказчиков',
+      'Ранний доступ к новым прошивкам и фичам платформы',
+      'Место в продуктовом совете, влияние на дорожную карту',
+    ],
+    accent: false,
+  },
+];
+
+const why = [
+  {
+    title: 'Железо и софт в одном стеке',
+    body: 'Большинство вендоров мониторинга — только софт или только железо. Линейка Пассер/Ларус/Стрикс закрывает и то, и то. Один партнёр заходит в проект, расширяет его и наращивает выручку годами.',
+  },
+  {
+    title: 'Открытые интерфейсы, без vendor lock-in',
+    body: 'OPC UA, MQTT Sparkplug, AAS, Kafka — заказчики интегрируются, мигрируют и расширяются без проприетарных инструментов. Проще продавать, проще защищать перед закупками.',
+  },
+  {
+    title: 'Продукт, который реально открывает двери',
+    body: '«Стрикс.Шлюз» — инженер заказчика ставит за 30 минут и видит первые данные ещё до закупки полноценного ПО. Конверсия выше любого стандартного демо.',
+  },
+  {
+    title: 'Реальная инженерная глубина',
+    body: 'Производитель линейки развивает промышленный мониторинг с 2016 года — ServerPro обеспечивает локальное сопровождение, сервис и техподдержку в регионе, работает с вами над архитектурой решения, а не только над сделкой.',
+  },
+];
+
+const ideal = [
+  'Системные интеграторы с реальным присутствием в горной добыче, нефтегазе, цементе, стекле, энергетике',
+  'OT/IIoT-консалтинг, который ищет вендора с серьёзным программным стеком',
+  'Сервис-партнёры (вибро-анализ, надёжность), которые хотят добавить ПО и шлюзы в портфель',
+  'Дистрибьюторы с собственным техническим пресейлом в Казахстане, Киргизии, Таджикистане и других странах региона',
+];
+---
+<Base title="Партнёрам — ServerPro" description="Партнёрская программа ServerPro: уровни «Уполномоченный», «Серебро», «Золото», «Платина» — для системных интеграторов, OT-консалтинга, дистрибьюторов и сервис-партнёров в Казахстане, Киргизии и других странах региона.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-cream py-20 md:py-28">
+    <div class="absolute inset-0 grid-bg opacity-50 [mask-image:radial-gradient(ellipse_at_top,_black_30%,_transparent_70%)]"></div>
+    <div class="container-x relative max-w-3xl">
+      <span class="pill-accent">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+        Партнёрская программа
+      </span>
+      <h1 class="mt-6 font-display text-display-xl text-navy">
+        Станьте суб-дилером ServerPro <span class="text-gold">в вашей стране.</span>
+      </h1>
+      <p class="mt-6 text-lg text-ink-muted">
+        ServerPro — официальный представитель линейки Пассер/Ларус/Стрикс в Средней Азии — ищет региональных партнёров в Казахстане, Киргизии и соседних странах. Системный интегратор, OT-консалтинг, сервис-компания или дистрибьютор — продукция спроектирована так, чтобы продаваться и поставляться через партнёров. Реальная маржа, приоритетные условия, реальная инженерная поддержка.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#apply" class="btn-accent">Подать заявку →</a>
+        <a href="#tiers" class="btn-ghost">Уровни программы</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why partner -->
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Почему стоит партнёрствовать</div>
+        <h2 class="mt-3 text-display-lg">Партнёр выигрывает, а не выживает.</h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {why.map((w) => (
+          <div class="card">
+            <div class="font-display text-lg font-semibold text-navy">{w.title}</div>
+            <p class="mt-2 text-sm text-ink-muted">{w.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tiers -->
+  <section id="tiers" class="bg-white py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Уровни программы</div>
+        <h2 class="mt-3 text-display-lg">Четыре уровня. Маржа растёт вместе с обязательствами.</h2>
+        <p class="mt-3 text-ink-muted">
+          Скидки применяются к прайсу на ПО, оборудование и аксессуары. Услуги (внедрение, обучение) поставляются по полному прайсу.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {tiers.map((t) => (
+          <div class={`card flex flex-col ${t.accent ? 'border-gold/40 ring-2 ring-gold/30' : ''}`}>
+            {t.accent && <div class="eyebrow">Чаще всего выбирают</div>}
+            <div class={`font-display text-2xl font-semibold ${t.accent ? 'text-gold-600' : 'text-navy'}`}>{t.name}</div>
+            <div class="mt-1 text-xs uppercase tracking-wider text-ink-muted">{t.commit}</div>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl font-semibold text-navy">{t.discount}</span>
+              <span class="text-sm text-ink-muted">от прайса</span>
+            </div>
+            <div class="mt-1 text-xs text-ink-muted">+ {t.renewal} на продлениях</div>
+            <ul class="mt-6 space-y-2 border-t border-navy/10 pt-5 text-sm text-ink-muted">
+              {t.perks.map((p) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 rounded-2xl border border-navy/10 bg-cream p-6 text-sm text-ink-muted">
+        <strong class="text-navy">Объёмное ценообразование на оборудование</strong> складывается со скидкой уровня: 10% при 10–49 единицах, 15% при 50–199, 20% при 200+ (индивидуальные условия). <strong class="text-navy">Объёмная скидка на ПО</strong>: 15% за шлюз при ≥ 5 шлюзах в одном договоре, 25% при ≥ 25.
+      </div>
+    </div>
+  </section>
+
+  <!-- Ideal partner -->
+  <section class="py-20">
+    <div class="container-x grid gap-12 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <div class="eyebrow">Кто подходит</div>
+        <h2 class="mt-3 text-display-lg">Профиль идеального партнёра</h2>
+        <p class="mt-4 text-ink-muted">Мы избирательны. Меньше партнёров, более глубокие отношения. Важны две вещи: технический пресейл и доступ к лицам, принимающим решения, в индустрии.</p>
+      </div>
+      <div class="md:col-span-7">
+        <ul class="space-y-3">
+          {ideal.map((i) => (
+            <li class="card flex items-start gap-3">
+              <span class="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gold/15 text-xs font-semibold text-gold-600">✓</span>
+              <span class="text-sm text-ink-muted">{i}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply -->
+  <section id="apply" class="py-20">
+    <div class="container-x">
+      <div class="relative overflow-hidden rounded-3xl bg-navy px-8 py-14 text-cream md:px-16 md:py-20">
+        <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-gold/20 blur-3xl"></div>
+        <div class="grid gap-12 md:grid-cols-2">
+          <div>
+            <div class="eyebrow text-gold">Подать заявку</div>
+            <h2 class="mt-3 font-display text-display-md text-cream">
+              Расскажите о вашем бизнесе.
+            </h2>
+            <p class="mt-4 max-w-md text-cream/70">
+              Заявки рассматриваем еженедельно. После 30-минутного знакомства предлагаем стартовый уровень с учётом территории, текущих заказчиков и инженерных возможностей.
+            </p>
+            <ul class="mt-6 space-y-2 text-sm text-cream/80">
+              <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-gold"></span>Знакомство в течение недели после заявки</li>
+              <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-gold"></span>NDA + партнёрский договор за 14 дней</li>
+              <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-gold"></span>Первый лид с вашей территории — в течение 30 дней</li>
+            </ul>
+          </div>
+          <form class="grid gap-3 rounded-2xl bg-white/5 p-6 backdrop-blur-md ring-1 ring-cream/10" method="post" action="/api/partner-apply">
+            <div class="grid grid-cols-2 gap-3">
+              <input class="rounded-lg bg-cream/95 px-4 py-3 text-sm text-navy placeholder:text-ink-muted" name="name" placeholder="Ваше имя" required />
+              <input class="rounded-lg bg-cream/95 px-4 py-3 text-sm text-navy placeholder:text-ink-muted" name="company" placeholder="Компания" required />
+            </div>
+            <input class="rounded-lg bg-cream/95 px-4 py-3 text-sm text-navy placeholder:text-ink-muted" type="email" name="email" placeholder="Корпоративная почта" required />
+            <input class="rounded-lg bg-cream/95 px-4 py-3 text-sm text-navy placeholder:text-ink-muted" name="country" placeholder="Страна / регион" required />
+            <select class="rounded-lg bg-cream/95 px-4 py-3 text-sm text-navy" name="category" required>
+              <option value="">Тип бизнеса…</option>
+              <option>Системный интегратор</option>
+              <option>OT / IIoT-консалтинг</option>
+              <option>Сервис-партнёр (вибро-анализ, надёжность)</option>
+              <option>Дистрибьютор / реселлер</option>
+              <option>Другое</option>
+            </select>
+            <textarea class="min-h-24 rounded-lg bg-cream/95 px-4 py-3 text-sm text-navy placeholder:text-ink-muted" name="message" placeholder="Коротко: отрасли, целевые заказчики, что планируете делать с линейкой Пассер/Ларус/Стрикс"></textarea>
+            <button class="btn-accent mt-1" type="submit">Отправить заявку</button>
+            <div class="text-[11px] text-cream/60">Каждую заявку читаем лично. Ответ в течение 5 рабочих дней.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

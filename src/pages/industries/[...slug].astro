@@ -1,0 +1,241 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await getCollection('industries');
+  return items.map((i) => ({ params: { slug: i.slug }, props: { i } }));
+}
+
+interface Props { i: CollectionEntry<'industries'> }
+const { i } = Astro.props;
+const { Content } = await i.render();
+const hasStages = (i.data.stages?.length ?? 0) > 0;
+---
+<Base title={`${i.data.name} — Отрасли — Лиман-Тех`} description={i.data.summary}>
+  <!-- Hero -->
+  <section class="border-b border-navy/8 bg-cream py-16 md:py-20">
+    <div class="container-x">
+      <a href="/industries/" class="text-sm font-semibold text-navy hover:text-gold-600">← Все отрасли</a>
+      <div class="mt-6 grid gap-10 md:grid-cols-12">
+        <div class="md:col-span-7">
+          {i.data.accent && <div class="eyebrow">{i.data.accent}</div>}
+          <h1 class="mt-3 text-display-lg">{i.data.name}</h1>
+          <p class="mt-5 text-lg text-ink-muted">{i.data.summary}</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/#contact" class="btn-accent">Обсудить ваш объект</a>
+            <a href="#stages" class="btn-ghost">К переделам</a>
+          </div>
+        </div>
+        <div class="md:col-span-5">
+          {i.data.strongest_combo && (
+            <div class="rounded-2xl bg-navy p-6 text-cream shadow-lift">
+              <div class="text-xs uppercase tracking-[0.18em] text-gold">Сильнейшая связка</div>
+              <div class="mt-2 font-display text-2xl font-semibold">{i.data.strongest_combo}</div>
+              <p class="mt-3 text-sm text-cream/70">
+                Эта комбинация даёт максимум на ключевых переделах отрасли. Подробнее — в карточках ниже.
+              </p>
+            </div>
+          )}
+          {i.data.equipment_keywords.length > 0 && (
+            <div class="mt-4 rounded-2xl border border-navy/10 bg-white p-6">
+              <div class="eyebrow">Ключевое оборудование</div>
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                {i.data.equipment_keywords.map((k) => (
+                  <span class="rounded-md border border-navy/10 bg-cream px-2 py-1 text-xs font-medium text-navy">{k}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method legend (only when stages present) -->
+  {hasStages && (
+    <section class="border-b border-navy/8 bg-white">
+      <div class="container-x py-8">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="flex items-start gap-3">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-navy text-cream">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-4 w-4"><path d="M3 12h2l3-9 4 18 3-9h6"/></svg>
+            </span>
+            <div>
+              <div class="text-sm font-semibold text-navy">Вибродиагностика</div>
+              <div class="text-xs text-ink-muted">«Пассер-В» + FFT/огибающая на «Ларусе»</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-navy/15 bg-cream text-navy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+            </span>
+            <div>
+              <div class="text-sm font-semibold text-navy">Токовая диагностика</div>
+              <div class="text-xs text-ink-muted">«Пассер-Т» + анализ сигнатуры двигателя (MCSA)</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gold/15 text-gold-600 ring-1 ring-gold/30">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><circle cx="12" cy="12" r="3"/><path d="M12 1v6 M12 17v6 M4.22 4.22l4.24 4.24 M15.54 15.54l4.24 4.24 M1 12h6 M17 12h6 M4.22 19.78l4.24-4.24 M15.54 8.46l4.24-4.24"/></svg>
+            </span>
+            <div>
+              <div class="text-sm font-semibold text-navy">APC-оптимизация</div>
+              <div class="text-xs text-ink-muted">Платформа «Стрикс» + soft sensors + предиктивные контуры</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </span>
+            <div>
+              <div class="text-sm font-semibold text-navy">Компьютерное зрение</div>
+              <div class="text-xs text-ink-muted">Камеры + CV-приложения «Стрикс» на «Ларус-1000»</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Stages -->
+  {hasStages && (
+    <section id="stages" class="py-20">
+      <div class="container-x">
+        <div class="max-w-2xl">
+          <div class="eyebrow">По переделам</div>
+          <h2 class="mt-3 text-display-md">Где Лиман-Тех применим — этап за этапом</h2>
+          <p class="mt-3 text-ink-muted">
+            Для каждого передела — оборудование под мониторинг и какой метод что даёт. Без воды.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-5 md:grid-cols-2">
+          {i.data.stages!.map((s) => (
+            <article class="card flex flex-col">
+              <div class="flex items-start gap-4">
+                <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-navy font-display text-base font-semibold text-cream">{s.n}</div>
+                <h3 class="font-display text-lg font-semibold text-navy leading-snug">{s.name}</h3>
+              </div>
+              {s.equipment && (
+                <div class="mt-4 rounded-lg bg-cream/70 border border-navy/8 p-3">
+                  <div class="text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-muted">Оборудование</div>
+                  <div class="mt-1 text-sm text-navy">{s.equipment}</div>
+                </div>
+              )}
+              <div class="mt-4 space-y-2">
+                {s.vibro && (
+                  <div class="flex items-start gap-3 rounded-lg border border-navy/10 bg-white p-3">
+                    <span class="mt-0.5 inline-flex h-5 shrink-0 items-center rounded-md bg-navy px-2 text-[10px] font-bold uppercase tracking-wider text-cream">Вибро</span>
+                    <span class="text-sm text-ink">{s.vibro}</span>
+                  </div>
+                )}
+                {s.current && (
+                  <div class="flex items-start gap-3 rounded-lg border border-navy/10 bg-cream/40 p-3">
+                    <span class="mt-0.5 inline-flex h-5 shrink-0 items-center rounded-md border border-navy/15 bg-cream px-2 text-[10px] font-bold uppercase tracking-wider text-navy">Ток</span>
+                    <span class="text-sm text-ink">{s.current}</span>
+                  </div>
+                )}
+                {s.apc && (
+                  <div class="flex items-start gap-3 rounded-lg bg-gold/10 ring-1 ring-gold/30 p-3">
+                    <span class="mt-0.5 inline-flex h-5 shrink-0 items-center rounded-md bg-gold px-2 text-[10px] font-bold uppercase tracking-wider text-navy">APC</span>
+                    <span class="text-sm text-ink">{s.apc}</span>
+                  </div>
+                )}
+                {s.cv && (
+                  <div class="flex items-start gap-3 rounded-lg bg-emerald-50 ring-1 ring-emerald-200 p-3">
+                    <span class="mt-0.5 inline-flex h-5 shrink-0 items-center rounded-md bg-emerald-600 px-2 text-[10px] font-bold uppercase tracking-wider text-white">CV</span>
+                    <span class="text-sm text-ink">{s.cv}</span>
+                  </div>
+                )}
+              </div>
+              {s.effect && (
+                <div class="mt-4 border-t border-navy/8 pt-3 text-sm">
+                  <span class="font-semibold text-gold-600">Эффект: </span>
+                  <span class="text-ink-muted">{s.effect}</span>
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Strongest combos -->
+  {i.data.combos && i.data.combos.length > 0 && (
+    <section class="bg-white py-20 border-y border-navy/8">
+      <div class="container-x">
+        <div class="max-w-2xl">
+          <div class="eyebrow">Сильнейшие комбинации</div>
+          <h2 class="mt-3 text-display-md">Где сочетание методов даёт мультипликативный эффект</h2>
+        </div>
+        <div class="mt-10 overflow-hidden rounded-2xl border border-navy/10">
+          <div class="hidden grid-cols-12 gap-4 bg-navy px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-cream md:grid">
+            <div class="col-span-4">Передел</div>
+            <div class="col-span-3">Методы</div>
+            <div class="col-span-5">Что даёт</div>
+          </div>
+          {i.data.combos.map((c, idx) => (
+            <div class={`grid gap-3 px-6 py-5 md:grid-cols-12 md:gap-4 ${idx % 2 === 0 ? 'bg-white' : 'bg-cream/40'}`}>
+              <div class="font-display text-sm font-semibold text-navy md:col-span-4">{c.stage}</div>
+              <div class="md:col-span-3"><span class="pill-accent">{c.methods}</span></div>
+              {c.note && <div class="text-sm text-ink-muted md:col-span-5">{c.note}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Packages -->
+  {i.data.packages && i.data.packages.length > 0 && (
+    <section class="py-20">
+      <div class="container-x">
+        <div class="max-w-2xl">
+          <div class="eyebrow">Что мы предлагаем</div>
+          <h2 class="mt-3 text-display-md">Три уровня внедрения — выбираете по зрелости</h2>
+        </div>
+        <div class="mt-10 grid gap-5 md:grid-cols-3">
+          {i.data.packages.map((p) => (
+            <div class="card flex flex-col">
+              <div class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-600">Уровень {p.level}</div>
+              <h3 class="mt-2 font-display text-xl font-semibold text-navy">{p.title}</h3>
+              <p class="mt-3 text-sm text-ink-muted">{p.target}</p>
+              <div class="mt-auto pt-5 border-t border-navy/8">
+                <div class="text-xs uppercase tracking-wider text-ink-muted">Стек</div>
+                <div class="mt-1 text-sm font-medium text-navy">{p.tools}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Free-form markdown body (R&D notes, references etc.) -->
+  <section class="bg-cream py-16">
+    <div class="container-x max-w-prose">
+      <div class="prose prose-slate prose-headings:font-display prose-headings:text-navy prose-a:text-gold-600 max-w-none">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="container-x">
+      <div class="rounded-3xl bg-navy p-10 text-cream md:p-14">
+        <div class="grid gap-8 md:grid-cols-2 md:items-center">
+          <div>
+            <div class="eyebrow text-gold">Хотите обсудить?</div>
+            <h2 class="mt-3 font-display text-display-md text-cream">Расскажите про ваш объект.</h2>
+            <p class="mt-3 text-cream/70">За 30 минут разговора подберём под ваше оборудование конкретную связку методов и объём пилота.</p>
+          </div>
+          <div class="flex md:justify-end">
+            <a href="/#contact" class="btn-accent">Назначить встречу →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

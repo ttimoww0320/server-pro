@@ -1,0 +1,60 @@
+---
+import Logo from './Logo.astro';
+import { ui, getLocale, localizedPath, type Locale } from '../i18n/strings';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = getLocale(Astro.url.pathname) } = Astro.props;
+const t = ui[locale];
+
+const year = new Date().getFullYear();
+
+// Колонки зеркалят прототип v0.15: «Решения» (3 направления + стек + Юлдуз) и «Компания».
+const solutions = t.footer.solutions.map((s) => ({ href: localizedPath(s.path, locale), label: s.label }));
+const company = t.footer.company.map((c) => ({ href: localizedPath(c.path, locale), label: c.label }));
+const contactsHref = localizedPath('/#cta', locale);
+const privacyHref = localizedPath('/privacy/', locale);
+---
+<footer class="mt-24 bg-[#0a1420] text-navy-300">
+  <div class="container-x grid gap-10 py-16 md:grid-cols-12">
+    <!-- Brand -->
+    <div class="md:col-span-5">
+      <Logo class="h-8 w-auto text-cream" />
+      <p class="mt-4 max-w-sm text-sm text-navy-300">
+        {t.footer.blurb}
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="https://t.me/ttimoww" target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/15 px-3 py-1 text-xs text-navy-300 hover:border-gold hover:text-gold">Telegram</a>
+        <a href="mailto:info@server-pro.uz" class="rounded-full border border-white/15 px-3 py-1 text-xs text-navy-300 hover:border-gold hover:text-gold">info@server-pro.uz</a>
+        <a href="tel:+998903972499" class="rounded-full border border-white/15 px-3 py-1 text-xs text-navy-300 hover:border-gold hover:text-gold">+998 90 397-24-99</a>
+      </div>
+    </div>
+
+    <!-- Solutions -->
+    <div class="md:col-span-3">
+      <div class="text-sm font-semibold text-cream">{t.footer.solutionsTitle}</div>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {solutions.map((s) => <li><a href={s.href} class="hover:text-gold">{s.label}</a></li>)}
+      </ul>
+    </div>
+
+    <!-- Company -->
+    <div class="md:col-span-4">
+      <div class="text-sm font-semibold text-cream">{t.footer.companyTitle}</div>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {company.map((c) => <li><a href={c.href} class="hover:text-gold">{c.label}</a></li>)}
+        <li><a href={contactsHref} class="hover:text-gold">{t.footer.contacts}</a></li>
+        <li><a href={privacyHref} class="hover:text-gold">{t.footer.privacy}</a></li>
+        <li><a href="https://docs.liman-tech.ru/" target="_blank" rel="noopener noreferrer" class="hover:text-gold">{t.footer.docsExternal}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10 py-5">
+    <div class="container-x flex flex-col gap-2 text-xs text-navy-400 md:flex-row md:items-center md:justify-between">
+      <span>{t.footer.rightsLine1.replace('{year}', String(year))}</span>
+      <span>{t.footer.rightsLine2}</span>
+    </div>
+  </div>
+</footer>

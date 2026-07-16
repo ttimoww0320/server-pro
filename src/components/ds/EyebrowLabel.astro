@@ -1,0 +1,9 @@
+---
+// EyebrowLabel — uppercase tracked label above headings.
+// Style: 12px, 600 weight, letter-spacing 0.18em, cyan accent text.
+interface Props { class?: string }
+const { class: className = '' } = Astro.props;
+---
+<span class={`text-xs font-semibold uppercase tracking-[0.18em] text-gold-600 ${className}`}>
+  <slot />
+</span>

@@ -1,0 +1,468 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/site.css';
+import { LEAD_ENDPOINT, LEAD_ENDPOINT_AJAX, LEAD_EMAIL } from '../lib/lead';
+
+const title = 'ServerPro — цифровизация промышленности, города и бизнеса · Ташкент';
+const description =
+  'ServerPro — инженерная компания в Ташкенте: предиктивная вибро- и токовая диагностика, мониторинг оборудования, автоматизация, цифровой город и решения на основе ИИ. Проектируем, поставляем, монтируем и сопровождаем — от датчика до диспетчерской.';
+---
+<Base title={title} description={description}>
+  <div class="sp">
+
+    <!-- HERO -->
+    <section class="hero grid-bg">
+      <picture class="hero-media">
+        <source srcset="/images/industry-map.webp" type="image/webp" />
+        <img src="/images/industry-map.jpg" alt="Изометрическая карта промышленного кластера: нефтегаз, энергетика, металлургия, цемент, горная добыча и морской порт" width="1672" height="941" fetchpriority="high" decoding="async" />
+      </picture>
+      <div class="hero-scrim"></div>
+      <div class="halo"></div><div class="halo2"></div>
+      <div class="container">
+        <span class="eyebrow">Инженерная компания · Ташкент</span>
+        <h1>Современные решения для вашего производства</h1>
+        <div class="desc">Цифровизация промышленности, города и бизнеса</div>
+        <p class="sub">ServerPro приносит на предприятия Узбекистана современные цифровые решения и внедряет их своими силами — от датчика до диспетчерской. Технологии мирового уровня, инженерия и сервис — местные.</p>
+        <div class="cta">
+          <a href="#cta" class="btn btn-primary">Обсудить задачу <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#dirs" class="btn btn-ghost">Наши направления</a>
+        </div>
+        <div class="trust">
+          <div><span class="n">3</span><span class="l">направления под ключ</span></div>
+          <div><span class="n">L0–L3</span><span class="l">полный стек диагностики</span></div>
+          <div><span class="n">92 кГц</span><span class="l">сырой сигнал вибрации</span></div>
+          <div><span class="n">Ташкент</span><span class="l">местный склад и сервис</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTIONS -->
+    <section id="dirs">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow dark">Направления</span>
+          <h2>Три направления — одна инженерная команда</h2>
+          <p class="lead">Мы закрываем задачу целиком: проектируем, поставляем оборудование ведущих производителей, собираем, монтируем и сопровождаем.</p>
+        </div>
+        <div class="dirs">
+          <div class="dir flag">
+            <span class="tag">Флагман</span>
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h3>Цифровизация промышленности</h3>
+            <p>Предиктивная вибро- и токовая диагностика, мониторинг состояния оборудования и оптимизация АСУ ТП. Меньше аварийных простоев — выше отдача от того же оборудования.</p>
+            <ul class="dir-list">
+              <li>Вибро- и токовая диагностика<span class="src">Пассер · Ларус · Стрикс.Платформа</span></li>
+              <li>Мониторинг состояния и надёжность<span class="src">OEE, ТОиР по состоянию, снижение простоев</span></li>
+              <li>Оптимизация АСУ ТП / APC</li>
+              <li>Промышленная связь и безопасность персонала<span class="src">X-Connect — рации, поиск, датчик падения, РЭБ-устойчивость</span></li>
+              <li>Тренажёры операторов<span class="src">ЛКМ — обучение на цифровых двойниках</span></li>
+            </ul>
+            <a class="more" href="#stack">Смотреть стек <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="dir">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/><path d="M10 6h4M10 10h4M10 14h4"/></svg></div>
+            <h3>Цифровой город</h3>
+            <p>Управление дорожным движением (АСУДД), системы оповещения ГО и ЧС, мониторинг инженерных систем зданий и сооружений, пожарная безопасность.</p>
+            <ul class="dir-list">
+              <li>АСУДД — управление дорожным движением<span class="src">Светофорное регулирование, детекция транспорта</span></li>
+              <li>Оповещение ГО и ЧС / СОУЭ<span class="src">Собственный бренд Юлдуз + НПП «МЕТА» — оповещатели, пульты, эвакуация</span></li>
+              <li>Пожарная безопасность — СПБ «Нептун» <span class="badge-soon"><span class="dot"></span>Готовим к региону</span><span class="src">Адресная СПС: датчики + ППКУ, взрывозащищённые исполнения</span></li>
+              <li>Мониторинг зданий и сооружений<span class="src">СМИС · СМИК/СМДС · МФСБ</span></li>
+            </ul>
+            <a class="more" href="#yulduz">Собственный бренд Юлдуз <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="dir">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div>
+            <h3>Управление и ИИ</h3>
+            <p>Цифровизация бизнес-процессов, встраивание ИИ-агентов в операционку с человеком в контуре решений, обучение моделей и локальное развёртывание — данные остаются на территории страны.</p>
+            <ul class="dir-list">
+              <li>Цифровизация бизнес-процессов</li>
+              <li>ИИ-агенты в операционке<span class="src">Человек в контуре решений (human-in-loop)</span></li>
+              <li>Локальное развёртывание LLM<span class="src">Данные остаются на территории страны</span></li>
+              <li>Разработка ТЭО инвестпроектов<span class="src">Техрешения, CAPEX/OPEX, финмодель, оценка рисков</span></li>
+            </ul>
+            <a class="more" href="#how">Как мы работаем <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINS -->
+    <section id="pains" class="grid-bg">
+      <div class="container">
+        <div class="head center">
+          <span class="eyebrow dark">Знакомые ситуации</span>
+          <h2>Узнаёте себя?</h2>
+          <p class="lead" style="margin:14px auto 0">Девять из десяти разговоров с руководителями начинаются с одной из этих ситуаций. Если что-то из этого — про вас, нам есть что показать.</p>
+        </div>
+        <div class="pain-grid">
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Контроль</span>
+            <h3>«Об отказе узнаю по факту — из ночного звонка»</h3>
+            <p>Онлайн-мониторинг состояния показывает дефект <b>за недели и месяцы до отказа</b> — по каждому узлу виден остаточный ресурс. Авария превращается в плановую замену.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Контроль</span>
+            <h3>«Сколько завод зарабатывает сейчас — узнаю из отчёта. И жду»</h3>
+            <p>Онлайн-экономика актива: сколько производит и зарабатывает <b>прямо сейчас</b>, простой — сразу в деньгах, а не в часах. На экране телефона, без запросов и ожидания.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Контроль</span>
+            <h3>«Каждый отчёт — чья-то интерпретация»</h3>
+            <p>Собственник, финансовый директор и главный инженер смотрят на <b>одни и те же данные с датчиков</b> — просто разными экранами. Одна система, одна правда, никаких пересказов.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Контроль</span>
+            <h3>«Площадок несколько — а где теряем больше, вопрос»</h3>
+            <p>Портфельный экран: все площадки ранжированы <b>по потерям в деньгах</b>, а не по алфавиту. От карты активов до конкретного узла и его прогноза — в два клика.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Деньги</span>
+            <h3>«Склад ЗИП морозит деньги — а нужной детали нет»</h3>
+            <p>Прогноз остаточного ресурса по узлам превращает закупку ЗИП из «на всякий случай» в <b>«к сроку замены»</b>. Склад держит то, что реально понадобится, и тогда, когда понадобится.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Деньги</span>
+            <h3>«Ремонтируем по графику: меняем живое, пропускаем умирающее»</h3>
+            <p>Обслуживание по состоянию вместо регламента: работы назначаются по фактическому износу. На практике внедрений — <b>до 40–60 % меньше внеплановых ремонтов</b>.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Деньги</span>
+            <h3>«Счёт за электроэнергию растёт, куда уходит — непонятно»</h3>
+            <p>Изношенный привод потребляет сверх нормы задолго до отказа. Токовая диагностика показывает, какие двигатели жгут лишнее, — <b>экономия подтверждается по счётчику</b>.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Деньги</span>
+            <h3>«Эффект понятен, но капзатрат в бюджете нет»</h3>
+            <p>Мониторинг как сервис (EMaaS): ежемесячная плата <b>из операционных расходов</b>, без выкупа оборудования. Старт с пилота на одном участке — эффект измеряется до масштабирования.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Люди и парк</span>
+            <h3>«У нас нет вибродиагностов — кто будет с этим работать?»</h3>
+            <p>Система выдаёт не спектры, а <b>диагноз и приоритет работ</b> — понятный наряд для механика. Сервисная поддержка и обучение ваших специалистов — инженерами в Ташкенте.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Люди и парк</span>
+            <h3>«Оборудование старое — цифровизация не про нас»</h3>
+            <p>Ретрофит без вмешательства в машину: накладные датчики и токовые клещи дают статус, нагрузку и износ <b>даже для станков 1980-х</b>. Мониторинг не требует замены парка.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Рост</span>
+            <h3>«Выход и качество скачут от смены к смене»</h3>
+            <p>Стабилизация и оптимизация техпроцесса: система-советчик поверх вашей действующей АСУ ТП ведёт процесс ближе к оптимуму. <b>Больше продукции с того же железа</b>; оператор остаётся в контуре.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Рост</span>
+            <h3>«Про ИИ говорят все — но данные в чужое облако нельзя»</h3>
+            <p>ИИ-агенты в бизнес-процессах и локально развёрнутые модели: всё работает на вашей площадке, <b>данные не покидают страну</b>, решения подтверждает человек.</p>
+          </div>
+        </div>
+        <p class="pains-note">Не нашли свою ситуацию? Опишите её нам — <a href="#cta">обсудим задачу</a> и честно скажем, чем можем помочь, а чем нет.</p>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="why">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow dark">Почему ServerPro</span>
+          <h2>Мировые технологии. Местная инженерия.</h2>
+        </div>
+        <div class="feats">
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <h3>Инженерия полного цикла</h3>
+            <p>Проектируем, собираем шкафы, монтируем, ведём слаботочку и пожарку, запускаем и обслуживаем. Не перепродажа — внедрение своими руками.</p>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <h3>Технологии мирового уровня</h3>
+            <p>Предиктивная диагностика класса Bently Nevada и SKF — но с локальным складом, сервисом и ценой.</p>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-6.36 2.64L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 6.36-2.64L21 16"/><path d="M21 21v-5h-5"/></svg></div>
+            <h3>Пилот, сервис, обучение</h3>
+            <p>От аудита и пилота до сервисного сопровождения и обучения ваших специалистов работе с системой.</p>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>Локальное присутствие</h3>
+            <p>Местное юрлицо, склад, сервисный центр и поддержка на русском — узбекская версия на подходе.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="stack-sec grid-bg">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow">Цифровизация промышленности · стек</span>
+          <h2>От датчика до дашборда собственника</h2>
+          <p class="lead" style="color:#9fb0c3">Четыре уровня одной системы — сырой сигнал превращается в решения: где чинить, когда чинить и сколько это стоит.</p>
+        </div>
+        <div class="stack">
+          <div class="lvl">
+            <div class="lx">L0 · Измерение</div>
+            <h3>Пассер</h3>
+            <div class="role">Сбор сырых сигналов</div>
+            <p>Контроллеры сбора: вибрация до 92 кГц, ток, температура. Данные без потерь.</p>
+          </div>
+          <div class="lvl">
+            <div class="lx">L1 · Передача</div>
+            <h3>Ларус</h3>
+            <div class="role">IIoT-шлюз · железо</div>
+            <p>Предобработка на месте, буферизация, мост OT↔IT. Старшая модель — с NPU.</p>
+          </div>
+          <div class="lvl">
+            <div class="lx">L2 · Шлюз данных</div>
+            <h3>Стрикс.Шлюз</h3>
+            <div class="role">Strix Gateway · ПО</div>
+            <p>Сбор и нормализация данных, мост OT↔IT, edge-интеграция (MQTT · Modbus · OPC UA).</p>
+          </div>
+          <div class="lvl">
+            <div class="lx">L3 · Платформа</div>
+            <h3>Стрикс.Платформа</h3>
+            <div class="role">Аналитика · дашборды</div>
+            <p>SCADA, дашборды, ML, цифровые двойники, диагностика, прогноз ресурса, APC — в браузере.</p>
+          </div>
+        </div>
+        <p class="stack-note">Технологический партнёр по линейке — <b>производитель Лиман-Тех</b>. ServerPro поставляет, интегрирует и обслуживает решение на объектах в Узбекистане и регионе.</p>
+      </div>
+    </section>
+
+    <!-- OFFICE + PRODUCTION -->
+    <section id="office">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow dark">Своими силами · Ташкент</span>
+          <h2>Офис и производственная площадка</h2>
+          <p class="lead">Проектируем, собираем шкафы, монтируем и сопровождаем сами — в Ташкенте. Это фундамент «местные и настоящие», а не витрина чужих брендов.</p>
+        </div>
+        <div class="duo">
+          <div class="duo-col">
+            <div class="ch">
+              <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M9 2h6a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg></div>
+              <div><h3>Инженерный офис</h3><div class="sub">проект и сопровождение</div></div>
+            </div>
+            <ul class="duo-list">
+              <li>Проектирование<span class="src">АСУ ТП, слаботочка, электрика — рабочая документация</span></li>
+              <li>Техническая документация<span class="src">Исполнительная, эксплуатационная, для тендеров</span></li>
+              <li>Обучение персонала<span class="src">Работа с системой на стороне заказчика</span></li>
+            </ul>
+          </div>
+          <div class="duo-col">
+            <div class="ch">
+              <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+              <div><h3>Производственная площадка</h3><div class="sub">сборка и монтаж на объекте</div></div>
+            </div>
+            <ul class="duo-list">
+              <li>Сборка шкафов автоматизации<span class="src">Комплектация, монтаж, тестирование</span></li>
+              <li>Монтаж и пусконаладка (ПНР)<span class="src">На объекте, под ключ</span></li>
+              <li>Слаботочные системы</li>
+              <li>Пожарная безопасность<span class="src">СКПБ · МФСБ · СМИС</span></li>
+              <li>Сервисное обслуживание<span class="src">Гарантия, ЗИП, поддержка на русском</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-note" style="color:var(--muted-dark)">Полный перечень собственных услуг — на странице <a href="/services/" style="color:#b98a34;font-weight:600">«Наши услуги»</a>. Портфель собственных проекта ServerPro — <a href="/projects/" style="color:#b98a34;font-weight:600">«Наши проекты»</a>.</p>
+      </div>
+    </section>
+
+    <!-- YULDUZ -->
+    <section id="yulduz" style="padding-top:0">
+      <div class="container">
+        <div class="yz-band">
+          <div class="halo"></div>
+          <div class="yz-grid">
+            <div>
+              <span class="eyebrow">Собственный бренд · сделано в Узбекистане</span>
+              <div class="yz-mark">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></svg>
+                <span class="lat">Yulduz</span><span class="uz">· Юлдуз</span>
+              </div>
+              <h2>Производим сами — отвечаем сами</h2>
+              <p class="yz-sub">Юлдуз — собственная продуктовая линейка ServerPro: извещатели и системы оповещения ГО и ЧС, а также «Планшет руководителя». Производство и склад в Ташкенте, сертификация под нормы Республики Узбекистан, сервис — той же командой, что производит.</p>
+              <div class="yz-cta">
+                <a href="/yulduz/" class="btn btn-primary">Страница бренда Юлдуз <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a href="#cta" class="btn btn-ghost">Обсудить поставку</a>
+              </div>
+            </div>
+            <div class="yz-tiles">
+              <a class="yz-tile" href="/yulduz/">
+                <span class="ico"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5M4.9 19.1C1 15.2 1 8.8 4.9 4.9M19.1 4.9c3.9 3.9 3.9 10.3 0 14.2"/></svg></span>
+                <div><h3>Извещатели ГО и ЧС</h3><p>Оповещатели для систем гражданской обороны и предупреждения о ЧС. Локальное производство: всегда на складе, сертификация по нормам РУз, гарантия производителя — наша.</p></div>
+              </a>
+              <a class="yz-tile" href="/yulduz/">
+                <span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+                <div><h3>Системы оповещения и эвакуации</h3><p>От оповещателя до пульта: проектируем, монтируем и обслуживаем комплекс оповещения целиком — без ожидания импортных поставок.</p></div>
+              </a>
+              <a class="yz-tile" href="/yulduz/">
+                <span class="ico"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg></span>
+                <div><h3>Планшет руководителя</h3><p>Готовое устройство для собственника и директора: включаете — и видите предприятие. Производство, деньги, риски — онлайн, одним экраном.</p></div>
+              </a>
+            </div>
+          </div>
+          <p class="yz-note">Юлдуз дополняет промышленный стек: оповещение ГО и ЧС и «Планшет руководителя» работают в той же системе мониторинга, что и диагностика оборудования, — объект виден целиком.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section id="inds" class="inds">
+      <div class="container">
+        <div class="head center">
+          <span class="eyebrow dark">Отрасли</span>
+          <h2>Где мы работаем</h2>
+        </div>
+        <div class="ind-grid">
+          <a class="ind" href="/industries/mining/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></span><div><h3>Горно-металлургия</h3><span>НГМК, АГМК: мельницы, конвейеры, насосы</span></div></a>
+          <a class="ind" href="/industries/energy/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M7 20a5 5 0 0 1-2-9.5C5 6 8 3 12 3s7 3 7 7.5a5 5 0 0 1-2 9.5z"/><path d="m10 13-2 3h3l-1 3"/></svg></span><div><h3>Гидроэнергетика</h3><span>Узбекгидроэнерго: гидроагрегаты, каскады ГЭС</span></div></a>
+          <a class="ind" href="/industries/energy/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span><div><h3>Энергетика</h3><span>ТЭС, теплогенерация, сети</span></div></a>
+          <a class="ind" href="/industries/oil-gas/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2c1 4-2 5-2 8a2 2 0 0 0 4 0c0 3 3 4 2 8a6 6 0 0 1-6-4 6 6 0 0 1 2-12z"/></svg></span><div><h3>Нефтегаз</h3><span>Компрессоры, насосные, ГПЗ</span></div></a>
+          <a class="ind" href="/industries/cement-glass/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18M9 21v-6h6v6"/></svg></span><div><h3>Цемент и стекло</h3><span>Печи, дробилки, вентиляторы</span></div></a>
+          <a class="ind" href="/industries/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/></svg></span><div><h3>Город и инфраструктура</h3><span>Трафик, оповещение, здания</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS / TECH -->
+    <section id="partners" class="partners">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow">Технологии и партнёры</span>
+          <h2>За решениями — проверенные производители</h2>
+        </div>
+        <div class="p-main">
+          <div class="row">
+            <div class="brand">Лиман<span>-Тех</span></div>
+            <div class="kind">Технологический партнёр · диагностика и APC</div>
+          </div>
+          <div class="products">
+            <span class="pp">Пассер</span><span class="pp">Ларус</span><span class="pp">Стрикс.Шлюз</span><span class="pp">Стрикс.Платформа</span>
+          </div>
+          <p style="color:#c1cdda; font-size:15.5px; margin:0 0 4px">Производитель линейки промышленной вибро- и токовой диагностики, платформы мониторинга и оптимизации АСУ ТП. ServerPro — официальный дилер и интегратор этих продуктов в регионе.</p>
+          <p class="science"><b>Инженерная и научная база производителя:</b> собственная R&D-разработка — партнёрство с университетом ИТМО (AI-ядро), учебно-исследовательская лаборатория в Политехе Петра Великого, разработка поддержана грантом Минпромторга.</p>
+        </div>
+        <div class="p-others">
+          <div class="p-o">
+            <div class="po-tag">Промышленность · связь</div>
+            <h3>X-Connect</h3>
+            <p>Промышленная цифровая радиосвязь и безопасность персонала: аварийное оповещение, поиск людей, датчик падения, РЭБ-устойчивость. Внедрения на крупных предприятиях РФ.</p>
+          </div>
+          <div class="p-o">
+            <div class="po-tag">Цифровой город · оповещение</div>
+            <h3>НПП «МЕТА»</h3>
+            <p>Системы оповещения и управления эвакуацией (СОУЭ), оповещение ГО и ЧС, антитеррор, громкоговорители — для зданий, транспорта и городской инфраструктуры.</p>
+          </div>
+          <div class="p-o">
+            <div class="po-tag">Промышленность · обучение</div>
+            <h3>ЛКМ · тренажёры</h3>
+            <p>Имитационные тренажёры операторов (карьерные экскаваторы, нефтегаз, промыслы) — обучение персонала на цифровых двойниках в реальном времени.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNNEL -->
+    <section id="how">
+      <div class="container">
+        <div class="head center">
+          <span class="eyebrow dark">Как мы работаем</span>
+          <h2>От «а что вообще возможно?» — до цели, достигнутой в цифрах</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><h3>Увидеть возможности</h3><p>Показываем на живых примерах, что сегодня реально сделать на вашем производстве, — и помогаем понять, чего хочется именно вам. Демо, кейсы, разговор без обязательств.</p></div>
+          <div class="step"><div class="num">2</div><h3>Определить задачу</h3><p>Из «хочется меньше потерь» рождается конкретная задача: какой участок, какие процессы, какие данные уже есть. Опросные листы заполняем за вас — достаточно ответить голосом на встрече.</p></div>
+          <div class="step"><div class="num">3</div><h3>Сформулировать цель в цифрах</h3><p>Цель должна проверяться: не «повысить эффективность», а «снизить издержки на 30 %» или «поднять выработку на 20 %». Как измеряем эффект — договариваемся до старта, а не после.</p></div>
+          <div class="step"><div class="num">4</div><h3>Достичь — и закрепить</h3><p>Пилот подтверждает эффект на одном участке, договор фиксирует объём работ, дальше — масштабирование и сопровождение. Цель из шага 3 становится критерием приёмки.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA + FORM -->
+    <section id="cta" class="cta-sec grid-bg">
+      <div class="halo"></div>
+      <div class="container">
+        <div class="cta-grid">
+          <div>
+            <span class="eyebrow">Начнём с малого</span>
+            <h2 style="margin-top:14px">Расскажите о задаче — обсудим на созвоне</h2>
+            <p>Оставьте заявку — созвонимся, разберём задачу и подготовим опросные листы (заполним за вас на ВКС). Дальше сформулируем достижимые цели и предложим пилот или договор. Без обязательств.</p>
+            <div style="display:flex; gap:22px; margin-top:26px; flex-wrap:wrap">
+              <div><div style="font-family:Manrope;font-weight:800;font-size:22px;color:#fff">Ташкент</div><div style="font-size:13.5px;color:#9fb0c3">офис, склад, сервис</div></div>
+              <div><div style="font-family:Manrope;font-weight:800;font-size:22px;color:#fff">UZ · KZ · KG</div><div style="font-size:13.5px;color:#9fb0c3">регион поставки</div></div>
+            </div>
+          </div>
+          <form class="form" id="lead-form" method="POST" action={LEAD_ENDPOINT}>
+            <input type="hidden" name="intent" value="general" />
+            <input type="hidden" name="source_path" value="/" />
+            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_medium" value="" />
+            <input type="hidden" name="utm_campaign" value="" />
+            <input type="hidden" name="_subject" value="Заявка с сайта ServerPro" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <!-- honeypot FormSubmit: заполнят боты — заявка отбрасывается -->
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+            <label for="lead-name">Имя</label>
+            <input id="lead-name" type="text" name="name" placeholder="Как к вам обращаться" required />
+            <label for="lead-company">Компания</label>
+            <input id="lead-company" type="text" name="company" placeholder="Название предприятия" required />
+            <label for="lead-contact">Телефон или e-mail</label>
+            <input id="lead-contact" type="text" name="contact" placeholder="+998 ..." required />
+            <label for="lead-task">Задача</label>
+            <textarea id="lead-task" name="message" rows="3" placeholder="Коротко о вашем оборудовании и задаче"></textarea>
+            <label class="consent">
+              <input type="checkbox" name="consent" required />
+              <span>Согласен на обработку <a href="/privacy/">персональных данных</a>.</span>
+            </label>
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+            <p class="form-status" id="lead-status" role="status" aria-live="polite"></p>
+            <p class="note">Заявку получает менеджер ServerPro. Договор — с ООО «SERVERPRO» (Узбекистан).</p>
+          </form>
+          <script is:inline define:vars={{ endpoint: LEAD_ENDPOINT_AJAX, email: LEAD_EMAIL }}>
+            (function () {
+              var form = document.getElementById('lead-form');
+              var status = document.getElementById('lead-status');
+              if (!form) return;
+              // предзаполнить служебные поля: путь + UTM-метки из адреса
+              try {
+                var q = new URLSearchParams(location.search);
+                if (form.intent && q.get('intent')) form.intent.value = q.get('intent');
+                if (form.source_path) form.source_path.value = location.pathname + location.search;
+                ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+                  if (form.elements[k]) form.elements[k].value = q.get(k) || '';
+                });
+              } catch (e) {}
+              function set(msg, cls) { if (status) { status.innerHTML = msg; status.className = 'form-status' + (cls ? ' ' + cls : ''); } }
+              // Нативный (no-JS) фолбэк вернулся с ?lead=ok — показываем успех
+              try { if (new URLSearchParams(location.search).get('lead') === 'ok') set('Спасибо! Заявка отправлена — свяжемся в течение рабочего дня.', 'ok'); } catch (e) {}
+              form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (form._honey && form._honey.value) return;           // бот
+                if (!form.checkValidity()) { form.reportValidity(); return; }
+                var btn = form.querySelector('button[type=submit]');
+                var orig = btn ? btn.textContent : '';
+                if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
+                set('', '');
+                fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: new URLSearchParams(new FormData(form)) })
+                  .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json().catch(function () { return {}; }); })
+                  .then(function () {
+                    form.reset();
+                    set('Спасибо! Заявка отправлена — свяжемся в течение рабочего дня.', 'ok');
+                    if (typeof window.ym === 'function' && window.YM_ID) window.ym(window.YM_ID, 'reachGoal', 'lead_submit');
+                  })
+                  .catch(function () {
+                    set('Не удалось отправить. Напишите нам на <a href="mailto:' + email + '">' + email + '</a> или в Telegram.', 'err');
+                  })
+                  .finally(function () { if (btn) { btn.disabled = false; btn.textContent = orig; } });
+              });
+            })();
+          </script>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Base>

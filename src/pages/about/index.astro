@@ -1,0 +1,166 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const timeline = [
+  { year: '2021', title: 'Старт направления индустриального мониторинга', body: 'Производитель выходит на рынок с предиктивной диагностикой и АСУТП. Разработка edge-шлюза «Ларус» поддержана грантом Минпромторга. Первые пилоты на тяжёлых производствах.' },
+  { year: '2022', title: 'Платформа в промышленной эксплуатации', body: 'Платформа мониторинга и диагностики (вибро- и токовая диагностика, ТОиР) выходит в промышленную эксплуатацию.' },
+  { year: '2026', title: 'ServerPro — официальный представитель в Средней Азии', body: 'ServerPro получает статус официального представителя линейки Пассер/Ларус/Стрикс на территории Узбекистана, Казахстана и Киргизии.' },
+];
+
+const competencies = [
+  {
+    title: 'Вибро- и токовая диагностика',
+    body: 'Контроллеры сбора виброакустики до 92 кГц («Пассер-В») и сигнатуры тока двигателей («Пассер-Т»). Edge-аналитика на «Ларус», ML-классификаторы, RUL.',
+  },
+  {
+    title: 'APC и цифровые двойники',
+    body: 'Платформа «Стрикс» с цифровым двойником актива по IEC 63278 (AAS). Управляющее воздействие в реальном времени, советчик оператору.',
+  },
+  {
+    title: 'Edge-вычисления и автоматизация',
+    body: 'Eclipse 4diac (IEC 61499) на «Ларус-100». Детерминированные блокировки, последовательности, skid-уровневое управление на edge.',
+  },
+];
+---
+<Base title="О компании — ServerPro" description="ServerPro — официальный региональный представитель продукции для вибродиагностики, токовой диагностики и APC (Пассер/Ларус/Стрикс) в Узбекистане, Казахстане и Киргизии. Плюс собственные услуги мониторинга инженерных систем и безопасности.">
+  <!-- Hero: ServerPro сам -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-50 [mask-image:radial-gradient(ellipse_at_top,_black_30%,_transparent_70%)]"></div>
+    <div class="container-x relative grid gap-12 py-20 md:grid-cols-12 md:py-28">
+      <div class="md:col-span-8">
+        <span class="pill-accent">
+          <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+          О компании
+        </span>
+        <h1 class="mt-6 font-display text-display-xl text-navy">
+          Ваш региональный <span class="text-gold">представитель.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg text-ink-muted">
+          ServerPro (Ташкент) — официальный региональный представитель линейки «Пассер»/«Ларус»/«Стрикс» для вибродиагностики, токовой диагностики и APC на территории Узбекистана, Казахстана и Киргизии. Продажа от своего имени, гарантийное и сервисное обслуживание, поддержка тендерных заявок.
+        </p>
+        <p class="mt-4 max-w-2xl text-base text-ink-muted">
+          Наряду с этой линейкой ServerPro своими силами ведёт услуги мониторинга инженерных систем и безопасности объектов — см. <a href="/services/" class="font-semibold text-navy hover:text-gold-600">Наши услуги</a>.
+        </p>
+        <div class="mt-10 grid grid-cols-3 gap-4 max-w-xl">
+          <div>
+            <div class="font-display text-3xl font-semibold text-navy">2026</div>
+            <div class="mt-1 text-xs uppercase tracking-[0.14em] text-ink-muted">официальный представитель с</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl font-semibold text-navy">3</div>
+            <div class="mt-1 text-xs uppercase tracking-[0.14em] text-ink-muted">страны региона</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl font-semibold text-navy">8</div>
+            <div class="mt-1 text-xs uppercase tracking-[0.14em] text-ink-muted">собственных услуг</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Реквизиты ServerPro -->
+  <section class="border-y border-navy/10 bg-white py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Компания</div>
+        <h2 class="mt-3 text-display-lg">ServerPro в цифрах и реквизитах.</h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <div class="card">
+          <div class="eyebrow text-gold-600">Юридическое лицо</div>
+          <div class="mt-2 font-display text-2xl font-semibold text-navy">ООО «SERVERPRO»</div>
+          <dl class="mt-6 space-y-3 text-sm">
+            <div class="flex justify-between gap-4 border-b border-navy/5 pb-3"><dt class="text-ink-muted">ИНН</dt><dd class="font-medium text-navy">311028163</dd></div>
+            <div class="flex justify-between gap-4 border-b border-navy/5 pb-3"><dt class="text-ink-muted">Адрес</dt><dd class="text-right font-medium text-navy">Ташкент, Юнусабадский р-н,<br/>13-й квартал, д. 3</dd></div>
+            <div class="flex justify-between gap-4 border-b border-navy/5 pb-3"><dt class="text-ink-muted">Директор</dt><dd class="font-medium text-navy">Гафаров И.И.</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-ink-muted">Телефон</dt><dd class="font-medium text-navy">+998 90 397-24-99</dd></div>
+          </dl>
+        </div>
+        <div class="card">
+          <div class="eyebrow text-gold-600">Статус</div>
+          <div class="mt-2 font-display text-2xl font-semibold text-navy">Официальный представитель</div>
+          <p class="mt-3 text-sm text-ink-muted">Продукция «Пассер»/«Ларус»/«Стрикс» на территории Узбекистана, Казахстана и Киргизии — продажа от своего имени, гарантийное и сервисное обслуживание, приём заявок на изготовление под заказ.</p>
+          <p class="mt-4 text-sm text-ink-muted">Также ведём собственные услуги инженерных систем, мониторинга конструкций и безопасности — не привязанные к одному производителю (партнёрские бренды: Spektron UPOS, Polymedia, META).</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow text-gold-600">Компетенции ServerPro</div>
+          <div class="mt-2 font-display text-2xl font-semibold text-navy">Член технических комитетов</div>
+          <dl class="mt-6 space-y-3 text-sm">
+            <div class="flex justify-between gap-4 border-b border-navy/5 pb-3"><dt class="text-ink-muted">ТК 269</dt><dd class="text-right font-medium text-navy">Горное дело</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-ink-muted">ТК 071</dt><dd class="text-right font-medium text-navy">Гражданская оборона</dd></div>
+          </dl>
+          <p class="mt-4 text-sm text-ink-muted">Членство в ТК 269 напрямую отражает специализацию ServerPro на безопасности угольной промышленности — см. <a href="/projects/" class="font-semibold text-navy hover:text-gold-600">наши проекты</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Технология, которую мы представляем -->
+  <section class="py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Технология, которую мы представляем</div>
+        <h2 class="mt-3 text-display-lg">Полный стек: от датчика до советчика.</h2>
+        <p class="mt-4 text-lg text-ink-muted">
+          Не «облачный сервис вибро как услуга». Собственное железо и ПО производителя, десятилетие реальной эксплуатации на тяжёлой индустрии — ServerPro поставляет и обслуживает эту линейку в регионе.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {competencies.map((c) => (
+          <div class="card flex flex-col">
+            <div class="font-display text-xl font-semibold text-navy">{c.title}</div>
+            <p class="mt-3 text-sm text-ink-muted">{c.body}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 max-w-2xl text-sm text-ink-muted">
+        Методика основана на R&D-практике производителя: партнёрство с ИТМО (AI-ядро), учебно-исследовательская лаборатория в Политехе Петра Великого (СПбПУ), разработка поддержана грантом Минпромторга.
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Хронология</div>
+        <h2 class="mt-3 text-display-lg">От разработки — к региональному представительству.</h2>
+      </div>
+      <div class="mt-12 grid gap-4">
+        {timeline.map((t) => (
+          <div class="card grid gap-3 md:grid-cols-12 md:items-start">
+            <div class="md:col-span-2">
+              <div class="font-display text-2xl font-semibold tracking-tight text-gold-600">{t.year}</div>
+            </div>
+            <div class="md:col-span-3">
+              <div class="font-display text-base font-semibold text-navy">{t.title}</div>
+            </div>
+            <div class="md:col-span-7">
+              <p class="text-sm text-ink-muted">{t.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact-about" class="bg-navy py-20 text-cream">
+    <div class="container-x grid items-center gap-8 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <div class="eyebrow text-gold">Контакт</div>
+        <h2 class="mt-3 font-display text-display-md text-cream">
+          Поговорить с командой?
+        </h2>
+        <p class="mt-3 text-cream/70">
+          Пилот, расчёт стоимости или просто разговор о вашем активе — выбирайте удобный формат.
+        </p>
+      </div>
+      <div class="md:col-span-5 flex flex-wrap gap-3 md:justify-end">
+        <a href="/#contact" class="btn-accent">Записаться на демо →</a>
+        <a href="mailto:info@server-pro.uz" class="btn-ghost !border-cream/20 !bg-white/5 !text-cream hover:!bg-white/10">info@server-pro.uz</a>
+      </div>
+    </div>
+  </section>
+</Base>

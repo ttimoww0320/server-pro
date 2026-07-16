@@ -1,0 +1,20 @@
+---
+// Pill — pilled badge / status capsule.
+// Variants: default (white, navy text), accent (cyan tint, cyan text), dark (navy bg, cream text).
+interface Props {
+  variant?: 'default' | 'accent' | 'dark';
+  class?: string;
+  dot?: boolean;
+}
+const { variant = 'default', class: className = '', dot = false } = Astro.props;
+
+const variantClass = {
+  default: 'border border-navy/10 bg-white/70 text-navy backdrop-blur',
+  accent: 'bg-gold/15 text-gold-600',
+  dark: 'bg-navy text-cream',
+}[variant];
+---
+<span class={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${variantClass} ${className}`}>
+  {dot && <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>}
+  <slot />
+</span>

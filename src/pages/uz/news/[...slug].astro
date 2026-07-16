@@ -1,0 +1,32 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('newsUz', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+interface Props { post: CollectionEntry<'newsUz'> }
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const UZ_MONTHS = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentyabr', 'oktyabr', 'noyabr', 'dekabr'];
+const d = post.data.date;
+const dateStr = `${d.getDate()} ${UZ_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+---
+<Base locale="uz" title={`${post.data.title} — Yangiliklar — ServerPro`} description={post.data.summary}>
+  <article class="py-20">
+    <div class="container-x max-w-prose">
+      <a href="/uz/news/" class="text-sm font-semibold text-navy hover:text-gold-600">← Barcha yangiliklar</a>
+      <div class="mt-8 text-xs uppercase tracking-wider text-ink-muted">
+        {dateStr}
+      </div>
+      <h1 class="mt-2 text-display-lg">{post.data.title}</h1>
+      <p class="mt-4 text-lg text-ink-muted">{post.data.summary}</p>
+      <div class="prose prose-slate prose-headings:font-display prose-headings:text-navy prose-a:text-gold-600 mt-10 max-w-none">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>

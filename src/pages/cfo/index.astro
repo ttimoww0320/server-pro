@@ -1,0 +1,213 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const oeeBenchmarks = [
+  { v: '85%', l: 'Мировой класс — Toyota, Pfizer, Siemens Amberg' },
+  { v: '40–60%', l: 'Средний по тяжёлой промышленности региона' },
+  { v: '14%', l: 'Микро-остановки — невидимые потери' },
+  { v: '+20%', l: 'Выручки при росте OEE на 10 п.п.' },
+];
+
+const blocks = [
+  {
+    eyebrow: 'OEE как финансовая метрика',
+    title: 'Не «процент работы» — а выручка в деньгах',
+    body: 'OEE × цена продукта × часы = упущенная выручка. Видите, что давало бы предприятие при 85% против ваших 55%. Цифры по объектам, не «средняя температура по больнице».',
+  },
+  {
+    eyebrow: 'Простои в деньгах',
+    title: 'Где именно деньги уходят',
+    body: 'Каждая остановка конвертируется в потери — производительность × цена × длительность. Парето по узлам и причинам. Решение об инвестиции — не на «ощущениях», а на цифре.',
+  },
+  {
+    eyebrow: 'Перерасход энергии',
+    title: 'Скрытая статья затрат — без отдельного проекта',
+    body: 'Анализ сигнатуры тока (MCSA) показывает, какие двигатели работают вне оптимума. Износ подшипников, перекос питания, дисбаланс ротора — всё это электричество, которое вы платите сверх нормы.',
+  },
+  {
+    eyebrow: 'Сервисная модель',
+    title: 'Оплата по результату: доля от экономии вместо капвложений',
+    body: 'Не покупаете систему — платите за достигнутую экономию. База + процент от подтверждённого эффекта + потолок. Нулевой риск для бюджета. По данным Bain: доля сервисных моделей в индустрии вырастет с 11% до 30% к 2030 году — это стандарт зрелого рынка.',
+  },
+];
+---
+<Base title="Для CFO" description="OEE как финансовая метрика, простои в деньгах, сервисная модель. Где деньги уходят — и как их вернуть.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-navy text-cream">
+    <div class="absolute inset-0 grid-bg opacity-20"></div>
+    <div class="container-x relative grid gap-12 py-20 md:grid-cols-12 md:py-28">
+      <div class="md:col-span-7">
+        <span class="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+          <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+          Для CFO
+        </span>
+        <h1 class="mt-6 font-display text-display-xl text-cream">
+          Где деньги <span class="text-gold">уходят.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg text-cream/80">
+          Простои в деньгах, не часах. OEE как финансовая метрика, а не «процент работы». Перерасход энергии — отдельной статьёй. Сервисная модель — платите за результат, а не за капвложения.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/?intent=apc-maas#contact" class="btn-accent">Обсудить сервисный контракт →</a>
+          <a href="/owner/" class="btn-ghost !border-cream/20 !bg-white/5 !text-cream hover:!bg-white/10">Для собственника</a>
+        </div>
+      </div>
+      <div class="md:col-span-5">
+        <div class="rounded-2xl border border-cream/10 bg-navy-900 p-6 shadow-lift">
+          <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-cream/50">P&L · по объектам · live</div>
+          <div class="mt-4 space-y-3 font-mono text-sm">
+            <div class="flex justify-between"><span class="text-cream/60">Актив-1 / выручка</span><span class="text-gold">+ $24 К/час</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">Актив-1 / простой</span><span class="text-cream/60">− $3.2 К</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">Энергия / перерасход</span><span class="text-cream/60">− $870/смена</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">OEE / Актив-1</span><span class="text-cream">62% → 71%</span></div>
+            <div class="my-3 border-t border-cream/10"></div>
+            <div class="flex justify-between text-cream"><span>ROI пилота · 30 дн</span><span class="text-gold">3.2×</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OEE benchmarks -->
+  <section class="border-y border-navy/10 bg-cream py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">OEE benchmarks</div>
+        <h2 class="mt-3 text-display-lg">85% — норма мировой индустрии. 55% — норма российской.</h2>
+        <p class="mt-4 text-lg text-ink-muted">
+          Разница в 30 п.п. — это +50% выручки на том же оборудовании. McKinsey, WEF Lighthouse, Bain — все считают так же. Вопрос только в инструментарии.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-4">
+        {oeeBenchmarks.map((s) => (
+          <div class="card">
+            <div class="font-display text-4xl font-semibold text-navy">{s.v}</div>
+            <div class="mt-2 text-sm text-ink-muted">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Four blocks -->
+  <section class="py-24">
+    <div class="container-x">
+      <div class="grid gap-6 md:grid-cols-2">
+        {blocks.map((b) => (
+          <div class="card flex flex-col">
+            <div class="eyebrow text-gold-600">{b.eyebrow}</div>
+            <div class="mt-3 font-display text-xl font-semibold text-navy">{b.title}</div>
+            <p class="mt-3 text-sm text-ink-muted">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI calculator -->
+  <section class="bg-cream py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Оцените свою экономию</div>
+        <h2 class="mt-3 text-display-md">Калькулятор потенциала APC + предиктива</h2>
+        <p class="mt-3 text-ink-muted">
+          Грубая оценка по среднеотраслевым показателям. Точная цифра — после Пилота APC: за 6–12 недель разворачиваем исходный уровень и выбираем метод оптимизации без обязательств.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-8 md:grid-cols-12">
+        <div class="md:col-span-5">
+          <div class="card">
+            <div class="eyebrow text-gold-600">Параметры</div>
+            <div class="mt-4 space-y-5">
+              <label class="block">
+                <span class="text-sm font-medium text-navy">Критичных активов в парке</span>
+                <input id="roi-units" type="number" min="1" max="500" value="5"
+                  class="mt-2 w-full rounded-lg border border-navy/10 bg-white px-4 py-3 text-sm text-navy focus:border-gold focus:outline-none" />
+              </label>
+              <label class="block">
+                <span class="text-sm font-medium text-navy">Стоимость простоя, $/час</span>
+                <input id="roi-rate" type="number" min="0" step="100" value="5000"
+                  class="mt-2 w-full rounded-lg border border-navy/10 bg-white px-4 py-3 text-sm text-navy focus:border-gold focus:outline-none" />
+              </label>
+              <label class="block">
+                <span class="text-sm font-medium text-navy">Часов работы / год</span>
+                <input id="roi-hours" type="number" min="1000" max="8760" step="100" value="8000"
+                  class="mt-2 w-full rounded-lg border border-navy/10 bg-white px-4 py-3 text-sm text-navy focus:border-gold focus:outline-none" />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-7">
+          <div class="rounded-2xl bg-navy p-6 text-cream md:p-8">
+            <div class="eyebrow text-gold">Оценка</div>
+            <div class="mt-4 grid gap-5 sm:grid-cols-2">
+              <div>
+                <div class="text-[11px] uppercase tracking-wider text-cream/60">Потенциал экономии</div>
+                <div class="mt-1 font-display text-3xl font-semibold text-cream md:text-4xl"><span id="roi-economy">—</span></div>
+                <div class="mt-1 text-xs text-cream/60">в год, при сокращении незапланированного downtime ≈ 8%</div>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-wider text-cream/60">База сервисного контракта</div>
+                <div class="mt-1 font-display text-3xl font-semibold text-cream md:text-4xl"><span id="roi-base">—</span></div>
+                <div class="mt-1 text-xs text-cream/60">в месяц, базовая часть. Плюс 20% от подтверждённой экономии, кап 3–4× базы.</div>
+              </div>
+            </div>
+            <div class="mt-6 rounded-lg bg-white/5 p-4 text-xs text-cream/70 ring-1 ring-cream/10">
+              <strong class="text-cream">Как считаем.</strong> Активы × часов × $/час × 8% = годовая экономия. База сервисного контракта ≈ 4% от месячного объёма экономии — отражает компенсацию затрат на сопровождение и долгосрочную поддержку. Это <em>оценка для разговора</em>, не оферта; точная структура согласовывается на этапе Пилота APC по фактическому исходному уровню.
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a id="roi-cta" href="/?intent=apc-maas#contact" class="btn-accent">Получить детальный расчёт →</a>
+              <a href="/pilot/#apc-pilot" class="btn-ghost !border-cream/20 !bg-white/5 !text-cream hover:!bg-white/10">Что такое Пилот APC?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function() {
+        function fmt(n) {
+          if (n >= 1e9) return '$' + (n / 1e9).toFixed(1).replace('.0', '') + ' млрд';
+          if (n >= 1e6) return '$' + (n / 1e6).toFixed(1).replace('.0', '') + ' млн';
+          if (n >= 1e3) return '$' + Math.round(n / 1e3) + ' тыс';
+          return '$' + Math.round(n);
+        }
+        var inputs = ['roi-units', 'roi-rate', 'roi-hours'].map(function(id) { return document.getElementById(id); });
+        var economyEl = document.getElementById('roi-economy');
+        var baseEl = document.getElementById('roi-base');
+        var ctaEl = document.getElementById('roi-cta');
+        if (!inputs[0] || !inputs[1] || !inputs[2] || !economyEl || !baseEl) return;
+        function recalc() {
+          var units = parseFloat(inputs[0].value) || 0;
+          var rate = parseFloat(inputs[1].value) || 0;
+          var hours = parseFloat(inputs[2].value) || 0;
+          var economy = units * rate * hours * 0.08;
+          var base = economy / 12 * 0.04;
+          economyEl.textContent = economy > 0 ? fmt(economy) : '—';
+          baseEl.textContent = base > 0 ? fmt(base) + '/мес' : '—';
+          if (ctaEl) {
+            var u = new URL(ctaEl.href, location.origin);
+            u.searchParams.set('intent', 'apc-maas');
+            u.searchParams.set('roi_economy', Math.round(economy));
+            u.searchParams.set('roi_base', Math.round(base));
+            u.hash = 'contact';
+            ctaEl.href = u.toString();
+          }
+        }
+        var roiUsedFired = false;
+        inputs.forEach(function(i) {
+          i.addEventListener('input', function() {
+            recalc();
+            if (!roiUsedFired && typeof window.ym === 'function' && window.YM_ID) {
+              window.ym(window.YM_ID, 'reachGoal', 'roi_calculator_used');
+              roiUsedFired = true;
+            }
+          });
+        });
+        recalc();
+      })();
+    </script>
+  </section>
+</Base>

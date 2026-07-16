@@ -1,0 +1,52 @@
+---
+// Bloomberg-Terminal-style ticker block.
+// Use for live financial / operational metrics: revenue, downtime, RUL, OEE.
+// Variants: 'dark' for navy surfaces (default), 'light' for cream surfaces.
+
+interface Props {
+  metric: string;
+  label: string;
+  delta?: string;
+  trend?: 'up' | 'down' | 'flat';
+  variant?: 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const {
+  metric,
+  label,
+  delta,
+  trend = 'flat',
+  variant = 'dark',
+  size = 'md',
+} = Astro.props;
+
+const arrow = trend === 'up' ? '↑' : trend === 'down' ? '↓' : '→';
+
+const surface = variant === 'dark'
+  ? 'border-cream/10 bg-navy/60'
+  : 'border-navy/10 bg-white';
+const labelClr = variant === 'dark' ? 'text-cream/50' : 'text-ink-muted';
+const metricClr = variant === 'dark' ? 'text-cream' : 'text-navy';
+
+const trendClr = trend === 'up'
+  ? (variant === 'dark' ? 'text-gold' : 'text-emerald-600')
+  : trend === 'down'
+    ? (variant === 'dark' ? 'text-cream/60' : 'text-ink-muted')
+    : (variant === 'dark' ? 'text-cream/60' : 'text-ink-muted');
+
+const metricSize = size === 'lg'
+  ? 'text-3xl md:text-4xl'
+  : size === 'sm'
+    ? 'text-xl'
+    : 'text-2xl';
+---
+<div class={`rounded-xl border px-4 py-3 ${surface}`}>
+  <div class={`text-[10px] uppercase tracking-[0.18em] ${labelClr}`}>{label}</div>
+  <div class="mt-1 flex items-baseline justify-between gap-3">
+    <span class={`font-display font-semibold tracking-tight ${metricClr} ${metricSize}`}>{metric}</span>
+    {delta && (
+      <span class={`font-mono text-xs ${trendClr}`}>{arrow} {delta}</span>
+    )}
+  </div>
+</div>

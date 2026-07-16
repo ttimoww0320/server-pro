@@ -1,0 +1,68 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('serverproServicesUz')).sort((a, b) => a.data.order - b.data.order);
+
+// Код услуги (в frontmatter хранится в RU) → отображение латиницей.
+const codeLabel: Record<string, string> = {
+  'СМИС': 'SMIS',
+  'СМИК/СМДС': 'SMIK/SMDS',
+  'СМИК': 'SMIK',
+  'СМДС': 'SMDS',
+  'МФСБ': 'MFSB',
+  'СКПБ': 'SKPB',
+  'EMaaS': 'EMaaS',
+};
+
+const advantages = [
+  { title: 'Yechimlarning keng doirasi', body: "Nuqtaviy raqamli vositalardan tortib tayyor dasturiy mahsulotlar, kompleks tizimlar va tarmoqqa moslashtirilgan yechimlargacha." },
+  { title: 'Har qanday murakkablikdagi loyihalar', body: "Muhim (KVO) va potensial xavfli (POO) obyektlarni monitoring qilish, mas'uliyatli konstruksiyalarni nazorat qilish, hududiy taqsimlangan obyektlar monitoringi tizimlari." },
+  { title: 'Samarali usullar', body: "Yechimlar texnologiya uchun texnologiyaga emas, o'lchanadigan iqtisodiy samaraga yo'naltirilgan." },
+];
+---
+<Base locale="uz" title="Bizning xizmatlar — ServerPro" description="ServerPro'ning o'z xizmatlari: muhandislik tizimlari va konstruksiyalar monitoringi, xavfsizlik, past kuchlanishli tizimlar, koll-markazlar, texnik hujjatlar — bitta ishlab chiqaruvchiga bog'liq bo'lmagan holda.">
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Bizning xizmatlar</div>
+        <h1 class="mt-3 text-display-lg">Faqat Passer/Larus/Strix emas.</h1>
+        <p class="mt-4 text-ink-muted">
+          Passer/Larus/Strix liniyasining rasmiy vakolatligidan tashqari, ServerPro o'z kuchi bilan muhandislik tizimlari, konstruksiyalar va obyektlar xavfsizligi monitoringi xizmatlarini olib boradi — aniq uskuna ishlab chiqaruvchisiga bog'liq bo'lmagan holda.
+        </p>
+        <p class="mt-4 text-lg font-medium text-navy">
+          «ServerPro — benuqson IT-infratuzilma kerak bo'lganda murojaat qiladigan hamkor. Biz darhol ko'zga tashlanadigan darajada barqarorlik, tezlik va texnik aniqlikni ta'minlaymiz».
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {advantages.map((a) => (
+          <div class="card">
+            <div class="font-display text-lg font-semibold text-navy">{a.title}</div>
+            <p class="mt-2 text-sm text-ink-muted">{a.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => (
+          <article class="card flex flex-col">
+            {s.data.code && <span class="pill-accent">{codeLabel[s.data.code] ?? s.data.code}</span>}
+            <h2 class="mt-3 font-display text-xl font-semibold text-navy">{s.data.name}</h2>
+            <p class="mt-3 text-sm text-ink-muted">{s.data.summary}</p>
+            {s.data.code === 'МФСБ' && (
+              <div class="mt-4 border-t border-navy/10 pt-3 text-xs font-medium text-gold-600">
+                TK 269 (kon ishi) a'zoligi bilan tasdiqlangan
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-16 max-w-2xl rounded-2xl border border-navy/10 bg-cream p-6 text-sm text-ink-muted">
+        Shuningdek, vibro- va tok diagnostikasi, APC uchun uskuna va DT taqdim etamiz — <a href="/uz/products/strix/" class="font-semibold text-navy hover:text-gold-600">mahsulot liniyasiga</a> qarang.
+        <a href="/uz/#contact" class="ml-2 font-semibold text-navy hover:text-gold-600">Bog'lanish →</a>
+      </div>
+    </div>
+  </section>
+</Base>

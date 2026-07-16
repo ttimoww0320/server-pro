@@ -1,0 +1,27 @@
+---
+// StrixOwl — the Strix product family mark (geometric owl silhouette, 'неясыть').
+// Variants:
+//   - 'navy' (default) — navy silhouette on light surfaces
+//   - 'cream' — cream silhouette on dark surfaces
+//   - 'currentColor' — inherits text color (use inline next to text)
+interface Props {
+  variant?: 'navy' | 'cream' | 'currentColor';
+  class?: string;
+  size?: number; // pixel size; default 16
+}
+const { variant = 'currentColor', class: className = '', size = 16 } = Astro.props;
+const src = variant === 'navy'
+  ? '/images/strix/strix-owl.svg'
+  : variant === 'cream'
+    ? '/images/strix/strix-owl-cream-native.svg'
+    : '/images/strix/strix-owl.svg';
+---
+<img
+  src={src}
+  alt=""
+  width={size}
+  height={size}
+  class={`inline-block ${className}`}
+  style={`width:${size}px;height:${size}px`}
+  aria-hidden="true"
+/>

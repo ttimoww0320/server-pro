@@ -1,0 +1,71 @@
+---
+const t = {
+  consoleTab: 'strix.liman-tech.ru · обзор',
+  pumpLive: 'В работе · 12 объектов',
+  badgeLeft: 'Пассер-В · 8 кан. · 92 кГц',
+  badgeRight: 'FFT + ML на «Ларус-100»',
+  badgeBottom: 'Стрикс · реальный дашборд',
+};
+---
+<div class="relative">
+  <!-- Outer glow halos -->
+  <div class="pointer-events-none absolute -inset-12 rounded-[3rem] bg-gradient-to-br from-gold/20 via-cream/0 to-navy/10 blur-3xl"></div>
+
+  <!-- Background screenshot (slightly offset, behind the foreground) -->
+  <div class="absolute -right-6 top-12 hidden w-[78%] -rotate-2 overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-lift md:block">
+    <div class="flex items-center gap-1.5 border-b border-navy/8 bg-navy/95 px-3 py-2">
+      <span class="h-2 w-2 rounded-full bg-cream/20"></span>
+      <span class="h-2 w-2 rounded-full bg-cream/20"></span>
+      <span class="h-2 w-2 rounded-full bg-cream/20"></span>
+      <span class="ml-2 text-[10px] font-mono uppercase tracking-[0.18em] text-cream/60">strix · scada</span>
+    </div>
+    <img
+      src="/images/strix/strix-scada.png"
+      alt="Strix SCADA"
+      class="block w-full"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Foreground screenshot card -->
+  <div class="relative z-10 overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-lift">
+    <!-- Browser-style top bar -->
+    <div class="flex items-center justify-between border-b border-navy/8 bg-gradient-to-r from-navy to-navy-700 px-4 py-2.5">
+      <div class="flex items-center gap-1.5">
+        <span class="h-2.5 w-2.5 rounded-full bg-cream/15"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-cream/15"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-cream/15"></span>
+        <span class="ml-3 text-[10px] font-mono uppercase tracking-[0.18em] text-cream/70">{t.consoleTab}</span>
+      </div>
+      <div class="flex items-center gap-1.5 rounded-full bg-cream/5 px-2.5 py-0.5 text-[10px] text-cream">
+        <span class="relative inline-flex h-1.5 w-1.5">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75"></span>
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold"></span>
+        </span>
+        {t.pumpLive}
+      </div>
+    </div>
+
+    <!-- Real Strix dashboard screenshot -->
+    <img
+      src="/images/strix/strix-dashboard.png"
+      alt="Strix dashboard"
+      class="block w-full"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Floating badges -->
+  <div class="absolute -left-3 top-10 z-20 hidden items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-navy shadow-lift md:flex">
+    <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+    {t.badgeLeft}
+  </div>
+  <div class="absolute -right-3 bottom-12 z-20 hidden items-center gap-2 rounded-full bg-navy px-3 py-1.5 text-xs font-medium text-cream shadow-lift md:flex">
+    <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+    {t.badgeRight}
+  </div>
+  <div class="absolute -bottom-3 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-2 rounded-full border border-navy/10 bg-cream px-3 py-1.5 text-xs font-medium text-navy shadow-soft md:flex">
+    <img src="/images/strix/strix-owl.svg" alt="" class="h-3.5 w-3.5" />
+    {t.badgeBottom}
+  </div>
+</div>

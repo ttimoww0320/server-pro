@@ -1,0 +1,44 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const industries = (await getCollection('industriesUz')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base locale="uz" title="Tarmoqlar" description="Liman-Tech qayerda ishlaydi: kon qazib olish, neft-gaz, energetika, metallurgiya, kimyo, sement va shisha, transport. Har bir tarmoq bo'yicha — aniq tugunlar, usullar va birikmalar.">
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Tarmoqlar</div>
+        <h1 class="mt-3 text-display-lg">Liman-Tech qayerda maksimal foyda beradi</h1>
+        <p class="mt-4 text-ink-muted">
+          Og'ir sanoatning yetti yo'nalishi. Har biri bo'yicha — vibro- va tok diagnostikasi, APC va kompyuter ko'rish raqamlashtirish haqidagi gaplar emas, natija beradigan aniq tugunlar.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {industries.map((i) => (
+          <a href={`/uz/industries/${i.slug}/`} class="card card-hover flex flex-col">
+            <div class="flex items-center gap-2">
+              {i.data.accent && <span class="pill-accent">{i.data.accent}</span>}
+            </div>
+            <h2 class="mt-4 font-display text-xl font-semibold text-navy">{i.data.name}</h2>
+            <p class="mt-3 text-sm text-ink-muted">{i.data.summary}</p>
+            {i.data.equipment_keywords.length > 0 && (
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                {i.data.equipment_keywords.slice(0, 5).map((k) => (
+                  <span class="rounded-md border border-navy/10 bg-cream px-2 py-0.5 text-[11px] font-medium text-navy">{k}</span>
+                ))}
+              </div>
+            )}
+            {i.data.strongest_combo && (
+              <div class="mt-5 border-t border-navy/10 pt-4 text-xs text-ink-muted">
+                <span class="font-semibold text-navy">Eng kuchli birikma:</span> {i.data.strongest_combo}
+              </div>
+            )}
+            <div class="mt-auto pt-5 text-sm font-semibold text-navy">Batafsil →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

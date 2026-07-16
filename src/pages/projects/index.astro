@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('serverproProjects');
+const coalCount = projects.filter((p) => p.data.sector === 'Уголь').length;
+---
+<Base title="Наши проекты — ServerPro" description="Проекты ServerPro в инженерных системах и безопасности объектов — с выраженной специализацией на безопасности угольной промышленности.">
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Наши проекты</div>
+        <h1 class="mt-3 text-display-lg">Опыт в инженерных системах и безопасности.</h1>
+        <p class="mt-4 text-ink-muted">
+          Часть проектов, в которых принимала участие команда ServerPro. Детали части проектов уточняются — отмечено отдельно.
+        </p>
+      </div>
+
+      <div class="mt-10 max-w-2xl rounded-2xl border border-navy/10 bg-cream p-6">
+        <p class="text-sm text-ink">
+          <strong class="text-navy">{coalCount} из {projects.length} проектов</strong> — безопасность угольной промышленности (МФСБ), что напрямую перекликается с членством ServerPro в техническом комитете по стандартизации ТК 269 (горное дело). Тот же профиль заказчика — горнодобыча и металлургия — целевой сегмент и для официальной дилерской линейки вибро- и токовой диагностики оборудования.
+        </p>
+        <a href="/industries/mining/" class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-navy hover:text-gold-600">
+          Диагностика оборудования для горнодобычи →
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p) => (
+          <article class="card flex flex-col">
+            <div class="flex items-center gap-2">
+              {p.data.sector && <span class="pill-accent">{p.data.sector}</span>}
+            </div>
+            <h2 class="mt-3 font-display text-lg font-semibold text-navy">{p.data.client}</h2>
+            <p class="mt-2 text-sm text-ink-muted">{p.data.summary}</p>
+            {!p.data.verified && (
+              <div class="mt-4 rounded-lg border border-gold/30 bg-gold/10 px-3 py-2 text-xs text-ink-muted">
+                По данным партнёра, детали не подтверждены
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

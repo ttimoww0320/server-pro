@@ -1,0 +1,46 @@
+---
+import { ui, getLocale, localizedPath, type Locale } from '../i18n/strings';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = getLocale(Astro.url.pathname) } = Astro.props;
+const t = ui[locale].cookie;
+const href = localizedPath('/privacy/', locale);
+---
+<div id="cookie-banner" class="fixed inset-x-0 bottom-0 z-50 hidden border-t border-navy/10 bg-white/95 shadow-lift backdrop-blur-md">
+  <div class="container-x flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between md:gap-8 md:py-5">
+    <p class="text-sm text-ink">
+      {t.body} <a href={href} class="underline decoration-gold underline-offset-2 hover:text-gold-600">{t.link}</a>.
+    </p>
+    <div class="flex flex-shrink-0 gap-2">
+      <button id="cookie-decline" type="button" class="btn-ghost text-sm">{t.decline}</button>
+      <button id="cookie-accept" type="button" class="btn-accent text-sm">{t.accept}</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    var KEY = 'sp_cookie_consent';
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    var stored;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    if (stored !== 'accepted' && stored !== 'declined') {
+      banner.classList.remove('hidden');
+    }
+    function close(value) {
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+      banner.classList.add('hidden');
+      // Optional: notify Yandex.Metrica that user consented (for cookie-aware tracking).
+      if (value === 'accepted' && typeof window.ym === 'function' && window.YM_ID) {
+        window.ym(window.YM_ID, 'reachGoal', 'cookie_consent_accepted');
+      }
+    }
+    var a = document.getElementById('cookie-accept');
+    var d = document.getElementById('cookie-decline');
+    if (a) a.addEventListener('click', function() { close('accepted'); });
+    if (d) d.addEventListener('click', function() { close('declined'); });
+  })();
+</script>

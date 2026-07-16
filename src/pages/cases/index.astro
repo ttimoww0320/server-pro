@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const cases = (await getCollection('cases'))
+  .sort((a, b) => (b.data.year || '').localeCompare(a.data.year || ''));
+
+const statusLabel: Record<string, string> = {
+  completed: 'Сдан',
+  deployed: 'В эксплуатации',
+  rolling_out: 'Идёт внедрение',
+};
+---
+<Base title="Клиенты" description="Публичные референсы производителя (Лиман-Тех) — вибромониторинг, токовая диагностика и APC в тяжёлой промышленности, поставляемые ServerPro на рынке Средней Азии.">
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Клиенты</div>
+        <h1 class="mt-3 text-display-lg">Технология с подтверждённым опытом</h1>
+        <p class="mt-4 text-ink-muted">
+          Продукцию, которую ServerPro поставляет и обслуживает в регионе, производитель уже проверил на десятках промышленных объектов. Имена заказчиков по умолчанию обезличены — узнаваемо для убедительности, аккуратно из уважения к операционной конфиденциальности.
+        </p>
+      </div>
+
+      <div class="mt-14">
+        <div class="flex items-center gap-3">
+          <span class="pill-accent">Референсы производителя</span>
+          <span class="text-xs text-ink-muted">{cases.length} публичных кейса с раскрытыми деталями</span>
+        </div>
+      </div>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        {cases.length === 0 && (
+          <div class="card md:col-span-2 border-dashed text-center text-ink-muted">
+            Истории клиентов скоро появятся.
+          </div>
+        )}
+        {cases.map((c) => (
+          <article class="card card-hover flex flex-col">
+            <div class="flex items-center gap-2">
+              <span class="pill-accent">{c.data.industry}</span>
+              <span class="text-xs uppercase tracking-wider text-ink-muted">{c.data.year}</span>
+              <span class="ml-auto text-xs font-medium text-ink-muted">{statusLabel[c.data.status]}</span>
+            </div>
+            <h2 class="mt-4 font-display text-xl font-semibold text-navy">{c.data.client}</h2>
+            {c.data.scale && (
+              <div class="mt-1 text-sm font-medium text-gold-600">{c.data.scale}</div>
+            )}
+            <p class="mt-3 text-sm text-ink-muted">{c.data.summary}</p>
+
+            {c.data.metrics.length > 0 && (
+              <ul class="mt-4 grid grid-cols-2 gap-2 border-t border-navy/10 pt-4 text-xs text-ink-muted">
+                {c.data.metrics.map((m) => (
+                  <li class="flex items-start gap-1.5">
+                    <span class="mt-1 h-1 w-1 rounded-full bg-gold"></span>
+                    <span>{m}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {c.data.products.length > 0 && (
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                {c.data.products.map((p) => (
+                  <span class="rounded-md border border-navy/10 bg-cream px-2 py-0.5 text-[11px] font-medium text-navy">{p}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-16 max-w-2xl rounded-2xl border border-navy/10 bg-cream p-6 text-sm text-ink-muted">
+        Ищете референс под свою отрасль — горную добычу, нефтегаз, цемент, энергетику? Познакомим вас с действующим клиентом, у кого задача ближе всего к вашей.
+        <a href="/#contact" class="ml-2 font-semibold text-navy hover:text-gold-600">Связаться →</a>
+      </div>
+    </div>
+  </section>
+</Base>

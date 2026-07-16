@@ -1,0 +1,213 @@
+---
+import Base from '../../../layouts/Base.astro';
+
+const oeeBenchmarks = [
+  { v: '85%', l: 'Jahon klassi — Toyota, Pfizer, Siemens Amberg' },
+  { v: '40–60%', l: "Mintaqadagi og'ir sanoat bo'yicha o'rtacha" },
+  { v: '14%', l: "Mikro-to'xtashlar — ko'rinmas yo'qotishlar" },
+  { v: '+20%', l: 'OEE 10 foiz punktiga oshganda tushum' },
+];
+
+const blocks = [
+  {
+    eyebrow: 'OEE — moliyaviy metrika sifatida',
+    title: '«Ish foizi» emas — puldagi tushum',
+    body: "OEE × mahsulot narxi × soatlar = boy berilgan tushum. 85% da korxona sizning 55% ingizga qaraganda nima berishini ko'rasiz. Raqamlar obyektlar bo'yicha, «kasalxona bo'yicha o'rtacha harorat» emas.",
+  },
+  {
+    eyebrow: "Puldagi to'xtashlar",
+    title: 'Pul aynan qayerga ketmoqda',
+    body: "Har bir to'xtash yo'qotishga aylanadi — unumdorlik × narx × davomiylik. Tugunlar va sabablar bo'yicha Pareto. Investitsiya qarori — «tuyg'ular» bo'yicha emas, raqam bo'yicha.",
+  },
+  {
+    eyebrow: 'Energiya ortiqcha sarfi',
+    title: 'Yashirin xarajat moddasi — alohida loyihasiz',
+    body: "Tok signaturasi tahlili (MCSA) qaysi motorlar optimumdan tashqarida ishlayotganini ko'rsatadi. Podshipniklar eyilishi, ta'minot nomutanosibligi, rotor disbalansi — bularning bari me'yordan ortiq to'laydigan elektr energiyangiz.",
+  },
+  {
+    eyebrow: 'Servis modeli',
+    title: "Natijaga ko'ra to'lov: kapital qo'yilma o'rniga tejamdan ulush",
+    body: "Tizimni sotib olmaysiz — erishilgan tejam uchun to'laysiz. Baza + tasdiqlangan samaradan foiz + yuqori chegara. Byudjet uchun nol xavf. Bain ma'lumotlariga ko'ra: sanoatdagi servis modellari ulushi 2030-yilga borib 11% dan 30% gacha o'sadi — bu yetuk bozor standarti.",
+  },
+];
+---
+<Base locale="uz" title="Moliya direktori uchun" description="OEE moliyaviy metrika sifatida, puldagi to'xtashlar, servis modeli. Pul qayerga ketadi — va uni qanday qaytarish.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-navy text-cream">
+    <div class="absolute inset-0 grid-bg opacity-20"></div>
+    <div class="container-x relative grid gap-12 py-20 md:grid-cols-12 md:py-28">
+      <div class="md:col-span-7">
+        <span class="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+          <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+          Moliya direktori uchun
+        </span>
+        <h1 class="mt-6 font-display text-display-xl text-cream">
+          Pul qayerga <span class="text-gold">ketmoqda.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg text-cream/80">
+          To'xtashlar soatlarda emas, pulda. OEE — «ish foizi» emas, moliyaviy metrika. Energiya ortiqcha sarfi — alohida modda. Servis modeli — kapital qo'yilma uchun emas, natija uchun to'laysiz.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/uz/?intent=apc-maas#contact" class="btn-accent">Servis shartnomasini muhokama qilish →</a>
+          <a href="/uz/owner/" class="btn-ghost !border-cream/20 !bg-white/5 !text-cream hover:!bg-white/10">Egasi uchun</a>
+        </div>
+      </div>
+      <div class="md:col-span-5">
+        <div class="rounded-2xl border border-cream/10 bg-navy-900 p-6 shadow-lift">
+          <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-cream/50">P&L · obyektlar bo'yicha · live</div>
+          <div class="mt-4 space-y-3 font-mono text-sm">
+            <div class="flex justify-between"><span class="text-cream/60">Aktiv-1 / tushum</span><span class="text-gold">+ $24 K/soat</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">Aktiv-1 / to'xtash</span><span class="text-cream/60">− $3.2 K</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">Energiya / ortiqcha sarf</span><span class="text-cream/60">− $870/smena</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">OEE / Aktiv-1</span><span class="text-cream">62% → 71%</span></div>
+            <div class="my-3 border-t border-cream/10"></div>
+            <div class="flex justify-between text-cream"><span>Pilot ROI · 30 kun</span><span class="text-gold">3.2×</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OEE benchmarks -->
+  <section class="border-y border-navy/10 bg-cream py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">OEE benchmarks</div>
+        <h2 class="mt-3 text-display-lg">85% — jahon sanoati normasi. 55% — rossiya sanoati normasi.</h2>
+        <p class="mt-4 text-lg text-ink-muted">
+          30 foiz punkti farq — bu o'sha uskunada +50% tushum. McKinsey, WEF Lighthouse, Bain — hammasi shunday hisoblaydi. Gap faqat vositalarda.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-4">
+        {oeeBenchmarks.map((s) => (
+          <div class="card">
+            <div class="font-display text-4xl font-semibold text-navy">{s.v}</div>
+            <div class="mt-2 text-sm text-ink-muted">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Four blocks -->
+  <section class="py-24">
+    <div class="container-x">
+      <div class="grid gap-6 md:grid-cols-2">
+        {blocks.map((b) => (
+          <div class="card flex flex-col">
+            <div class="eyebrow text-gold-600">{b.eyebrow}</div>
+            <div class="mt-3 font-display text-xl font-semibold text-navy">{b.title}</div>
+            <p class="mt-3 text-sm text-ink-muted">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI calculator -->
+  <section class="bg-cream py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Tejamingizni baholang</div>
+        <h2 class="mt-3 text-display-md">APC + prediktiv salohiyati kalkulyatori</h2>
+        <p class="mt-3 text-ink-muted">
+          O'rta tarmoq ko'rsatkichlari bo'yicha taxminiy baho. Aniq raqam — APC pilotidan so'ng: 6–12 hafta ichida boshlang'ich darajani o'rnatamiz va majburiyatlarsiz optimallashtirish metodini tanlaymiz.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-8 md:grid-cols-12">
+        <div class="md:col-span-5">
+          <div class="card">
+            <div class="eyebrow text-gold-600">Parametrlar</div>
+            <div class="mt-4 space-y-5">
+              <label class="block">
+                <span class="text-sm font-medium text-navy">Parkdagi kritik aktivlar</span>
+                <input id="roi-units" type="number" min="1" max="500" value="5"
+                  class="mt-2 w-full rounded-lg border border-navy/10 bg-white px-4 py-3 text-sm text-navy focus:border-gold focus:outline-none" />
+              </label>
+              <label class="block">
+                <span class="text-sm font-medium text-navy">To'xtash narxi, $/soat</span>
+                <input id="roi-rate" type="number" min="0" step="100" value="5000"
+                  class="mt-2 w-full rounded-lg border border-navy/10 bg-white px-4 py-3 text-sm text-navy focus:border-gold focus:outline-none" />
+              </label>
+              <label class="block">
+                <span class="text-sm font-medium text-navy">Ish soatlari / yil</span>
+                <input id="roi-hours" type="number" min="1000" max="8760" step="100" value="8000"
+                  class="mt-2 w-full rounded-lg border border-navy/10 bg-white px-4 py-3 text-sm text-navy focus:border-gold focus:outline-none" />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-7">
+          <div class="rounded-2xl bg-navy p-6 text-cream md:p-8">
+            <div class="eyebrow text-gold">Baho</div>
+            <div class="mt-4 grid gap-5 sm:grid-cols-2">
+              <div>
+                <div class="text-[11px] uppercase tracking-wider text-cream/60">Tejam salohiyati</div>
+                <div class="mt-1 font-display text-3xl font-semibold text-cream md:text-4xl"><span id="roi-economy">—</span></div>
+                <div class="mt-1 text-xs text-cream/60">yiliga, rejadan tashqari downtime ≈ 8% ga qisqarganda</div>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-wider text-cream/60">Servis shartnomasi bazasi</div>
+                <div class="mt-1 font-display text-3xl font-semibold text-cream md:text-4xl"><span id="roi-base">—</span></div>
+                <div class="mt-1 text-xs text-cream/60">oyiga, asosiy qism. Plyus tasdiqlangan tejamdan 20%, kap bazaning 3–4×.</div>
+              </div>
+            </div>
+            <div class="mt-6 rounded-lg bg-white/5 p-4 text-xs text-cream/70 ring-1 ring-cream/10">
+              <strong class="text-cream">Qanday hisoblaymiz.</strong> Aktivlar × soatlar × $/soat × 8% = yillik tejam. Servis shartnomasi bazasi ≈ oylik tejam hajmining 4% — texnik xizmat va uzoq muddatli qo'llab-quvvatlash xarajatlarini qoplashni aks ettiradi. Bu <em>suhbat uchun baho</em>, oferta emas; aniq tuzilma APC piloti bosqichida haqiqiy boshlang'ich daraja bo'yicha kelishiladi.
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a id="roi-cta" href="/uz/?intent=apc-maas#contact" class="btn-accent">Batafsil hisob-kitob olish →</a>
+              <a href="/uz/pilot/#apc-pilot" class="btn-ghost !border-cream/20 !bg-white/5 !text-cream hover:!bg-white/10">APC piloti nima?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function() {
+        function fmt(n) {
+          if (n >= 1e9) return '$' + (n / 1e9).toFixed(1).replace('.0', '') + ' mlrd';
+          if (n >= 1e6) return '$' + (n / 1e6).toFixed(1).replace('.0', '') + ' mln';
+          if (n >= 1e3) return '$' + Math.round(n / 1e3) + ' ming';
+          return '$' + Math.round(n);
+        }
+        var inputs = ['roi-units', 'roi-rate', 'roi-hours'].map(function(id) { return document.getElementById(id); });
+        var economyEl = document.getElementById('roi-economy');
+        var baseEl = document.getElementById('roi-base');
+        var ctaEl = document.getElementById('roi-cta');
+        if (!inputs[0] || !inputs[1] || !inputs[2] || !economyEl || !baseEl) return;
+        function recalc() {
+          var units = parseFloat(inputs[0].value) || 0;
+          var rate = parseFloat(inputs[1].value) || 0;
+          var hours = parseFloat(inputs[2].value) || 0;
+          var economy = units * rate * hours * 0.08;
+          var base = economy / 12 * 0.04;
+          economyEl.textContent = economy > 0 ? fmt(economy) : '—';
+          baseEl.textContent = base > 0 ? fmt(base) + '/oy' : '—';
+          if (ctaEl) {
+            var u = new URL(ctaEl.href, location.origin);
+            u.searchParams.set('intent', 'apc-maas');
+            u.searchParams.set('roi_economy', Math.round(economy));
+            u.searchParams.set('roi_base', Math.round(base));
+            u.hash = 'contact';
+            ctaEl.href = u.toString();
+          }
+        }
+        var roiUsedFired = false;
+        inputs.forEach(function(i) {
+          i.addEventListener('input', function() {
+            recalc();
+            if (!roiUsedFired && typeof window.ym === 'function' && window.YM_ID) {
+              window.ym(window.YM_ID, 'reachGoal', 'roi_calculator_used');
+              roiUsedFired = true;
+            }
+          });
+        });
+        recalc();
+      })();
+    </script>
+  </section>
+</Base>

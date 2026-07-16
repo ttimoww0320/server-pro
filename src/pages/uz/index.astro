@@ -1,0 +1,468 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/site.css';
+import { LEAD_ENDPOINT, LEAD_ENDPOINT_AJAX, LEAD_EMAIL } from '../../lib/lead';
+
+const title = 'ServerPro — sanoat, shahar va biznesni raqamlashtirish · Toshkent';
+const description =
+  "ServerPro — Toshkentdagi muhandislik kompaniyasi: prediktiv vibro- va tok diagnostikasi, uskunalar monitoringi, avtomatlashtirish, raqamli shahar va sun'iy intellektga asoslangan yechimlar. Loyihalashtiramiz, yetkazib beramiz, o'rnatamiz va texnik xizmat ko'rsatamiz — datchikdan dispetcherlik punktigacha.";
+---
+<Base locale="uz" title={title} description={description}>
+  <div class="sp">
+
+    <!-- HERO -->
+    <section class="hero grid-bg">
+      <picture class="hero-media">
+        <source srcset="/images/industry-map.webp" type="image/webp" />
+        <img src="/images/industry-map.jpg" alt="Sanoat klasterining izometrik xaritasi: neft-gaz, energetika, metallurgiya, sement, kon qazib olish va dengiz porti" width="1672" height="941" fetchpriority="high" decoding="async" />
+      </picture>
+      <div class="hero-scrim"></div>
+      <div class="halo"></div><div class="halo2"></div>
+      <div class="container">
+        <span class="eyebrow">Muhandislik kompaniyasi · Toshkent</span>
+        <h1>Zamonaviy yechimlar sizning ishlab chiqarishingiz uchun</h1>
+        <div class="desc">Sanoat, shahar va biznesni raqamlashtirish</div>
+        <p class="sub">ServerPro O'zbekiston korxonalariga zamonaviy raqamli yechimlarni olib keladi va ularni o'z kuchi bilan joriy etadi — datchikdan dispetcherlik punktigacha. Jahon darajasidagi texnologiyalar, muhandislik va servis — mahalliy.</p>
+        <div class="cta">
+          <a href="#cta" class="btn btn-primary">Masalani muhokama qilish <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#dirs" class="btn btn-ghost">Bizning yo'nalishlar</a>
+        </div>
+        <div class="trust">
+          <div><span class="n">3</span><span class="l">kalit topshirish yo'nalishi</span></div>
+          <div><span class="n">L0–L3</span><span class="l">to'liq diagnostika steki</span></div>
+          <div><span class="n">92 kGts</span><span class="l">xom vibratsiya signali</span></div>
+          <div><span class="n">Toshkent</span><span class="l">mahalliy ombor va servis</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTIONS -->
+    <section id="dirs">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow dark">Yo'nalishlar</span>
+          <h2>Uch yo'nalish — yagona muhandislik jamoasi</h2>
+          <p class="lead">Biz masalani to'liq yopamiz: loyihalashtiramiz, yetakchi ishlab chiqaruvchilarning uskunalarini yetkazib beramiz, yig'amiz, o'rnatamiz va texnik xizmat ko'rsatamiz.</p>
+        </div>
+        <div class="dirs">
+          <div class="dir flag">
+            <span class="tag">Flagman</span>
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h3>Sanoatni raqamlashtirish</h3>
+            <p>Prediktiv vibro- va tok diagnostikasi, uskunalar holatining monitoringi va ASU TP optimallashtirilishi. Kamroq avariyaviy to'xtashlar — o'sha uskunadan ko'proq foyda.</p>
+            <ul class="dir-list">
+              <li>Vibro- va tok diagnostikasi<span class="src">Passer · Larus · Strix.Platforma</span></li>
+              <li>Holat monitoringi va ishonchlilik<span class="src">OEE, holatga ko'ra texnik xizmat, to'xtashlarni kamaytirish</span></li>
+              <li>ASU TP / APC optimallashtirilishi</li>
+              <li>Sanoat aloqasi va xodimlar xavfsizligi<span class="src">X-Connect — ratsiyalar, odam qidirish, yiqilish datchigi, REB-barqarorlik</span></li>
+              <li>Operator trenajyorlari<span class="src">LKM — raqamli egizaklarda o'qitish</span></li>
+            </ul>
+            <a class="more" href="#stack">Stekni ko'rish <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="dir">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/><path d="M10 6h4M10 10h4M10 14h4"/></svg></div>
+            <h3>Raqamli shahar</h3>
+            <p>Yo'l harakatini boshqarish (ASUDD), FVV va favqulodda vaziyatlar to'g'risida ogohlantirish tizimlari, bino va inshootlarning muhandislik tizimlari monitoringi, yong'in xavfsizligi.</p>
+            <ul class="dir-list">
+              <li>ASUDD — yo'l harakatini boshqarish<span class="src">Svetofor tartibga solish, transportni aniqlash</span></li>
+              <li>FVV va favqulodda vaziyatlar ogohlantiruvi / SOUE<span class="src">O'z brendi Yulduz + «META» ISHK — ogohlantirgichlar, pultlar, evakuatsiya</span></li>
+              <li>Yong'in xavfsizligi — «Neptun» YXT <span class="badge-soon"><span class="dot"></span>Mintaqaga tayyorlanmoqda</span><span class="src">Manzilli YXS: datchiklar + PPKU, portlashdan himoyalangan bajarilishlar</span></li>
+              <li>Bino va inshootlar monitoringi<span class="src">SMIS · SMIK/SMDS · MFSB</span></li>
+            </ul>
+            <a class="more" href="#yulduz">O'z brendi Yulduz <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="dir">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div>
+            <h3>Boshqaruv va sun'iy intellekt</h3>
+            <p>Biznes-jarayonlarni raqamlashtirish, qaror konturida inson ishtirokidagi SI-agentlarni operatsion faoliyatga joriy etish, modellarni o'qitish va mahalliy joylashtirish — ma'lumotlar mamlakat hududida qoladi.</p>
+            <ul class="dir-list">
+              <li>Biznes-jarayonlarni raqamlashtirish</li>
+              <li>Operatsion faoliyatdagi SI-agentlar<span class="src">Qaror konturidagi inson (human-in-loop)</span></li>
+              <li>LLM'ni mahalliy joylashtirish<span class="src">Ma'lumotlar mamlakat hududida qoladi</span></li>
+              <li>Investitsiya loyihalari uchun TIA ishlab chiqish<span class="src">Texnik yechimlar, CAPEX/OPEX, moliyaviy model, risklarni baholash</span></li>
+            </ul>
+            <a class="more" href="#how">Qanday ishlaymiz <svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINS -->
+    <section id="pains" class="grid-bg">
+      <div class="container">
+        <div class="head center">
+          <span class="eyebrow dark">Tanish vaziyatlar</span>
+          <h2>O'zingizni tanidingizmi?</h2>
+          <p class="lead" style="margin:14px auto 0">Rahbarlar bilan bo'ladigan har o'ndan to'qqiz suhbat ana shu vaziyatlardan biri bilan boshlanadi. Agar shulardan biri siz haqingizda bo'lsa — bizda ko'rsatadigan narsa bor.</p>
+        </div>
+        <div class="pain-grid">
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Nazorat</span>
+            <h3>«Ishdan chiqqani haqida tungi qo'ng'iroqdan bilaman»</h3>
+            <p>Holatning onlayn monitoringi nuqsonni <b>ishdan chiqishdan haftalar va oylar oldin</b> ko'rsatadi — har bir tugun bo'yicha qoldiq resurs ko'rinadi. Avariya rejalashtirilgan almashtirishga aylanadi.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Nazorat</span>
+            <h3>«Zavod hozir qancha ishlab topayotganini hisobotdan bilaman. Va kutaman»</h3>
+            <p>Aktivning onlayn iqtisodi: <b>aynan hozir</b> qancha ishlab chiqarayotgani va topayotgani, to'xtash esa — soatlarda emas, darhol pulda. Telefon ekranida, so'rovsiz va kutishsiz.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Nazorat</span>
+            <h3>«Har bir hisobot — kimningdir talqini»</h3>
+            <p>Egasi, moliya direktori va bosh muhandis <b>datchiklardan olingan bir xil ma'lumotlarga</b> qaraydi — shunchaki turli ekranlar orqali. Bitta tizim, bitta haqiqat, hech qanday qayta hikoyasiz.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Nazorat</span>
+            <h3>«Maydonchalar bir nechta — qayerda ko'proq yo'qotayotganimiz esa savol»</h3>
+            <p>Portfel ekrani: barcha maydonchalar alifbo bo'yicha emas, <b>puldagi yo'qotishlar bo'yicha</b> saralangan. Aktivlar xaritasidan aniq tugun va uning prognoziga — ikki bosishda.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Pul</span>
+            <h3>«ZIP ombori pulni muzlatadi — kerakli detal esa yo'q»</h3>
+            <p>Tugunlar bo'yicha qoldiq resurs prognozi ZIP xaridini «har ehtimolga qarshi»dan <b>«almashtirish muddatiga»</b>ga aylantiradi. Ombor haqiqatan kerak bo'ladigan narsani va kerak bo'lganda saqlaydi.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Pul</span>
+            <h3>«Jadval bo'yicha ta'mirlaymiz: sog'ini almashtiramiz, o'layotganini o'tkazib yuboramiz»</h3>
+            <p>Reglament o'rniga holatga ko'ra xizmat ko'rsatish: ishlar haqiqiy eyilish bo'yicha tayinlanadi. Joriy etishlar amaliyotida — <b>rejadan tashqari ta'mirlar 40–60% gacha kamroq</b>.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Pul</span>
+            <h3>«Elektr energiyasi hisobi o'sib boryapti, qayerga ketayotgani esa noaniq»</h3>
+            <p>Eyilgan privod ishdan chiqishdan ancha oldin me'yordan ortiq iste'mol qiladi. Tok diagnostikasi qaysi motorlar ortiqcha yoqayotganini ko'rsatadi — <b>tejam hisoblagich bo'yicha tasdiqlanadi</b>.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Pul</span>
+            <h3>«Samara tushunarli, ammo byudjetda kapital xarajat yo'q»</h3>
+            <p>Xizmat sifatidagi monitoring (EMaaS): uskunani sotib olmasdan, <b>operatsion xarajatlardan</b> oylik to'lov. Bitta uchastkadagi pilotdan boshlanadi — samara masshtablashdan oldin o'lchanadi.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Odamlar va park</span>
+            <h3>«Bizda vibrodiagnostlar yo'q — bu bilan kim ishlaydi?»</h3>
+            <p>Tizim spektrlar emas, <b>tashxis va ishlar ustuvorligini</b> beradi — mexanik uchun tushunarli nariyad. Servis qo'llab-quvvatlashi va mutaxassislaringizni o'qitish — Toshkentdagi muhandislar tomonidan.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>Odamlar va park</span>
+            <h3>«Uskuna eski — raqamlashtirish biz haqimizda emas»</h3>
+            <p>Mashinaga aralashmasdan retrofit: ustama datchiklar va tok qisqichlari holat, yuklama va eyilishni <b>hatto 1980-yillardagi dastgohlar uchun ham</b> beradi. Monitoring parkni almashtirishni talab qilmaydi.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>O'sish</span>
+            <h3>«Chiqish va sifat smenadan smenaga sakraydi»</h3>
+            <p>Texnologik jarayonni barqarorlashtirish va optimallashtirish: amaldagi ASU TP ustidagi maslahatchi-tizim jarayonni optimumga yaqinroq olib boradi. <b>O'sha uskunadan ko'proq mahsulot</b>; operator konturda qoladi.</p>
+          </div>
+          <div class="pain">
+            <span class="grp"><span class="dot"></span>O'sish</span>
+            <h3>«SI haqida hamma gapiradi — ammo ma'lumotni begona bulutga bo'lmaydi»</h3>
+            <p>Biznes-jarayonlardagi SI-agentlar va mahalliy joylashtirilgan modellar: hammasi sizning maydonchangizda ishlaydi, <b>ma'lumotlar mamlakatni tark etmaydi</b>, qarorlarni inson tasdiqlaydi.</p>
+          </div>
+        </div>
+        <p class="pains-note">O'z vaziyatingizni topmadingizmi? Uni bizga tasvirlab bering — <a href="#cta">masalani muhokama qilamiz</a> va nimaga yordam bera olishimizni, nimaga esa yo'qligini halol aytamiz.</p>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="why">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow dark">Nega ServerPro</span>
+          <h2>Jahon texnologiyalari. Mahalliy muhandislik.</h2>
+        </div>
+        <div class="feats">
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <h3>To'liq siklli muhandislik</h3>
+            <p>Loyihalashtiramiz, shkaflarni yig'amiz, o'rnatamiz, past kuchlanishli va yong'in tizimlarini olib boramiz, ishga tushiramiz va texnik xizmat ko'rsatamiz. Qayta sotish emas — o'z qo'limiz bilan joriy etish.</p>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <h3>Jahon darajasidagi texnologiyalar</h3>
+            <p>Bently Nevada va SKF darajasidagi prediktiv diagnostika — ammo mahalliy ombor, servis va narx bilan.</p>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-6.36 2.64L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 6.36-2.64L21 16"/><path d="M21 21v-5h-5"/></svg></div>
+            <h3>Pilot, servis, o'qitish</h3>
+            <p>Audit va pilotdan tortib servis qo'llab-quvvatlashi va mutaxassislaringizni tizim bilan ishlashga o'rgatishgacha.</p>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>Mahalliy mavjudlik</h3>
+            <p>Mahalliy yuridik shaxs, ombor, servis markazi va rus tilida qo'llab-quvvatlash — o'zbekcha versiya tayyorlanmoqda.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="stack-sec grid-bg">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow">Sanoatni raqamlashtirish · stek</span>
+          <h2>Datchikdan egasining dashbordigacha</h2>
+          <p class="lead" style="color:#9fb0c3">Bitta tizimning to'rt darajasi — xom signal qarorlarga aylanadi: qayerda tuzatish, qachon tuzatish va bu qancha turadi.</p>
+        </div>
+        <div class="stack">
+          <div class="lvl">
+            <div class="lx">L0 · O'lchash</div>
+            <h3>Passer</h3>
+            <div class="role">Xom signallarni yig'ish</div>
+            <p>Yig'ish kontrollerlari: vibratsiya 92 kGts gacha, tok, harorat. Yo'qotishsiz ma'lumot.</p>
+          </div>
+          <div class="lvl">
+            <div class="lx">L1 · Uzatish</div>
+            <h3>Larus</h3>
+            <div class="role">IIoT-shlyuz · uskuna</div>
+            <p>Joyida dastlabki qayta ishlash, buferlash, OT↔IT ko'prigi. Yuqori model — NPU bilan.</p>
+          </div>
+          <div class="lvl">
+            <div class="lx">L2 · Ma'lumot shlyuzi</div>
+            <h3>Strix.Shlyuz</h3>
+            <div class="role">Strix Gateway · DT</div>
+            <p>Ma'lumotni yig'ish va normallashtirish, OT↔IT ko'prigi, edge-integratsiya (MQTT · Modbus · OPC UA).</p>
+          </div>
+          <div class="lvl">
+            <div class="lx">L3 · Platforma</div>
+            <h3>Strix.Platforma</h3>
+            <div class="role">Tahlil · dashbordlar</div>
+            <p>SCADA, dashbordlar, ML, raqamli egizaklar, diagnostika, resurs prognozi, APC — brauzerda.</p>
+          </div>
+        </div>
+        <p class="stack-note">Liniya bo'yicha texnologiya hamkori — <b>ishlab chiqaruvchi Liman-Tech</b>. ServerPro yechimni O'zbekiston va mintaqadagi obyektlarda yetkazib beradi, integratsiya qiladi va texnik xizmat ko'rsatadi.</p>
+      </div>
+    </section>
+
+    <!-- OFFICE + PRODUCTION -->
+    <section id="office">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow dark">O'z kuchimiz bilan · Toshkent</span>
+          <h2>Ofis va ishlab chiqarish maydonchasi</h2>
+          <p class="lead">Loyihalashtiramiz, shkaflarni yig'amiz, o'rnatamiz va texnik xizmat ko'rsatamiz — o'zimiz, Toshkentda. Bu «mahalliy va haqiqiy» tamoyilining poydevori, begona brendlar vitrinasi emas.</p>
+        </div>
+        <div class="duo">
+          <div class="duo-col">
+            <div class="ch">
+              <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M9 2h6a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg></div>
+              <div><h3>Muhandislik ofisi</h3><div class="sub">loyiha va texnik xizmat</div></div>
+            </div>
+            <ul class="duo-list">
+              <li>Loyihalash<span class="src">ASU TP, past kuchlanishli tizimlar, elektrika — ishchi hujjatlar</span></li>
+              <li>Texnik hujjatlar<span class="src">Ijroiya, ekspluatatsiya, tenderlar uchun</span></li>
+              <li>Xodimlarni o'qitish<span class="src">Buyurtmachi tomonida tizim bilan ishlash</span></li>
+            </ul>
+          </div>
+          <div class="duo-col">
+            <div class="ch">
+              <div class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+              <div><h3>Ishlab chiqarish maydonchasi</h3><div class="sub">obyektda yig'ish va montaj</div></div>
+            </div>
+            <ul class="duo-list">
+              <li>Avtomatlashtirish shkaflarini yig'ish<span class="src">Butlash, montaj, sinov</span></li>
+              <li>Montaj va ishga tushirish-sozlash (PNR)<span class="src">Obyektda, kalit topshirish</span></li>
+              <li>Past kuchlanishli tizimlar</li>
+              <li>Yong'in xavfsizligi<span class="src">SKPB · MFSB · SMIS</span></li>
+              <li>Servis xizmati<span class="src">Kafolat, ZIP, rus tilida qo'llab-quvvatlash</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="stack-note" style="color:var(--muted-dark)">Barcha o'z xizmatlarimizning to'liq ro'yxati — <a href="/uz/services/" style="color:#b98a34;font-weight:600">«Bizning xizmatlar»</a> sahifasida. ServerPro'ning o'z loyihalar portfeli — <a href="/uz/projects/" style="color:#b98a34;font-weight:600">«Bizning loyihalar»</a>.</p>
+      </div>
+    </section>
+
+    <!-- YULDUZ -->
+    <section id="yulduz" style="padding-top:0">
+      <div class="container">
+        <div class="yz-band">
+          <div class="halo"></div>
+          <div class="yz-grid">
+            <div>
+              <span class="eyebrow">O'z brendi · O'zbekistonda ishlab chiqarilgan</span>
+              <div class="yz-mark">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></svg>
+                <span class="lat">Yulduz</span><span class="uz">· Юлдуз</span>
+              </div>
+              <h2>O'zimiz ishlab chiqaramiz — o'zimiz javob beramiz</h2>
+              <p class="yz-sub">Yulduz — ServerPro'ning o'z mahsulot liniyasi: FVV va favqulodda vaziyatlar to'g'risida ogohlantirgichlar va ogohlantirish tizimlari, shuningdek «Rahbar planshet»i. Ishlab chiqarish va ombor Toshkentda, O'zbekiston Respublikasi normalari bo'yicha sertifikatlash, servis — ishlab chiqargan o'sha jamoa tomonidan.</p>
+              <div class="yz-cta">
+                <a href="/uz/yulduz/" class="btn btn-primary">Yulduz brendi sahifasi <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a href="#cta" class="btn btn-ghost">Yetkazib berishni muhokama qilish</a>
+              </div>
+            </div>
+            <div class="yz-tiles">
+              <a class="yz-tile" href="/uz/yulduz/">
+                <span class="ico"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5M4.9 19.1C1 15.2 1 8.8 4.9 4.9M19.1 4.9c3.9 3.9 3.9 10.3 0 14.2"/></svg></span>
+                <div><h3>FVV va FV ogohlantirgichlari</h3><p>Fuqaro muhofazasi va favqulodda vaziyatlar to'g'risida ogohlantirish tizimlari uchun ogohlantirgichlar. Mahalliy ishlab chiqarish: doim omborda, RUz normalari bo'yicha sertifikatlash, ishlab chiqaruvchi kafolati — bizniki.</p></div>
+              </a>
+              <a class="yz-tile" href="/uz/yulduz/">
+                <span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+                <div><h3>Ogohlantirish va evakuatsiya tizimlari</h3><p>Ogohlantirgichdan pultgacha: ogohlantirish majmuasini to'liq loyihalashtiramiz, o'rnatamiz va texnik xizmat ko'rsatamiz — import yetkazib berishlarini kutmasdan.</p></div>
+              </a>
+              <a class="yz-tile" href="/uz/yulduz/">
+                <span class="ico"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg></span>
+                <div><h3>Rahbar planshet</h3><p>Egasi va direktor uchun tayyor qurilma: yoqasiz — va korxonani ko'rasiz. Ishlab chiqarish, pul, risklar — onlayn, bitta ekranda.</p></div>
+              </a>
+            </div>
+          </div>
+          <p class="yz-note">Yulduz sanoat stekini to'ldiradi: FVV va FV ogohlantiruvi hamda «Rahbar planshet»i uskuna diagnostikasi bilan bir xil monitoring tizimida ishlaydi — obyekt yaxlit ko'rinadi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section id="inds" class="inds">
+      <div class="container">
+        <div class="head center">
+          <span class="eyebrow dark">Tarmoqlar</span>
+          <h2>Biz qayerda ishlaymiz</h2>
+        </div>
+        <div class="ind-grid">
+          <a class="ind" href="/uz/industries/mining/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></span><div><h3>Kon-metallurgiya</h3><span>NKMK, OKMK: tegirmonlar, konveyerlar, nasoslar</span></div></a>
+          <a class="ind" href="/uz/industries/energy/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M7 20a5 5 0 0 1-2-9.5C5 6 8 3 12 3s7 3 7 7.5a5 5 0 0 1-2 9.5z"/><path d="m10 13-2 3h3l-1 3"/></svg></span><div><h3>Gidroenergetika</h3><span>O'zbekgidroenergo: gidroagregatlar, GES kaskadlari</span></div></a>
+          <a class="ind" href="/uz/industries/energy/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span><div><h3>Energetika</h3><span>IES, issiqlik generatsiyasi, tarmoqlar</span></div></a>
+          <a class="ind" href="/uz/industries/oil-gas/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2c1 4-2 5-2 8a2 2 0 0 0 4 0c0 3 3 4 2 8a6 6 0 0 1-6-4 6 6 0 0 1 2-12z"/></svg></span><div><h3>Neft-gaz</h3><span>Kompressorlar, nasos stansiyalari, GQZ</span></div></a>
+          <a class="ind" href="/uz/industries/cement-glass/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18M9 21v-6h6v6"/></svg></span><div><h3>Sement va shisha</h3><span>Pechlar, maydalagichlar, ventilyatorlar</span></div></a>
+          <a class="ind" href="/uz/industries/"><span class="ico"><svg class="ic" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h20"/></svg></span><div><h3>Shahar va infratuzilma</h3><span>Trafik, ogohlantirish, binolar</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS / TECH -->
+    <section id="partners" class="partners">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow">Texnologiyalar va hamkorlar</span>
+          <h2>Yechimlar ortida — sinovdan o'tgan ishlab chiqaruvchilar</h2>
+        </div>
+        <div class="p-main">
+          <div class="row">
+            <div class="brand">Liman<span>-Tech</span></div>
+            <div class="kind">Texnologiya hamkori · diagnostika va APC</div>
+          </div>
+          <div class="products">
+            <span class="pp">Passer</span><span class="pp">Larus</span><span class="pp">Strix.Shlyuz</span><span class="pp">Strix.Platforma</span>
+          </div>
+          <p style="color:#c1cdda; font-size:15.5px; margin:0 0 4px">Sanoat vibro- va tok diagnostikasi, monitoring platformasi va ASU TP optimallashtirilishi liniyasining ishlab chiqaruvchisi. ServerPro — bu mahsulotlarning mintaqadagi rasmiy dileri va integratori.</p>
+          <p class="science"><b>Ishlab chiqaruvchining muhandislik va ilmiy bazasi:</b> o'z R&D-ishlanmasi — ITMO universiteti bilan hamkorlik (AI-yadro), Buyuk Pyotr Politexnikasida o'quv-tadqiqot laboratoriyasi, ishlanma Rossiya Sanoat-savdo vazirligi granti bilan qo'llab-quvvatlangan.</p>
+        </div>
+        <div class="p-others">
+          <div class="p-o">
+            <div class="po-tag">Sanoat · aloqa</div>
+            <h3>X-Connect</h3>
+            <p>Sanoat raqamli radioaloqasi va xodimlar xavfsizligi: avariyaviy ogohlantirish, odam qidirish, yiqilish datchigi, REB-barqarorlik. Rossiyaning yirik korxonalarida joriy etilgan.</p>
+          </div>
+          <div class="p-o">
+            <div class="po-tag">Raqamli shahar · ogohlantirish</div>
+            <h3>«META» ISHK</h3>
+            <p>Ogohlantirish va evakuatsiyani boshqarish tizimlari (SOUE), FVV va FV ogohlantiruvi, antiterror, karnaylar — binolar, transport va shahar infratuzilmasi uchun.</p>
+          </div>
+          <div class="p-o">
+            <div class="po-tag">Sanoat · o'qitish</div>
+            <h3>LKM · trenajyorlar</h3>
+            <p>Operatorlar uchun imitatsion trenajyorlar (karyer ekskavatorlari, neft-gaz, konlar) — real vaqtda raqamli egizaklarda xodimlarni o'qitish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNNEL -->
+    <section id="how">
+      <div class="container">
+        <div class="head center">
+          <span class="eyebrow dark">Qanday ishlaymiz</span>
+          <h2>«Umuman nima mumkin?»dan — raqamlarda erishilgan maqsadgacha</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><h3>Imkoniyatlarni ko'rish</h3><p>Bugun sizning ishlab chiqarishingizda nimalar qilish mumkinligini jonli misollarda ko'rsatamiz — va aynan nima xohlayotganingizni tushunishga yordam beramiz. Demo, keyslar, majburiyatsiz suhbat.</p></div>
+          <div class="step"><div class="num">2</div><h3>Masalani aniqlash</h3><p>«Kamroq yo'qotish bo'lsa» degandan aniq masala tug'iladi: qaysi uchastka, qaysi jarayonlar, qanday ma'lumot allaqachon bor. So'rovnomalarni siz uchun to'ldiramiz — uchrashuvda ovozli javob bersangiz kifoya.</p></div>
+          <div class="step"><div class="num">3</div><h3>Maqsadni raqamlarda ifodalash</h3><p>Maqsad tekshiriladigan bo'lishi kerak: «samaradorlikni oshirish» emas, «xarajatlarni 30% ga kamaytirish» yoki «ishlab chiqarishni 20% ga oshirish». Samarani qanday o'lchashni — startdan oldin kelishamiz, keyin emas.</p></div>
+          <div class="step"><div class="num">4</div><h3>Erishish — va mustahkamlash</h3><p>Pilot bitta uchastkada samarani tasdiqlaydi, shartnoma ishlar hajmini belgilaydi, keyin — masshtablash va texnik xizmat. 3-qadamdagi maqsad qabul qilish mezoniga aylanadi.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA + FORM -->
+    <section id="cta" class="cta-sec grid-bg">
+      <div class="halo"></div>
+      <div class="container">
+        <div class="cta-grid">
+          <div>
+            <span class="eyebrow">Kichikdan boshlaymiz</span>
+            <h2 style="margin-top:14px">Masala haqida gapiring — qo'ng'iroqda muhokama qilamiz</h2>
+            <p>Ariza qoldiring — bog'lanamiz, masalani ko'rib chiqamiz va so'rovnomalarni tayyorlaymiz (VKSda siz uchun to'ldiramiz). Keyin erishsa bo'ladigan maqsadlarni ifodalaymiz va pilot yoki shartnoma taklif qilamiz. Majburiyatlarsiz.</p>
+            <div style="display:flex; gap:22px; margin-top:26px; flex-wrap:wrap">
+              <div><div style="font-family:Manrope;font-weight:800;font-size:22px;color:#fff">Toshkent</div><div style="font-size:13.5px;color:#9fb0c3">ofis, ombor, servis</div></div>
+              <div><div style="font-family:Manrope;font-weight:800;font-size:22px;color:#fff">UZ · KZ · KG</div><div style="font-size:13.5px;color:#9fb0c3">yetkazib berish mintaqasi</div></div>
+            </div>
+          </div>
+          <form class="form" id="lead-form" method="POST" action={LEAD_ENDPOINT}>
+            <input type="hidden" name="intent" value="general" />
+            <input type="hidden" name="source_path" value="/uz/" />
+            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_medium" value="" />
+            <input type="hidden" name="utm_campaign" value="" />
+            <input type="hidden" name="_subject" value="ServerPro sayti orqali ariza (UZ)" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <!-- honeypot FormSubmit: to'ldirsa botlar — ariza tashlab yuboriladi -->
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+            <label for="lead-name">Ism</label>
+            <input id="lead-name" type="text" name="name" placeholder="Sizga qanday murojaat qilaylik" required />
+            <label for="lead-company">Kompaniya</label>
+            <input id="lead-company" type="text" name="company" placeholder="Korxona nomi" required />
+            <label for="lead-contact">Telefon yoki e-mail</label>
+            <input id="lead-contact" type="text" name="contact" placeholder="+998 ..." required />
+            <label for="lead-task">Masala</label>
+            <textarea id="lead-task" name="message" rows="3" placeholder="Uskunangiz va masalangiz haqida qisqacha"></textarea>
+            <label class="consent">
+              <input type="checkbox" name="consent" required />
+              <span>Men <a href="/uz/privacy/">shaxsiy ma'lumotlarni qayta ishlashga</a> roziman.</span>
+            </label>
+            <button class="btn btn-primary" type="submit">Ariza yuborish</button>
+            <p class="form-status" id="lead-status" role="status" aria-live="polite"></p>
+            <p class="note">Arizani ServerPro menejeri qabul qiladi. Shartnoma — «SERVERPRO» MChJ (O'zbekiston) bilan.</p>
+          </form>
+          <script is:inline define:vars={{ endpoint: LEAD_ENDPOINT_AJAX, email: LEAD_EMAIL }}>
+            (function () {
+              var form = document.getElementById('lead-form');
+              var status = document.getElementById('lead-status');
+              if (!form) return;
+              // предзаполнить служебные поля: путь + UTM-метки из адреса
+              try {
+                var q = new URLSearchParams(location.search);
+                if (form.intent && q.get('intent')) form.intent.value = q.get('intent');
+                if (form.source_path) form.source_path.value = location.pathname + location.search;
+                ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+                  if (form.elements[k]) form.elements[k].value = q.get(k) || '';
+                });
+              } catch (e) {}
+              function set(msg, cls) { if (status) { status.innerHTML = msg; status.className = 'form-status' + (cls ? ' ' + cls : ''); } }
+              // Нативный (no-JS) фолбэк вернулся с ?lead=ok — показываем успех
+              try { if (new URLSearchParams(location.search).get('lead') === 'ok') set('Rahmat! Ariza yuborildi — ish kuni davomida bog\'lanamiz.', 'ok'); } catch (e) {}
+              form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (form._honey && form._honey.value) return;           // бот
+                if (!form.checkValidity()) { form.reportValidity(); return; }
+                var btn = form.querySelector('button[type=submit]');
+                var orig = btn ? btn.textContent : '';
+                if (btn) { btn.disabled = true; btn.textContent = 'Yuborilmoqda…'; }
+                set('', '');
+                fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: new URLSearchParams(new FormData(form)) })
+                  .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json().catch(function () { return {}; }); })
+                  .then(function () {
+                    form.reset();
+                    set('Rahmat! Ariza yuborildi — ish kuni davomida bog\'lanamiz.', 'ok');
+                    if (typeof window.ym === 'function' && window.YM_ID) window.ym(window.YM_ID, 'reachGoal', 'lead_submit');
+                  })
+                  .catch(function () {
+                    set('Yuborib bo\'lmadi. Bizga <a href="mailto:' + email + '">' + email + '</a> manziliga yoki Telegram orqali yozing.', 'err');
+                  })
+                  .finally(function () { if (btn) { btn.disabled = false; btn.textContent = orig; } });
+              });
+            })();
+          </script>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Base>

@@ -1,0 +1,88 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const cases = (await getCollection('casesUz'))
+  .sort((a, b) => (b.data.year || '').localeCompare(a.data.year || ''));
+
+// Отрасль (enum-ключ в RU) → отображение по-узбекски.
+const industryLabel: Record<string, string> = {
+  'Машиностроение': 'Mashinasozlik',
+  'Транспортная инфраструктура': 'Transport infratuzilmasi',
+  'Энергетика': 'Energetika',
+  'Нефтегаз': 'Neft-gaz',
+  'Горная добыча и металлы': 'Kon qazib olish va metallar',
+  'Прочее': 'Boshqa',
+};
+
+const statusLabel: Record<string, string> = {
+  completed: 'Topshirilgan',
+  deployed: 'Ekspluatatsiyada',
+  rolling_out: 'Joriy etilmoqda',
+};
+---
+<Base locale="uz" title="Mijozlar" description="Ishlab chiqaruvchining (Liman-Tech) ochiq referenslari — og'ir sanoatda vibromonitoring, tok diagnostikasi va APC; ServerPro tomonidan Markaziy Osiyo bozorida yetkazib beriladi.">
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Mijozlar</div>
+        <h1 class="mt-3 text-display-lg">Tasdiqlangan tajribaga ega texnologiya</h1>
+        <p class="mt-4 text-ink-muted">
+          ServerPro mintaqada yetkazib beradigan va texnik xizmat ko'rsatadigan mahsulotni ishlab chiqaruvchi allaqachon o'nlab sanoat obyektlarida sinab ko'rgan. Buyurtmachilar nomlari sukut bo'yicha anonimlashtirilgan — ishonarli bo'lishi uchun tanib olsa bo'ladigan, ammo operatsion maxfiylik hurmati uchun ehtiyotkorona.
+        </p>
+      </div>
+
+      <div class="mt-14">
+        <div class="flex items-center gap-3">
+          <span class="pill-accent">Ishlab chiqaruvchi referenslari</span>
+          <span class="text-xs text-ink-muted">{cases.length} ta ochiq detalli keys</span>
+        </div>
+      </div>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        {cases.length === 0 && (
+          <div class="card md:col-span-2 border-dashed text-center text-ink-muted">
+            Mijozlar hikoyalari tez orada paydo bo'ladi.
+          </div>
+        )}
+        {cases.map((c) => (
+          <article class="card card-hover flex flex-col">
+            <div class="flex items-center gap-2">
+              <span class="pill-accent">{industryLabel[c.data.industry] ?? c.data.industry}</span>
+              <span class="text-xs uppercase tracking-wider text-ink-muted">{c.data.year}</span>
+              <span class="ml-auto text-xs font-medium text-ink-muted">{statusLabel[c.data.status]}</span>
+            </div>
+            <h2 class="mt-4 font-display text-xl font-semibold text-navy">{c.data.client}</h2>
+            {c.data.scale && (
+              <div class="mt-1 text-sm font-medium text-gold-600">{c.data.scale}</div>
+            )}
+            <p class="mt-3 text-sm text-ink-muted">{c.data.summary}</p>
+
+            {c.data.metrics.length > 0 && (
+              <ul class="mt-4 grid grid-cols-2 gap-2 border-t border-navy/10 pt-4 text-xs text-ink-muted">
+                {c.data.metrics.map((m) => (
+                  <li class="flex items-start gap-1.5">
+                    <span class="mt-1 h-1 w-1 rounded-full bg-gold"></span>
+                    <span>{m}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {c.data.products.length > 0 && (
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                {c.data.products.map((p) => (
+                  <span class="rounded-md border border-navy/10 bg-cream px-2 py-0.5 text-[11px] font-medium text-navy">{p}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-16 max-w-2xl rounded-2xl border border-navy/10 bg-cream p-6 text-sm text-ink-muted">
+        O'z tarmog'ingiz uchun referens qidiryapsizmi — kon qazib olish, neft-gaz, sement, energetika? Vazifasi sizga eng yaqin bo'lgan amaldagi mijoz bilan tanishtiramiz.
+        <a href="/uz/#contact" class="ml-2 font-semibold text-navy hover:text-gold-600">Bog'lanish →</a>
+      </div>
+    </div>
+  </section>
+</Base>

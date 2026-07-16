@@ -1,0 +1,54 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('serverproProjectsUz');
+const coalCount = projects.filter((p) => p.data.sector === 'Уголь').length;
+
+// Сектор (enum-ключ в RU) → отображение по-узбекски.
+const sectorLabel: Record<string, string> = {
+  'Уголь': "Ko'mir",
+  'Энергетика': 'Energetika',
+  'Транспорт': 'Transport',
+  'Недвижимость': "Ko'chmas mulk",
+};
+---
+<Base locale="uz" title="Bizning loyihalar — ServerPro" description="ServerPro'ning muhandislik tizimlari va obyektlar xavfsizligi bo'yicha loyihalari — ko'mir sanoati xavfsizligiga aniq ixtisoslashuv bilan.">
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Bizning loyihalar</div>
+        <h1 class="mt-3 text-display-lg">Muhandislik tizimlari va xavfsizlikdagi tajriba.</h1>
+        <p class="mt-4 text-ink-muted">
+          ServerPro jamoasi ishtirok etgan loyihalarning bir qismi. Ayrim loyihalar tafsilotlari aniqlanmoqda — alohida belgilangan.
+        </p>
+      </div>
+
+      <div class="mt-10 max-w-2xl rounded-2xl border border-navy/10 bg-cream p-6">
+        <p class="text-sm text-ink">
+          <strong class="text-navy">{projects.length} loyihadan {coalCount} tasi</strong> — ko'mir sanoati xavfsizligi (MFSB), bu esa ServerPro'ning standartlashtirish bo'yicha texnik qo'mita TK 269 (kon ishi) a'zoligi bilan bevosita bog'liq. O'sha buyurtmachi profili — kon qazib olish va metallurgiya — uskunalarning vibro- va tok diagnostikasi rasmiy dilerlik liniyasi uchun ham maqsadli segment.
+        </p>
+        <a href="/uz/industries/mining/" class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-navy hover:text-gold-600">
+          Kon qazib olish uchun uskunalar diagnostikasi →
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p) => (
+          <article class="card flex flex-col">
+            <div class="flex items-center gap-2">
+              {p.data.sector && <span class="pill-accent">{sectorLabel[p.data.sector] ?? p.data.sector}</span>}
+            </div>
+            <h2 class="mt-3 font-display text-lg font-semibold text-navy">{p.data.client}</h2>
+            <p class="mt-2 text-sm text-ink-muted">{p.data.summary}</p>
+            {!p.data.verified && (
+              <div class="mt-4 rounded-lg border border-gold/30 bg-gold/10 px-3 py-2 text-xs text-ink-muted">
+                Hamkor ma'lumotlariga ko'ra, tafsilotlar tasdiqlanmagan
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,16 @@
+---
+// Stat — large number + small label.
+// Pattern from hero stat strip and section metric blocks.
+interface Props {
+  value: string;
+  label: string;
+  size?: 'md' | 'lg';
+  class?: string;
+}
+const { value, label, size = 'lg', class: className = '' } = Astro.props;
+const valueClass = size === 'lg' ? 'text-3xl md:text-4xl' : 'text-2xl';
+---
+<div class={className}>
+  <div class={`font-display font-semibold tracking-tight text-navy ${valueClass}`}>{value}</div>
+  <div class="mt-1.5 text-xs uppercase tracking-[0.14em] text-ink-muted">{label}</div>
+</div>

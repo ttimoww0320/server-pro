@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('serverproServices')).sort((a, b) => a.data.order - b.data.order);
+
+const advantages = [
+  { title: 'Широкий спектр решений', body: 'От точечных цифровых инструментов до готовых программных продуктов, комплексных систем и адаптированных отраслевых решений.' },
+  { title: 'Любые проекты по сложности', body: 'Мониторинг критически важных (КВО) и потенциально опасных (ПОО) объектов, контроль ответственных конструкций, системы мониторинга территориально распределённых объектов.' },
+  { title: 'Эффективные методы', body: 'Решения ориентированы на измеримый экономический эффект, а не на технологию ради технологии.' },
+];
+---
+<Base title="Наши услуги — ServerPro" description="Собственные услуги ServerPro: мониторинг инженерных систем и конструкций, безопасность, слаботочные системы, колл-центры, техническая документация — независимо от одного производителя.">
+  <section class="py-20">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Наши услуги</div>
+        <h1 class="mt-3 text-display-lg">Не только Пассер/Ларус/Стрикс.</h1>
+        <p class="mt-4 text-ink-muted">
+          Помимо официального представительства линейки Пассер/Ларус/Стрикс, ServerPro своими силами ведёт услуги мониторинга инженерных систем, конструкций и безопасности объектов — независимо от конкретного производителя оборудования.
+        </p>
+        <p class="mt-4 text-lg font-medium text-navy">
+          «ServerPro — это тот партнёр, к которому обращаются, когда нужна безупречная ИТ-инфраструктура. Мы обеспечиваем стабильность, скорость и техническую точность на уровне, который виден сразу».
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {advantages.map((a) => (
+          <div class="card">
+            <div class="font-display text-lg font-semibold text-navy">{a.title}</div>
+            <p class="mt-2 text-sm text-ink-muted">{a.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => (
+          <article class="card flex flex-col">
+            {s.data.code && <span class="pill-accent">{s.data.code}</span>}
+            <h2 class="mt-3 font-display text-xl font-semibold text-navy">{s.data.name}</h2>
+            <p class="mt-3 text-sm text-ink-muted">{s.data.summary}</p>
+            {s.data.code === 'МФСБ' && (
+              <div class="mt-4 border-t border-navy/10 pt-3 text-xs font-medium text-gold-600">
+                Подтверждено членством в ТК 269 (горное дело)
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-16 max-w-2xl rounded-2xl border border-navy/10 bg-cream p-6 text-sm text-ink-muted">
+        Также представляем оборудование и ПО для вибро- и токовой диагностики, APC — см. <a href="/products/strix/" class="font-semibold text-navy hover:text-gold-600">продуктовую линейку</a>.
+        <a href="/#contact" class="ml-2 font-semibold text-navy hover:text-gold-600">Связаться →</a>
+      </div>
+    </div>
+  </section>
+</Base>

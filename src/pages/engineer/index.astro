@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const stack = [
+  { layer: 'L0 · Сигнал', products: 'Пассер-В · Пассер-Т', body: '8 каналов IEPE, 92 кГц, 24 бит. MCSA по току двигателя. Стетоскоп актива.' },
+  { layer: 'L1 · Edge', products: 'Ларус-10 / 100 / 1000', body: 'FFT, огибающая, RMS, ML-инференс на edge. IEC 61499 (4diac). Кардиограмма в реальном времени.' },
+  { layer: 'L2 · Платформа', products: 'Стрикс · Diagnostics + APC', body: 'Цифровой двойник, RUL, советчик оператору, управляющее воздействие. Терапевт + назначение лечения.' },
+  { layer: 'L3 · Дашборды', products: 'Стрикс.Платформа · web + mobile', body: 'Дашборды и АРМ — собственнику, CFO, инженеру. В браузере и на смартфоне, ролевой доступ.' },
+];
+
+const pillars = [
+  {
+    title: 'Сбор сигнала',
+    bullets: [
+      'Пассер-В — 8 каналов IEPE, до 92 кГц, 24 бит',
+      'Пассер-Т — анализ сигнатуры тока двигателя (MCSA)',
+      'Сырой поток на «Ларус» по Ethernet — без потерь, без агрегации',
+    ],
+  },
+  {
+    title: 'Анализ и решение',
+    bullets: [
+      'Ларус-10 — диагностика на edge, для пилотов',
+      'Ларус-100 — IEC 61499 (4diac), edge-автоматизация',
+      'Ларус-1000 — turnkey + NPU, со Стрикс на борту',
+    ],
+  },
+  {
+    title: 'Действие',
+    bullets: [
+      'OPC UA, MQTT Sparkplug, AAS — открытые стандарты',
+      'Облако · ваш сервер · приставка — на ваш выбор',
+      'Стрикс.Шлюз — сбор данных OT↔IT (OPC UA, Modbus, MQTT)',
+    ],
+  },
+];
+---
+<Base title="Для главного инженера" description="От виброакустики 92 кГц до APC. Спектры, RUL, советчик. Полный стек L0–L3.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-50 [mask-image:radial-gradient(ellipse_at_top,_black_30%,_transparent_70%)]"></div>
+    <div class="container-x relative grid gap-12 py-20 md:grid-cols-12 md:py-28">
+      <div class="md:col-span-7">
+        <span class="pill-accent">
+          <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+          Для главного инженера
+        </span>
+        <h1 class="mt-6 font-display text-display-xl text-navy">
+          Глубина, <span class="text-gold">которую вы ждёте.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg text-ink-muted">
+          От виброакустики 92 кГц до управляющего воздействия APC — в одном стеке, в одной data fabric. Спектры, RUL, советчик. Не «облачный сервис вибро как услуга», а полный стек L0–L3, который вы можете развернуть на своём железе.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://docs.liman-tech.ru/" target="_blank" rel="noopener noreferrer" class="btn-accent">Документация ↗</a>
+          <a href="/?intent=diagnostic-day#contact" class="btn-ghost">День диагностики →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack L0-L3 -->
+  <section class="border-y border-navy/10 bg-white py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Стек L0–L3</div>
+        <h2 class="mt-3 text-display-lg">Один стек — четыре слоя.</h2>
+        <p class="mt-4 text-lg text-ink-muted">
+          Каждый слой — отдельный продукт с открытой документацией и стандартными протоколами. Берите целиком или отдельными частями — стандарты прежде всего.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-4">
+        {stack.map((s) => (
+          <div class="card grid gap-3 md:grid-cols-12 md:items-center">
+            <div class="md:col-span-2">
+              <div class="font-mono text-xs uppercase tracking-[0.18em] text-gold-600">{s.layer}</div>
+            </div>
+            <div class="md:col-span-3">
+              <div class="font-display text-base font-semibold text-navy">{s.products}</div>
+            </div>
+            <div class="md:col-span-7">
+              <p class="text-sm text-ink-muted">{s.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sense / Decide / Act — full pillars -->
+  <section class="py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <div class="eyebrow">Платформа</div>
+        <h2 class="mt-3 text-display-lg">Sense / Decide / Act — как мы это делаем.</h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {pillars.map((p, i) => (
+          <div class="card flex flex-col">
+            <div class="eyebrow">Шаг {i + 1}</div>
+            <div class="mt-3 font-display text-2xl font-semibold text-navy">{p.title}</div>
+            <ul class="mt-4 space-y-2 border-t border-navy/8 pt-4 text-sm text-ink">
+              {p.bullets.map((b) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

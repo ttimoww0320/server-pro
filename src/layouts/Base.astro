@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import { ui, getLocale, switchLocalePath, type Locale } from '../i18n/strings';
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+}
+
+const locale: Locale = Astro.props.locale ?? getLocale(Astro.url.pathname);
+const t = ui[locale];
+
+const { title = t.meta.title, description = t.meta.description } = Astro.props;
+
+const origin = Astro.site?.origin ?? Astro.url.origin;
+const ruHref = origin + switchLocalePath(Astro.url.pathname, 'ru');
+const uzHref = origin + switchLocalePath(Astro.url.pathname, 'uz');
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={locale === 'uz' ? 'uz_UZ' : 'ru_RU'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" hreflang="ru" href={ruHref} />
+    <link rel="alternate" hreflang="uz" href={uzHref} />
+    <link rel="alternate" hreflang="x-default" href={ruHref} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <Analytics />
+  </head>
+  <body>
+    <Header locale={locale} />
+    <main><slot /></main>
+    <Footer locale={locale} />
+    <CookieBanner locale={locale} />
+  </body>
+</html>

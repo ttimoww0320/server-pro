@@ -1,0 +1,17 @@
+---
+// StatusDot — cyan live indicator with optional pulsing ping ring.
+// Used in pills as 'this is real-time / active' affordance.
+interface Props {
+  ping?: boolean;
+  class?: string;
+}
+const { ping = false, class: className = '' } = Astro.props;
+---
+{ping ? (
+  <span class={`relative inline-flex h-1.5 w-1.5 ${className}`}>
+    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75"></span>
+    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold"></span>
+  </span>
+) : (
+  <span class={`inline-block h-1.5 w-1.5 rounded-full bg-gold ${className}`}></span>
+)}
