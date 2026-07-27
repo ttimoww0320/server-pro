@@ -5,6 +5,7 @@ dist/
 .env.production
 .DS_Store
 *.log
+.idea/
 
 # тяжёлые локальные Blender-рендеры (в проде используется public/images/industry-map.webp)
 docs/render-map*.png
